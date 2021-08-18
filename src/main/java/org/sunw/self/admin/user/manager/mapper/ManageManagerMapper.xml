@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="org.sunw.self.admin.user.manager.mapper.ManageManagerMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO MGR
+		(
+		PW,
+		NAME,
+		AUTHOR_LEVEL,
+		PHONE,
+		EMAIL,
+		APPROVAL_STATUS,
+		S_ID
+		)
+		VALUES
+		(
+		#{pw},
+		#{name},
+		#{authorLevel},
+		#{phone},
+		#{email},
+		#{approvalStatus},
+		#{sId}
+		)
+	</insert>
+
+	<select id="getAllManagerList"
+		resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
+		SELECT MGR_ID, 
+			PW, 
+			NAME, 
+			AUTHOR_LEVEL, 
+			PHONE, 
+			EMAIL, 
+			APPROVAL_STATUS, 
+			S_ID
+		FROM MGR
+		ORDER BY MGR_ID DESC
+		LIMIT #{skip} ,
+		#{perSheet}
+	</select>
+
+	<select id="getManagerListCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM MGR
+	</select>
+
+	<select id="getOneManager"
+	resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
+		SELECT MGR_ID, 
+			PW, 
+			NAME, 
+			AUTHOR_LEVEL, 
+			PHONE, 
+			EMAIL, 
+			APPROVAL_STATUS, 
+			S_ID
+		FROM MGR
+		WHERE MGR_ID =#{mgrId}
+	</select>
+
+	<select id="getManagerCnt">
+		SELECT COUNT(*) FROM MGR
+	</select>
+
+	<update id="update">
+		UPDATE MGR
+		SET 
+		PW				= #{pw},			
+		NAME			= #{name},		
+		AUTHOR_LEVEL	= #{authorLevel},	
+		PHONE			= #{phone},			
+		EMAIL			= #{email},			
+		APPROVAL_STATUS	= #{approvalStatus},	
+		S_ID			= #{sId}			
+		WHERE MGR_ID	= #{mgrId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM MGR WHERE MGR_ID = #{mgrId}
+	</delete>
+</mapper>

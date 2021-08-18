@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO MEM
+	(
+	NAME, 
+	PHONE,
+	KAKAO_AUTHORIZATION_KEY, 
+	PW,
+    MEM_STATUS, 
+    JOIN_DATE, 
+    AMOUNT_CHARGE, 
+    POINT, 
+    DATE_OF_USE
+    )
+	VALUES
+	(
+	#{name}, 
+	#{phone},
+	#{kakaoAuthorizationKey}, 
+	#{pw},
+    #{memStatus}, 
+    now(),
+    #{amountCharge}, 
+    #{point}, 
+    now()
+	) 
+	
+	</insert>
+	
+	<select id="getAllUserList" 
+	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO"
+	parameterType="org.sunw.self.admin.user.user.domain.ManageUserDTO">
+	SELECT MEM_ID, 
+		NAME, 
+		PHONE, 
+		KAKAO_AUTHORIZATION_KEY, 
+		PW, 
+		MEM_STATUS, 
+		JOIN_DATE, 
+		AMOUNT_CHARGE,
+		POINT, 
+		DATE_OF_USE
+	FROM MEM
+	ORDER BY MEM_ID DESC
+	LIMIT #{skip},
+		#{perSheet}
+	</select>
+	
+	<select id="getUserListCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM MEM
+	</select>
+	
+	<select id="getOneUser"
+	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO">
+	SELECT MEM_ID, 
+		NAME, 
+		PHONE, 
+		KAKAO_AUTHORIZATION_KEY, 
+		PW, 
+		MEM_STATUS, 
+		JOIN_DATE, 
+		AMOUNT_CHARGE,
+		POINT, 
+		DATE_OF_USE
+	FROM MEM
+	WHERE MEM_ID=#{memId}
+	</select>
+	
+	<select id="getUserCnt">
+	SELECT COUNT(*) FROM MEM
+	</select>
+	
+	<update id="update">
+		UPDATE self_wash.mem
+		SET 
+		NAME					= #{name}					
+		PHONE					= #{phone}					
+		KAKAO_AUTHORIZATION_KEY	= #{kakaoAuthorization_key}	
+		PW						= #{pw}						
+		MEM_STATUS				= #{memStatus}				
+		JOIN_DATE				= now()		
+		AMOUNT_CHARGE			= #{amountCharge}			
+		POINT					= #{point}					
+		DATE_OF_USE				= now()				
+		WHERE MEM_ID			= #{memId}			
+
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM MEM WHERE MEM_ID = #{memId}
+	</delete>
+	
+</mapper>  
+

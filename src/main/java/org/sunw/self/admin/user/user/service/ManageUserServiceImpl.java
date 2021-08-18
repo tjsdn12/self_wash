@@ -1,0 +1,61 @@
+package org.sunw.self.admin.user.user.service;
+
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+import org.sunw.self.admin.common.domain.PageDTO;
+import org.sunw.self.admin.common.domain.PageMaker;
+import org.sunw.self.admin.user.user.domain.ManageUserDTO;
+import org.sunw.self.admin.user.user.domain.ManageUserVO;
+import org.sunw.self.admin.user.user.mapper.ManageUserMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ManageUserServiceImpl implements ManageUserService {
+
+	private final ManageUserMapper manageUserMapper;
+	
+	@Override
+	public int insert(ManageUserDTO manageUserDTO ) {
+		return manageUserMapper.insert(manageUserDTO.getManageUserVO());
+	}
+
+	@Override
+	public List<ManageUserVO> getAllUserList( ManageUserDTO manageUserDTO) {
+		manageUserDTO.setPage(1);
+		manageUserDTO.setPerSheet(10);
+		List<ManageUserVO> list =manageUserMapper.getAllUserList(manageUserDTO);
+		return list;
+	}
+
+	@Override
+	public int getUserListCnt(ManageUserDTO manageUserDTO) {
+		return manageUserMapper.getUserListCnt(manageUserDTO);
+	}
+
+	@Override
+	public ManageUserDTO getOneUser(String memId) {
+		return toUserDTO(manageUserMapper.getOneUser(memId));
+	}
+
+	@Override
+	public int getUserCnt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(ManageUserDTO manageUserDTO) {
+		
+		return manageUserMapper.update(toUserVO(manageUserDTO));
+	}
+
+	@Override
+	public int delete(String memId) {
+		return manageUserMapper.delete(memId);
+	}
+
+}

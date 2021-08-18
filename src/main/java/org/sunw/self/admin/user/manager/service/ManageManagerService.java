@@ -1,0 +1,40 @@
+package org.sunw.self.admin.user.manager.service;
+
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.sunw.self.admin.common.domain.PageDTO;
+import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
+import org.sunw.self.admin.user.manager.domain.ManageManagerVO;
+
+public interface ManageManagerService {
+	public int insert(ManageManagerDTO manageManagerDTO);
+	//매니져 추가
+	public List<ManageManagerVO> getAllManagerList(ManageManagerDTO manageManagerDTO);
+	//페이지에 나타나는 검색 숫자
+	public int getManagerListCnt(ManageManagerDTO manageManagerDTO);
+	
+	
+	public int getManagerCnt();
+	
+	public int update(ManageManagerDTO manageManagerDTO);
+	
+	public int delete(String mgrId);
+	
+	ManageManagerDTO getOneManager(String mgrId);
+	
+	default ManageManagerDTO toManagerDTO(ManageManagerVO manageManagerVO) {
+		ManageManagerDTO manageManagerDTO =new ManageManagerDTO();
+		BeanUtils.copyProperties(manageManagerDTO, manageManagerVO);
+		//같은 필드 변수가 있을때 내용물을 카피
+		return manageManagerDTO;	
+	}
+	
+	default ManageManagerVO toManagerVO(ManageManagerDTO manageManagerDTO) {
+		ManageManagerVO manageManagerVO =new ManageManagerVO();
+		BeanUtils.copyProperties(manageManagerVO, manageManagerDTO);
+		return manageManagerVO;
+	}
+	
+	
+}

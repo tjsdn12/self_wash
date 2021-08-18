@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace= "org.sunw.self.admin.equipment.manage.mapper.EquipmentManageMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO EQUIPMENT
+	(
+	EQUIPMENT_CODE, 
+	TPTB, 
+	EQUIPMENT_STATUS, 
+	EQUIPMENT_MODEL_ID, 
+	REGULAR_INSPECTION, 
+	REGULAR_INSPECTION_DATE, 
+	PURCHASE_PRICE, 
+	PURCHASE_DATETIME
+	)
+	VALUES
+	(
+	#{equipmentCode}, 
+	#{tptb}, 
+	#{equipmentStatus}, 
+	#{equipmentModelId}, 
+	#{regularInspection}, 
+	#{regularInspectionDate}, 
+	#{purchasePrice}, 
+	#{purchaseDatetime}
+	)
+	</insert>
+	
+	<select id="getAllEquipmentManageList"
+	resultType="org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO">
+	SELECT EQUIPMENT_CODE, 
+		TPTB, 
+		EQUIPMENT_STATUS, 
+		EQUIPMENT_MODEL_ID, 
+		REGULAR_INSPECTION, 
+		REGULAR_INSPECTION_DATE, 
+		PURCHASE_PRICE, 
+		PURCHASE_DATETIME
+	FROM EQUIPMENT
+	ORDER BY EQUIPMENT_CODE DESC
+	LIMIT #{skip} ,
+			#{perSheet}
+  </select>
+  
+  	<select id="getEquipmentManageCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM EQUIPMENT
+	</select>
+	
+	<select id="getOneEquipmentManage"
+	resultType="org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO">
+	SELECT EQUIPMENT_CODE, 
+		TPTB, 
+		EQUIPMENT_STATUS, 
+		EQUIPMENT_MODEL_ID, 
+		REGULAR_INSPECTION, 
+		REGULAR_INSPECTION_DATE, 
+		PURCHASE_PRICE, 
+		PURCHASE_DATETIME
+	FROM EQUIPMENT
+	WHERE EQUIPMENT_CODE=#{equipmentCode}
+	</select>
+	
+	<select id="getEquipmentStatueCnt">
+	SELECT COUNT(*) FROM EQUIPMENT
+	</select>
+	
+	<update id="update">
+	UPDATE self_wash.equipment
+	SET 
+	TPTB					= #{tptb}					
+	EQUIPMENT_STATUS		= #{equipmentStatus}		
+	EQUIPMENT_MODEL_ID		= #{equipmentModelId}		
+	REGULAR_INSPECTION		= #{regularInspection}		
+	REGULAR_INSPECTION_DATE	= #{regularInspectionDate}	
+	PURCHASE_PRICE			= #{purchasePrice}			
+	PURCHASE_DATETIME		= #{purchaseDatetime}			
+	WHERE EQUIPMENT_CODE	= #{equipmentCode}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM EQUIPMENT WHERE EQUIMENT_CODE = #{equipmentCode}
+	</delete>
+	
+</mapper>  
+
