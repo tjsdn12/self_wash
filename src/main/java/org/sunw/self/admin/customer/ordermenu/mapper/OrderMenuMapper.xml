@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="org.sunw.self.admin.customer.ordermenu.mapper.OrderMenuMapper">
+	<insert id="insert">
+	<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO SELF_WASH.ORDER_MENU
+	(
+	ORDER_MENU_ID
+	ORDER_MENU_NAME,
+	PRICE,
+	AMOUNT,
+	WASH_MENU_ID,
+	MEM_ID
+	)
+	VALUES
+	(
+	#{orderMenuId},
+	#{orderMenuName},
+	#{price},
+	#{amount},
+	#{washMenuId},
+	#{memId}
+	)
+	</insert>
+	
+	<select id="getAllOrderMenuList"
+	resultType="org.sunw.self.admin.customer.ordermenu.domain.OrderMenuVO">
+	SELECT ORDER_MENU_ID,
+		   ORDER_MENU_NAME,
+		   PRICE,
+		   AMOUNT,
+		   WASH_MENU_ID,
+		   MEM_ID
+	FROM SELF_WASH.ORDER_MENU
+	ORDER BY ORDER_ID DESC
+		LIMIT #{skip} ,
+				#{perSheet}
+	</select>
+	
+	<select id="getOrderMenuCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM SELF_WASH.ORDER_MENU
+	</select>
+	
+	<select id="getOneOrderMenu"
+	resultType="org.sunw.self.admin.customer.ordermenu.domain.OrderMenuVO">
+	SELECT ORDER_MENU_ID,
+		   ORDER_MENU_NAME,
+		   PRICE,
+		   AMOUNT,
+		   WASH_MENU_ID,
+		   MEM_ID
+	FROM SELF_WASH.ORDER_MENU
+	WHERE ORDER_MENU_ID=#{orderMenuId}
+	</select>
+	
+	<select id="getOrderMenuStatusCnt">
+	SELECT COUNT(*) FROM SELF_WASH.ORDER_MENU
+	</select>
+	
+	<update id="update">
+	UPDATE SELF_WASH.ORDER_MENU
+	SET
+		ORDER_MENU_NAME			=#{orderMenuName},
+		PRICE					=#{price}, 
+		AMOUNT					=#{amount}, 
+		WASH_MENU_ID			=#{washMenuId}, 
+		MEM_ID					=#{memId}
+	WHERE ORDER_MENU_ID			=#{orderMenuId}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM SELF_WASH.ORDER_MENU WHERE ORDER_MENU_ID = #{orderMenuId}
+	</delete>
+	
+</mapper>

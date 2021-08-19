@@ -1,10 +1,10 @@
-package org.sunw.self.admin.equipment.manage.mapper;
+package org.sunw.self.admin.equipment.equipment.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageDTO;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO;
 
 public interface EquipmentManageMapper {
 

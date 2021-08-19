@@ -1,11 +1,11 @@
-package org.sunw.self.admin.equipment.manage.service;
+package org.sunw.self.admin.equipment.equipment.service;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.sunw.self.admin.common.domain.PageDTO;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageDTO;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO;
 import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 import org.sunw.self.admin.user.manager.domain.ManageManagerVO;
 

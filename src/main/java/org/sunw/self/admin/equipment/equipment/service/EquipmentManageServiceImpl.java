@@ -1,12 +1,12 @@
-package org.sunw.self.admin.equipment.manage.service;
+package org.sunw.self.admin.equipment.equipment.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.sunw.self.admin.common.domain.PageDTO;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageDTO;
-import org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO;
-import org.sunw.self.admin.equipment.manage.mapper.EquipmentManageMapper;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO;
+import org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper;
 
 import lombok.RequiredArgsConstructor;
 

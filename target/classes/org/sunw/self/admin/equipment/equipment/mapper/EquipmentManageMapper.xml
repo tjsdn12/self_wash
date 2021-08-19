@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper 
-namespace= "org.sunw.self.admin.equipment.manage.mapper.EquipmentManageMapper">
+namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper">
 	<insert id="insert">
 		<selectKey order="AFTER" resultType="int">
 		SELECT LAST_INSERT_ID()
@@ -33,7 +33,7 @@ namespace= "org.sunw.self.admin.equipment.manage.mapper.EquipmentManageMapper">
 	</insert>
 	
 	<select id="getAllEquipmentManageList"
-	resultType="org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO">
+	resultType="org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO">
 	SELECT EQUIPMENT_CODE, 
 		TPTB, 
 		EQUIPMENT_STATUS, 
@@ -54,7 +54,7 @@ namespace= "org.sunw.self.admin.equipment.manage.mapper.EquipmentManageMapper">
 	</select>
 	
 	<select id="getOneEquipmentManage"
-	resultType="org.sunw.self.admin.equipment.manage.domain.EquipmentManageVO">
+	resultType="org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO">
 	SELECT EQUIPMENT_CODE, 
 		TPTB, 
 		EQUIPMENT_STATUS, 

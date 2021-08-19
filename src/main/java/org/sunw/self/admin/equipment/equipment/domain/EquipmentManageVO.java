@@ -1,4 +1,4 @@
-package org.sunw.self.admin.equipment.manage.domain;
+package org.sunw.self.admin.equipment.equipment.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

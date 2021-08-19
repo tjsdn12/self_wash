@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="org.sunw.self.admin.customer.order.mapper.OrderManageMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO SELF_WASH.ORDER
+	(
+	ORDER_DATE,
+	ORDERER,
+	RECIPIENT_PHONE,
+	TOTAL_PAYMENT,
+	METHOD_OF_PAYMENT,
+	ORDER_STATUS,
+	ACCUMULATE_POINT
+	)
+	VALUES
+	(
+	NOW(),
+	#{orderer},
+	#{recipientPhone},
+	#{totalPayment},
+	#{methodOfPayment},
+	#{orderStatus},
+	#{accumulatePoint}
+	)
+	</insert>
+	
+	<select id="getAllOrderManageList"
+	resultType="org.sunw.self.admin.customer.order.domain.OrderManageVO">
+	SELECT ORDER_ID,
+		 ORDER_DATE,
+		 ORDERER,
+		 RECIPIENT_PHONE,
+		 TOTAL_PAYMENT,
+		 METHOD_OF_PAYMENT,
+		 ORDER_STATUS,
+		 ACCUMULATE_POINT
+	FROM SELF_WASH.ORDER
+	ORDER BY ORDER_ID DESC
+		LIMIT #{skip} ,
+				#{perSheet}
+	</select>
+	
+	<select id="getOrederManageCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM SELF_WASH.ORDER
+	</select>
+	
+	<select id="getOneOrderManage"
+	resultType="org.sunw.self.admin.customer.order.domain.OrderManageVO">
+	SELECT ORDER_ID,
+		 ORDER_DATE,
+		 ORDERER,
+		 RECIPIENT_PHONE,
+		 TOTAL_PAYMENT,
+		 METHOD_OF_PAYMENT,
+		 ORDER_STATUS,
+		 ACCUMULATE_POINT
+	FROM SELF_WASH.ORDER
+	WHERE ORDER_ID=#{orderId}
+	</select>
+	
+	<select id="getOrderStatusCnt">
+	SELECT COUNT(*) FROM SELF_WASH.ORDER
+	</select>
+	
+	<update id="update">
+	UPDATE SELF_WASH.ORDER
+	SET 
+	ORDER_DATE				= #{orderDate}		
+	ORDERER					= #{orderer}		
+	RECIPIENT_PHONE			= #{recipientPhone}		
+	TOTAL_PAYMENT			= #{totalPayment}	
+	METHOD_OF_PAYMENT		= #{methodOfPayment}			
+	ORDER_STATUS			= #{orderStatus}
+	ACCUMULATE_POINT		= #{accumulatePoint}			
+	WHERE ORDER_ID			= #{orderId}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM SELF_WASH.ORDER WHERE ORDER_ID = #{orderId}
+	</delete>
+</mapper>
