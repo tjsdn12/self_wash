@@ -1,8 +1,9 @@
-package org.sunw.self.admin.customer.order.controller;
+package org.sunw.self.admin.customer.washmenu.controller;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,51 +18,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
-import org.sunw.self.admin.customer.order.domain.OrderManageDTO;
-import org.sunw.self.admin.customer.order.sesrvice.OrderManageService;
-import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
+import org.sunw.self.admin.customer.washmenu.service.WashMenuService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/customer/ordermanage")
-public class OrderManageController {
+@RequestMapping("/customer/washmenu")
+public class WashMenuController {
 	@Autowired
-	OrderManageService orderManageService;
+	WashMenuService washMenuService;
 	@GetMapping("list")
-	public void list(OrderManageDTO orderManageDTO,Model model) {
+	public void list(WashMenuDTO washMenuDTO,Model model) {
 		
-		model.addAttribute("getAllOrderManageList", orderManageService.getAllOrderManageList(orderManageDTO));
-	
+		model.addAttribute("getAllWashMenuList",washMenuService.getAllWashMenuList(washMenuDTO));
+		
 	}
 	@GetMapping("/form")
 	public void form() {
 		
 	}
 	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody OrderManageDTO orderManageDTO){
-		Map<String, String> result =new HashMap<String, String>();
-		orderManageService.insert(orderManageDTO);
+	public ResponseEntity<Map<String, String>>form(@RequestBody WashMenuDTO washMenuDTO){
+		Map<String, String> result = new HashMap<String, String>();
+		washMenuService.insert(washMenuDTO);
 		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
 	}
 	@PutMapping("/form")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO save(@RequestBody OrderManageDTO orderManageDTO) {
+	public ResultDTO save(@RequestBody WashMenuDTO washMenuDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = orderManageService.insert(orderManageDTO)>0;
+		boolean isSuccess =washMenuService.insert(washMenuDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}
-	@DeleteMapping("/list")
+	@DeleteMapping("list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO delete(@RequestBody OrderManageDTO orderManageDTO) {
+	public ResultDTO delete(@RequestBody WashMenuDTO washMenuDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess =orderManageService.delete(orderManageDTO.getOrderManageVO().getorderId())>0;
+		boolean isSuccess =washMenuService.delete(washMenuDTO.getWashMenuVO().getWashMenuId())>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"삭제되었습니다..":"d.";
 		result.setMessage(message);
@@ -69,9 +69,10 @@ public class OrderManageController {
 	}
 	
 	@GetMapping("detail")
-	public void selectOrderManage(OrderManageDTO orderManageDTO,Model model) {
-		OrderManageDTO getOne =orderManageService.getOneOrderManage(orderManageDTO.getOrderId());
-		model.addAttribute("orderManageDTO",getOne);
+	public void selectWashMenu(WashMenuDTO washMenuDTO,Model model) {
+		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
+		model.addAttribute("washMenuDTO",getOne);
 		log.info(model);
 	}
+
 }

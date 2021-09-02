@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
+	<insert id="insert">
+	<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO SELF_WASH.WASH_MENU
+	(
+	MENU_PRICE, 
+	EQUIPMENT_MODEL_ID, 
+	MENU_NAME, 
+	DETERGENT_USE_AT
+	)
+	VALUES
+	(
+	#{menuPrice}, 
+	#{equipmentModelId}, 
+	#{menuName}, 
+	#{detergentUseAt}
+	)
+	</insert>
+	
+	<select id="getAllWashMenuList"
+	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
+	SELECT WASH_MENU_ID, 
+		MENU_PRICE, 
+		EQUIPMENT_MODEL_ID, 
+		MENU_NAME, 
+		DETERGENT_USE_AT
+	FROM SELF_WASH.WASH_MENU
+	ORDER BY WASH_MENU_ID DESC
+		LIMIT #{skip} ,
+				#{perSheet}
+	</select>
+	
+	<select id="getWashMenuCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM SELF_WASH.WASH_MENU
+	</select>
+	
+	<select id="getOneWashMenu"
+	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
+	SELECT MENU_PRICE, 
+		EQUIPMENT_MODEL_ID, 
+		MENU_NAME, 
+		DETERGENT_USE_AT
+	FROM SELF_WASH.WASH_MENU
+	WHERE WASH_MENU_ID=#{washMenuId}
+	</select>
+	
+	<select id="getWashMenuStatusCnt">
+	SELECT COUNT(*) FROM SELF_WASH.WASH_MENU
+	</select>
+	
+	<update id="updete">
+	UPDATE self_wash.wash_menu
+	SET 
+	MENU_PRICE				=#{menuPrice} 
+	EQUIPMENT_MODEL_ID		=#{equipmentModelId} 
+	MENU_NAME				=#{menuName} 
+	DETERGENT_USE_AT		=#{detergentUseAt}
+	WHERE WASH_MENU_ID		=#{washMenuId}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM SELF_WASH.ORDER WHERE WASH_MENU_ID = #{washMenuId}
+	</delete>
+	
+</mapper>

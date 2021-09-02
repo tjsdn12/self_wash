@@ -33,8 +33,8 @@ public class OrderManageServiceImpl implements OrderManageService{
 
 	@Override
 	public OrderManageDTO getOneOrderManage(String OrderId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return toOrderManageDTO(orderManageMapper.getOneOrderManage(OrderId));
 	}
 
 	@Override

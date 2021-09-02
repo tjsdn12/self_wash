@@ -17,7 +17,7 @@
 							href="20">20</a> <a class="dropdown-item" href="50">50</a> <a
 							class="dropdown-item" href="100">100</a>
 					</div>
-					<h3 class="card-title mb-0" style="margin-left: 50px">OrderManage Table</h3>
+					<h3 class="card-title mb-0" style="margin-left: 50px">WashMenuList</h3>
 				</div>
 			</div>
 			<div class="list-responsive">
@@ -27,38 +27,32 @@
 							<th><label class="customcheckbox mb-3"> <input
 									type="checkbox" id="mainCheckbox" /> <span class="checkmark"></span>
 							</label></th>
-							<th scope="col">주문번호</th>
-							<th scope="col">주문일자</th>
-							<th scope="col">주문자</th>
-							<th scope="col">주문자 핸드폰 번호</th>
-							<th scope="col">총합</th>
-							<th scope="col">결제수단</th>
-							<th scope="col">주문상태</th>
-							<th scope="col">적립 포인트</th>
-							<th scope="col"><input type="button" value="주문관리 등록"
-								class="btn-info" onclick="location.href='/order/manage/form'">
+							<th scope="col">주문메뉴 번호</th>
+							<th scope="col">상품가격</th>
+							<th scope="col">장비번호</th>
+							<th scope="col">메뉴명</th>
+							<th scope="col">세제 사용 여부</th>
+							<th scope="col"><input type="button" value="등록"
+								class="btn-info" onclick="location.href='/customer/washmenu/form'">
 							</th>
 						</tr>
 					</thead>
 
 					<tbody class="customtable">
-						<c:forEach items="${getAllOrderManageList }" var="item2">
+						<c:forEach items="${getAllWashMenuList }" var="item2">
 							<tr>
 								<td><label class="customcheckbox"> <input
-										type="checkbox" class="listCheckbox" value="${item2.orderId }" />
+										type="checkbox" class="listCheckbox" value="${item2.washMenuId }" />
 										<span class="checkmark"></span>
 								</label></td>
-								<td><a href="#" onclick="goSelect(this)">${item2.orderId }</a></td>
-								<td>${item2.orderDate }</td>
-								<td>${item2.orderer }</td>
-								<td>${item2.recipientPhone }</td>
-								<td>${item2.totalPayment }</td>
-								<td>${item2.methodOfPayment }</td>
-								<td>${item2.orderStatus }</td>
-								<td>${item2.accumulatePoint }</td>
+								<td><a href="#" onclick="goSelect(this)">${item2.washMenuId }</a></td>
+								<td>${item2.menuPrice }</td>
+								<td>${item2.equipmentModelId }</td>
+								<td>${item2.menuName }</td>
+								<td>${item2.detergentUseAt }</td>
 								<td>
 					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteOrderId(<c:out value='${item2.orderId }'/>)">삭제</button>
+						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteWashMenu(<c:out value='${item2.washMenuId }'/>)">삭제</button>
 					</div>
 								</td>
 							</tr>
@@ -104,15 +98,12 @@
 
 <%@include file="/WEB-INF/views/includes/modal.jsp"%>
 
-<form id="actionForm" action="/equipment/list" method="get" >
+<form id="actionForm" action="/washmenu/list" method="get" >
 	<input type="hidden" name="page" value="${pageMaker.pageDTO.page }" class="current_page">
 	<input type="hidden" name="perSheet" value="${pageMaker.pageDTO.perSheet }" class="current_perSheet">
 </form>
 
-
-<%@include file="/WEB-INF/views/includes/footer.jsp"%>
-
-<script type="text/javascript">
+<script>
 
 document.querySelectorAll(".page-link").forEach(a=>{
 	   a.addEventListener("click",function (e){
@@ -136,24 +127,24 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	
 	function goSelect(dom){
 		console.log(dom);
-		const orderId =dom.innerHTML;
+		const washMenuId =dom.innerHTML;
 		
 		const form =document.querySelector("#actionForm");
 		
-		form.action ="/order/manage/detail";
+		form.action ="/customer/washmenu/detail";
 		
 		form.method = "get";
 		
-		form.innerHTML = "<input type ='hidden' name ='orderId' value='"+orderId+"' />";
+		form.innerHTML = "<input type ='hidden' name ='washMenuId' value='"+washMenuId+"' />";
 		
 		form.submit();
 		
 	}
 	
-	function deleteOrderId(orderId) {
+	function deleteWashMenu(washMenuId) {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/order/manage/list',
+			url : '/customer/washmenu/list',
 			type : 'Delete',
 			//응답 받고 
 			headers : { // Http header
@@ -162,7 +153,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 			},
 			//
 			dataType : 'JSON', // 데이터 타입 (html, xml, json, text 등등)
-			data : JSON.stringify({orderManageVO: {orderId:orderId}}),
+			data : JSON.stringify({washMenuVO: {washMenuId:washMenuId}}),
 			success : function onData(data) {
 				alert(data.message);
 				if(data.success) {
@@ -176,5 +167,5 @@ document.querySelectorAll(".page-link").forEach(a=>{
 			}
 		});
 	}
-
 </script>
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>

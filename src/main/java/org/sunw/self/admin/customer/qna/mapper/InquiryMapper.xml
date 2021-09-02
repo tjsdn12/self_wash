@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO SELF_WASH.QNA
+		(
+		MGR_ID,
+		QNA_TITLE, 
+		QNA_CONTENTS, 
+		CLASSIFICATION, 
+		MEM_ID, 
+		REPLY_CONTENT, 
+		REPLY_TITLE, 
+		DATE_OF_INQUIRY, 
+		ANSWER_DATE, 
+		ANSWER_ID, 
+		WHETHER_IT_IS_PRIVATE
+		)
+		VALUES
+		(
+		#{mgrId}
+		#{qnaTitle}, 
+		#{qnaContents}, 
+		#{classification}, 
+		#{memId}, 
+		#{replyContent}, 
+		#{replyTitle}, 
+		now(), 
+		now(), 
+		#{answerId}, 
+		#{whetherItIsPrivate}
+		)
+	</insert>
+	
+	<select id="getAllInquiryList"
+	resultType="org.sunw.self.admin.customer.qna.domain.InquiryVO">
+	SELECT INQUIRY_ID, 
+		MGR_ID, 
+		QNA_TITLE, 
+		QNA_CONTENTS, 
+		CLASSIFICATION, 
+		MEM_ID, 
+		REPLY_CONTENT, 
+		REPLY_TITLE, 
+		DATE_OF_INQUIRY, 
+		ANSWER_DATE, 
+		ANSWER_ID, 
+		WHETHER_IT_IS_PRIVATE
+	FROM SELF_WASH.QNA
+	ORDER BY INQUIRY_ID DESC
+		LIMIT #{skip} ,
+				#{perSheet}
+	</select>
+	
+	<select id="getInquiryCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM SELF_WASH.QNA
+	</select>
+	
+	<select id="getOneInquiry"
+	resultType="org.sunw.self.admin.customer.qna.domain.InquiryVO">
+	SELECT INQUIRY_ID, 
+		MGR_ID, 
+		QNA_TITLE, 
+		QNA_CONTENTS, 
+		CLASSIFICATION, 
+		MEM_ID, 
+		REPLY_CONTENT, 
+		REPLY_TITLE, 
+		DATE_OF_INQUIRY, 
+		ANSWER_DATE, 
+		ANSWER_ID, 
+		WHETHER_IT_IS_PRIVATE
+	FROM SELF_WASH.QNA
+	WHERE INQUIRY_ID=#{inquiryId}
+	</select>
+	
+	<select id="getInquirystatusCnt">
+	SELECT COUNT(*) FROM SELF_WASH.QNA
+	</select>
+	
+	<update id="update">
+	UPDATE SELF_WASH.QNA
+	SET 
+	MGR_ID					=#{mgrId}					
+	QNA_TITLE				=#{qnaTitle}				
+	QNA_CONTENTS			=#{qnaContents}			
+	CLASSIFICATION			=#{classification}			
+	MEM_ID					=#{memId}					
+	REPLY_CONTENT			=#{replyContent}			
+	REPLY_TITLE				=#{replyTitle}				
+	DATE_OF_INQUIRY			=now()		
+	ANSWER_DATE				=now()				
+	ANSWER_ID				=#{answerId}				
+	WHETHER_IT_IS_PRIVATE	=#{whetherItIsPrivate}
+	WHERE INQUIRY_ID		=#{inquiryId}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM SELF_WASH.QNA WHERE INQUIRY_ID=#{inquiryId}
+	</delete>
+</mapper>

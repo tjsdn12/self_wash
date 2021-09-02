@@ -1,4 +1,4 @@
-package org.sunw.self.admin.customer.order.controller;
+package org.sunw.self.admin.customer.ordermenu.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,40 +17,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
-import org.sunw.self.admin.customer.order.domain.OrderManageDTO;
-import org.sunw.self.admin.customer.order.sesrvice.OrderManageService;
-import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.customer.ordermenu.domain.OrderMenuDTO;
+import org.sunw.self.admin.customer.ordermenu.service.OrderMenuService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/customer/ordermanage")
-public class OrderManageController {
-	@Autowired
-	OrderManageService orderManageService;
-	@GetMapping("list")
-	public void list(OrderManageDTO orderManageDTO,Model model) {
-		
-		model.addAttribute("getAllOrderManageList", orderManageService.getAllOrderManageList(orderManageDTO));
+@RequestMapping("/customer/ordermenu")
+public class OrderMenuController {
 	
+	@Autowired
+	OrderMenuService orderMenuService;
+	
+	@GetMapping("list")
+	public void list(OrderMenuDTO orderMenuDTO,Model model) {
+		
+		model.addAttribute("getAllOrderMenuList",orderMenuService.getAllOrderMenuList(orderMenuDTO));
 	}
+	
 	@GetMapping("/form")
 	public void form() {
 		
 	}
+	
 	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody OrderManageDTO orderManageDTO){
-		Map<String, String> result =new HashMap<String, String>();
-		orderManageService.insert(orderManageDTO);
+	public ResponseEntity<Map<String, String>>form(@RequestBody OrderMenuDTO orderMenuDTO){
+		Map<String, String> result = new HashMap<String, String>();
+		orderMenuService.insert(orderMenuDTO);
 		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
+	
 	}
 	@PutMapping("/form")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO save(@RequestBody OrderManageDTO orderManageDTO) {
-		ResultDTO result = new ResultDTO();
-		boolean isSuccess = orderManageService.insert(orderManageDTO)>0;
+	public ResultDTO save(@RequestBody OrderMenuDTO orderMenuDTO) {
+		ResultDTO result =new ResultDTO();
+		boolean isSuccess = orderMenuService.insert(orderMenuDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
@@ -59,19 +62,21 @@ public class OrderManageController {
 	@DeleteMapping("/list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO delete(@RequestBody OrderManageDTO orderManageDTO) {
+	public ResultDTO delete(@RequestBody OrderMenuDTO orderMenuDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess =orderManageService.delete(orderManageDTO.getOrderManageVO().getorderId())>0;
+		boolean isSuccess =orderMenuService.delete(orderMenuDTO.getOrderMenuVO().getorderMenuId())>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"삭제되었습니다..":"d.";
 		result.setMessage(message);
 		return result;
 	}
 	
-	@GetMapping("detail")
-	public void selectOrderManage(OrderManageDTO orderManageDTO,Model model) {
-		OrderManageDTO getOne =orderManageService.getOneOrderManage(orderManageDTO.getOrderId());
-		model.addAttribute("orderManageDTO",getOne);
+	@GetMapping("/detail")
+	public void selectOrderMenu(OrderMenuDTO orderMenuDTO,Model model) {
+		OrderMenuDTO getOne = orderMenuService.getOneOrderMenu(orderMenuDTO.getOrderMenuId());
+		model.addAttribute("orderMenuDTO",getOne);
 		log.info(model);
 	}
+	
+	
 }

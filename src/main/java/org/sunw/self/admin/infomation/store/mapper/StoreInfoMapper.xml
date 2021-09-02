@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+namespace= "org.sunw.self.admin.infomation.store.mapper.StoreInfoMapper">
+	<insert id="insert">
+		<selectKey order="AFTER" resultType="int">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+	INSERT INTO SELF_WASH.STORE
+	(
+	S_NAME, 
+	S_LOCATION, 
+	MANAGER, 
+	ATTEMPT_CLASSIFICATION, 
+	CITY_COUNTY_CLASSIFICATION, 
+	BUSINESS_NUMBER, 
+	MANAGER_RESIDENT_NUMBER, 
+	POST_CODE
+	)
+	VALUES
+	(
+	#{sName}, 
+	#{sLocation}, 
+	#{manager}, 
+	#{attemptClassification}, 
+	#{cityCountyClassification}, 
+	#{businessNumber}, 
+	#{managerResidentNumber}, 
+	#{postCode}
+	)
+	</insert>
+	
+	<select id="getAllStoreInfoList"
+	resultType="org.sunw.self.admin.infomation.store.domain.StoreInfoVO">
+	SELECT S_ID, 
+		S_NAME, 
+		S_LOCATION, 
+		MANAGER, 
+		ATTEMPT_CLASSIFICATION, 
+		CITY_COUNTY_CLASSIFICATION, 
+		BUSINESS_NUMBER, 
+		MANAGER_RESIDENT_NUMBER, 
+		POST_CODE
+	FROM SELF_WASH.STORE
+	ORDER BY S_ID DESC
+	LIMIT #{skip} ,
+			#{perSheet}
+	</select>
+	
+	<select id="getStoreInfoCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM SELF_WASH.STORE
+	</select>
+	
+	<select id="getOneStoreInfo"
+	resultType="org.sunw.self.admin.infomation.store.domain.StoreInfoVO">
+	SELECT S_ID, 
+		S_NAME, 
+		S_LOCATION, 
+		MANAGER, 
+		ATTEMPT_CLASSIFICATION, 
+		CITY_COUNTY_CLASSIFICATION, 
+		BUSINESS_NUMBER, 
+		MANAGER_RESIDENT_NUMBER, 
+		POST_CODE
+	FROM SELF_WASH.STORE
+	WHERE S_ID=#{sId}
+	</select>
+	
+	<select id="getStoreStatueCnt">
+	SELECT COUNT(*) FROM SELF_WASH.STORE
+	</select>
+	
+	<update id="update">
+	UPDATE SELF_WASH.STORE
+	SET 
+	S_NAME						=#{sName}, 
+	S_LOCATION					=#{sLocation}, 
+	MANAGER						=#{manager}, 
+	ATTEMPT_CLASSIFICATION		=#{attemptClassification}, 
+	CITY_COUNTY_CLASSIFICATION	=#{cityCountyClassification}, 
+	BUSINESS_NUMBER				=#{businessNumber}, 
+	MANAGER_RESIDENT_NUMBER		=#{managerResidentNumber}, 
+	POST_CODE					=#{postCode}
+	WHERE S_ID					=#{sId}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM  SELF_WASH.STORE WHERE S_ID = #{sId}
+	</delete>
+</mapper>  
+

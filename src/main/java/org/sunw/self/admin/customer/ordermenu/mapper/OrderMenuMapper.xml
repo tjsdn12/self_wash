@@ -10,7 +10,6 @@ namespace="org.sunw.self.admin.customer.ordermenu.mapper.OrderMenuMapper">
 		</selectKey>
 	INSERT INTO SELF_WASH.ORDER_MENU
 	(
-	ORDER_MENU_ID
 	ORDER_MENU_NAME,
 	PRICE,
 	AMOUNT,
@@ -19,7 +18,6 @@ namespace="org.sunw.self.admin.customer.ordermenu.mapper.OrderMenuMapper">
 	)
 	VALUES
 	(
-	#{orderMenuId},
 	#{orderMenuName},
 	#{price},
 	#{amount},
@@ -37,7 +35,7 @@ namespace="org.sunw.self.admin.customer.ordermenu.mapper.OrderMenuMapper">
 		   WASH_MENU_ID,
 		   MEM_ID
 	FROM SELF_WASH.ORDER_MENU
-	ORDER BY ORDER_ID DESC
+	ORDER BY ORDER_MENU_ID DESC
 		LIMIT #{skip} ,
 				#{perSheet}
 	</select>

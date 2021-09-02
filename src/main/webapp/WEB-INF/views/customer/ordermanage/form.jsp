@@ -94,7 +94,7 @@
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/order/manage/form',
+			url : '/customer/ordermanage/form',
 			type : 'PUT',
 			//응답 받고 
 			headers : { // Http header
@@ -107,7 +107,7 @@
 			success : function onData(data) {
 				alert(data.message);
 				if(data.success) {
-					location.href = '/order/manage/list';
+					location.href = '/customer/ordermanage/list';
 				}
 			},
 			error : function onError(error) {

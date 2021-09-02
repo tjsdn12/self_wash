@@ -9,7 +9,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="card">
-			<form class="form-horizontal" id="actionForm" action="/order/manage/list"
+			<form class="form-horizontal" id="actionForm" action="/customer/ordermanage/list"
 				method="get">
 				<div class="card-body">
 					<h4 class="card-title">OrderManageDetailPage</h4>
@@ -118,7 +118,7 @@
 	
 	function goTable(){
 		let form = document.querySelector("#actionForm");
-		form.action = "/order/manage/list";
+		form.action = "/customer/ordermanage/list";
 		form.method = "get";
 		form.innerHTML="";
 		form.submit();

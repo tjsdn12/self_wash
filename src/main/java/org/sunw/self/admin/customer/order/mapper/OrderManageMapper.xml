@@ -72,7 +72,7 @@ namespace="org.sunw.self.admin.customer.order.mapper.OrderManageMapper">
 	<update id="update">
 	UPDATE SELF_WASH.ORDER
 	SET 
-	ORDER_DATE				= #{orderDate}		
+	ORDER_DATE				= NOW()		
 	ORDERER					= #{orderer}		
 	RECIPIENT_PHONE			= #{recipientPhone}		
 	TOTAL_PAYMENT			= #{totalPayment}	

@@ -1,4 +1,4 @@
-package org.sunw.self.admin.customer.order.controller;
+package org.sunw.self.admin.infomation.store.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,61 +17,62 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
-import org.sunw.self.admin.customer.order.domain.OrderManageDTO;
-import org.sunw.self.admin.customer.order.sesrvice.OrderManageService;
-import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.infomation.store.domain.StoreInfoDTO;
+import org.sunw.self.admin.infomation.store.service.StoreInfoService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/customer/ordermanage")
-public class OrderManageController {
+@RequestMapping("/info/storeinfo")
+public class StoreInfoController {
 	@Autowired
-	OrderManageService orderManageService;
-	@GetMapping("list")
-	public void list(OrderManageDTO orderManageDTO,Model model) {
-		
-		model.addAttribute("getAllOrderManageList", orderManageService.getAllOrderManageList(orderManageDTO));
+	StoreInfoService storeInfoService;
+	@GetMapping("/list")
+	public void list(StoreInfoDTO storeInfoDTO, Model model) {
 	
+		model.addAttribute("getAllStoreInfoList",storeInfoService.getAllStoreInfoList(storeInfoDTO));
+		
 	}
 	@GetMapping("/form")
 	public void form() {
 		
 	}
 	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody OrderManageDTO orderManageDTO){
-		Map<String, String> result =new HashMap<String, String>();
-		orderManageService.insert(orderManageDTO);
+	public ResponseEntity<Map<String, String>>form(@RequestBody StoreInfoDTO storeInfoDTO){
+		Map<String, String> result = new HashMap<String, String>();
+		storeInfoService.insert(storeInfoDTO);
 		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
 	}
 	@PutMapping("/form")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO save(@RequestBody OrderManageDTO orderManageDTO) {
+	public ResultDTO save(@RequestBody StoreInfoDTO storeInfoDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = orderManageService.insert(orderManageDTO)>0;
+		boolean isSuccess = storeInfoService.insert(storeInfoDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}
-	@DeleteMapping("/list")
+	@DeleteMapping("list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO delete(@RequestBody OrderManageDTO orderManageDTO) {
-		ResultDTO result = new ResultDTO();
-		boolean isSuccess =orderManageService.delete(orderManageDTO.getOrderManageVO().getorderId())>0;
+	public ResultDTO delete(@RequestBody StoreInfoDTO storeInfoDTO) {
+		ResultDTO result =new ResultDTO();
+		boolean isSuccess = storeInfoService.delete(storeInfoDTO.getStoreInfoVO().getsId())>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"삭제되었습니다..":"d.";
 		result.setMessage(message);
 		return result;
 	}
-	
-	@GetMapping("detail")
-	public void selectOrderManage(OrderManageDTO orderManageDTO,Model model) {
-		OrderManageDTO getOne =orderManageService.getOneOrderManage(orderManageDTO.getOrderId());
-		model.addAttribute("orderManageDTO",getOne);
+	@GetMapping("/detail")
+	public void detail(StoreInfoDTO storeInfoDTO,Model model) {
+		StoreInfoDTO getOne =storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
+		model.addAttribute("storeInfoDTO",getOne);
 		log.info(model);
 	}
+	
+	
+
 }
