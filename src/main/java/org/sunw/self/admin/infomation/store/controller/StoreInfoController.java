@@ -67,9 +67,9 @@ public class StoreInfoController {
 		return result;
 	}
 	@GetMapping("/detail")
-	public void detail(StoreInfoDTO storeInfoDTO,Model model) {
+	public void selectStore(StoreInfoDTO storeInfoDTO,Model model) {
 		StoreInfoDTO getOne =storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
-		model.addAttribute("storeInfoDTO",getOne);
+		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
 		log.info(model);
 	}
 	

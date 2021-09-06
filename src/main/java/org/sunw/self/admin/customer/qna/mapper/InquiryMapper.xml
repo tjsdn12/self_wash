@@ -65,20 +65,23 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 	
 	<select id="getOneInquiry"
 	resultType="org.sunw.self.admin.customer.qna.domain.InquiryVO">
-	SELECT INQUIRY_ID, 
-		MGR_ID, 
-		QNA_TITLE, 
-		QNA_CONTENTS, 
-		CLASSIFICATION, 
-		MEM_ID, 
-		REPLY_CONTENT, 
-		REPLY_TITLE, 
-		DATE_OF_INQUIRY, 
-		ANSWER_DATE, 
-		ANSWER_ID, 
-		WHETHER_IT_IS_PRIVATE
-	FROM SELF_WASH.QNA
-	WHERE INQUIRY_ID=#{inquiryId}
+	SELECT
+		A.INQUIRY_ID, 
+		C.MGR_ID, 
+		A.QNA_TITLE, 
+		A.QNA_CONTENTS, 
+		A.CLASSIFICATION, 
+		B.MEM_ID, 
+		A.REPLY_CONTENT, 
+		A.REPLY_TITLE, 
+		A.DATE_OF_INQUIRY, 
+		A.ANSWER_DATE, 
+		A.ANSWER_ID, 
+		A.WHETHER_IT_IS_PRIVATE
+	FROM SELF_WASH.QNA A, MEM B, MGR C
+	WHERE A.MEM_ID = B.MEM_ID 
+	AND A.MGR_ID=C.MGR_ID
+	AND INQUIRY_ID =#{inquiryId}
 	</select>
 	
 	<select id="getInquirystatusCnt">

@@ -76,6 +76,7 @@ public class InquiryController {
 	@GetMapping("/detail")
 	public void selectInquiry(InquiryDTO inquiryDTO,Model model) {
 		InquiryDTO getOne = inquiryService.getOneInquiry(inquiryDTO.getInquiryId());
+		model.addAttribute("inquiryVO",getOne.getInquiryVO());
 		log.info(model);
 	}
 

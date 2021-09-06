@@ -76,7 +76,7 @@ public class ManageManagerController {
 	@GetMapping("/detail")
 	public void selectManager(ManageManagerDTO manageManagerDTO,Model model) {
 		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
-		model.addAttribute("managerManagerDTO",getOne);
+		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
 		log.info(model);
 	}
 	

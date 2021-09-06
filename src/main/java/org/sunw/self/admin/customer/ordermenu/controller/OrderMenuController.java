@@ -74,7 +74,7 @@ public class OrderMenuController {
 	@GetMapping("/detail")
 	public void selectOrderMenu(OrderMenuDTO orderMenuDTO,Model model) {
 		OrderMenuDTO getOne = orderMenuService.getOneOrderMenu(orderMenuDTO.getOrderMenuId());
-		model.addAttribute("orderMenuDTO",getOne);
+		model.addAttribute("orderMenuVO",getOne.getOrderMenuVO());
 		log.info(model);
 	}
 	

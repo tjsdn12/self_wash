@@ -34,14 +34,15 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public InquiryDTO getOneInquiry(String inquiryId) {
-		
-		return toInquiryDTO(inquiryMapper.getOneInquiry(inquiryId));
+		InquiryDTO inquiryDTO =new InquiryDTO();
+		inquiryDTO.setInquiryVO(inquiryMapper.getOneInquiry(inquiryId));
+		return inquiryDTO;
 	}
 
 	@Override
 	public int update(InquiryDTO inquiryDTO) {
-		
-		return inquiryMapper.update(toInquiryVO(inquiryDTO));
+		return 0;
+		//return inquiryMapper.update(toInquiryVO(inquiryDTO));
 	}
 
 	@Override

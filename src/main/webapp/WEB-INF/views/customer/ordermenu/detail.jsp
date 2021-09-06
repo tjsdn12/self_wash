@@ -17,10 +17,7 @@
 						<label for="orderMenuId"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="orderMenuId"
-								id="orderMenuId"
-								value="<c:out value='${OrderMenuDTO.orderMenuId }'></c:out>"
-								readonly="readonly">
+								<c:out value='${orderMenuVO.orderMenuId }'></c:out>
 						</div>
 					</div>
 
@@ -28,50 +25,35 @@
 						<label for="orderMenuName"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 이름</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="orderMenuName"
-								id="orderMenuName"
-								value="<c:out value='${OrderMenuDTO.orderMenuName }'></c:out>"
-								>
+							<c:out value='${orderMenuVO.orderMenuName }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="price"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 단가</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="price"
-								id="price"
-								value="<c:out value='${OrderMenuDTO.price }'></c:out>"
-								>
+								<c:out value='${orderMenuVO.price }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="amount"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 수량</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="amount"
-								id="amount"
-								value="<c:out value='${OrderMenuDTO.amount }'></c:out>"
-								>
+							<c:out value='${orderMenuVO.amount }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="washMenuId"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="washMenuId"
-								id="washMenuId"
-								value="<c:out value='${OrderMenuDTO.washMenuId }'></c:out>"
-								>
+							<c:out value='${orderMenuVO.washMenuId }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="memId"
 							class="col-sm-3 text-end control-label col-form-label">회원번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="memId"
-								id="memId"
-								value="<c:out value='${OrderMenuDTO.memId }'></c:out>"
-								>
+							<c:out value='${orderMenuVO.memId }'></c:out>
 						</div>
 					</div>
 

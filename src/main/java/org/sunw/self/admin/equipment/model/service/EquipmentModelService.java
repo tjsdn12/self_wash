@@ -21,14 +21,4 @@ public interface EquipmentModelService {
 	
 	public int delete(String equipmentModelId);
 	
-	default EquipmentModelDTO toEquipmentModelDTO(EquipmentModelVO equipmentModelVO) {
-		EquipmentModelDTO equipmentModelDTO = new EquipmentModelDTO();
-		BeanUtils.copyProperties(equipmentModelVO, equipmentModelDTO);
-		return equipmentModelDTO;
-	}
-	default EquipmentModelVO toEquipmentModelVO(EquipmentModelDTO equipmentModelDTO) {
-		EquipmentModelVO equipmentModelVO = new EquipmentModelVO();
-		BeanUtils.copyProperties(equipmentModelVO, equipmentModelDTO);
-		return equipmentModelVO;
-	}
 }

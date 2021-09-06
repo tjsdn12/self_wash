@@ -37,7 +37,8 @@ public class EquipmentModelServiceImpl implements EquipmentModelService{
 
 	@Override
 	public int update(EquipmentModelDTO equipmentModelDTO) {
-		return equipmentModelMapper.update(toEquipmentModelVO(equipmentModelDTO));
+		return 0;
+		//return equipmentModelMapper.update(toEquipmentModelVO(equipmentModelDTO));
 	}
 
 	@Override
@@ -47,7 +48,9 @@ public class EquipmentModelServiceImpl implements EquipmentModelService{
 
 	@Override
 	public EquipmentModelDTO getOneEquipmentModel(String equipmentModelId) {
-		return toEquipmentModelDTO(equipmentModelMapper.getOneEquipmentModel(equipmentModelId));
+		EquipmentModelDTO equipmentModelDTO = new EquipmentModelDTO();
+		equipmentModelDTO.setEquipmentModelVO(equipmentModelMapper.getOneEquipmentModel(equipmentModelId));
+		return equipmentModelDTO;
 	}
 
 }

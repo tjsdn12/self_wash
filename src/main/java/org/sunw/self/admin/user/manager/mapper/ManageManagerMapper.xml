@@ -53,16 +53,19 @@
 
 	<select id="getOneManager"
 	resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
-		SELECT MGR_ID, 
-			PW, 
-			NAME, 
-			AUTHOR_LEVEL, 
-			PHONE, 
-			EMAIL, 
-			APPROVAL_STATUS, 
-			S_ID
-		FROM MGR
-		WHERE MGR_ID =#{mgrId}
+		SELECT 
+			A.MGR_ID, 
+			A.PW, 
+			A.NAME, 
+			A.AUTHOR_LEVEL, 
+			A.PHONE, 
+			A.EMAIL, 
+			A.APPROVAL_STATUS, 
+			A.S_ID,
+			B.S_NAME 
+		FROM MGR A, STORE B 
+		WHERE A.S_ID = B.S_ID 
+		AND MGR_ID = #{mgrId}
 	</select>
 
 	<select id="getManagerCnt">

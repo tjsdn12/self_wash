@@ -17,10 +17,7 @@
 						<label for="equipmentCode"
 							class="col-sm-3 text-end control-label col-form-label">장비코드</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="equipmentCode"
-								id="equipmentCode"
-								value="<c:out value='${EquipmentManageDTO.equipmentCode }'></c:out>"
-								readonly="readonly">
+								<c:out value='${equipmentManageVO.equipmentCode }'></c:out>
 						</div>
 					</div>
 
@@ -28,72 +25,58 @@
 						<label for="tptb"
 							class="col-sm-3 text-end control-label col-form-label">책임자</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="tptb"
-								id="tptb"
-								value="<c:out value='${EquipmentManageDTO.tptb }'></c:out>"
-								>
+							<c:out value='${equipmentManageVO.tptb }'></c:out>
 						</div>
 					</div>
 
 						<div class="form-group row">
-					<label for="authorLevel"
+					<label for="regularInspection"
 						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
 					<div class="col-sm-9">
-						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN">관리유</option>
-							<option value="MANAGER">관리무</option>
-						</select>
+						<c:choose>
+						<c:when test="${equipmentManageVO.regularInspection == 'ADMIN' }">
+						관리유</c:when>
+						<c:otherwise>관리무</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="equipmentStatus"
 						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
 					<div class="col-sm-9">
-						<select name="equipmentStatus" id="equipmentStatus">
-							<option value="0">대기</option>
-							<option value="1">사용</option>
-							<option value="2">거절</option>
-						</select>
+						<c:choose>
+						<c:when test="${equipmentManageVO.equipmentStatus == '0' }">대기</c:when>
+						<c:when test="${equipmentManageVO.equipmentStatus == '1' }">사용</c:when>
+						<c:otherwise>거절</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 					<div class="form-group row">
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비모델</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="equipmentModelId"
-								name="equipmentModelId"
-								value="<c:out value='${EquipmentManageDTO.equipmentModelId }'></c:out>"
-								>
+							<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="regularInspectionDate"
 							class="col-sm-3 text-end control-label col-form-label">장비정기점검일자</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="regularInspectionDate"
-								name="regularInspectionDate"
-								value="<c:out value='${EquipmentManageDTO.regularInspectionDate }'></c:out>"
-								>
+							<c:out value='${equipmentManageVO.regularInspectionDate }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="purchasePrice"
 							class="col-sm-3 text-end control-label col-form-label">장비구매가격</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="purchasePrice"
-								name="purchasePrice"
-								value="<c:out value='${EquipmentManageDTO.purchasePrice }'></c:out>"
-								>
+							<c:out value='${equipmentManageVO.purchasePrice }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="purchaseDatetime"
 							class="col-sm-3 text-end control-label col-form-label">장비구매일자</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="purchaseDatetime"
-								name="purchaseDatetime"
-								value="<c:out value='${EquipmentManageDTO.purchaseDatetime }'></c:out>"
-								>
+							<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>
 						</div>
 					</div>
 				

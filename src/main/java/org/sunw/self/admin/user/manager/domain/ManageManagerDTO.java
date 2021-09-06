@@ -9,4 +9,5 @@ public class ManageManagerDTO extends DefaultDTO {
 	ManageManagerVO manageManagerVO;
 	
 	String mgrId;
+	
 }

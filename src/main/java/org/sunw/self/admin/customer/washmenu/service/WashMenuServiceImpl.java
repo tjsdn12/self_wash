@@ -35,14 +35,17 @@ public class WashMenuServiceImpl implements WashMenuService {
 
 	@Override
 	public WashMenuDTO getOneWashMenu(String washMenuId) {
+		WashMenuDTO washMenuDTO = new WashMenuDTO();
+		washMenuDTO.setWashMenuVO(washMenuMapper.getOneWashMenu(washMenuId));
+		return washMenuDTO;
 		
-		return toWashMenuDTO(washMenuMapper.getOneWashMenu(washMenuId));
 	}
 
 	@Override
 	public int update(WashMenuDTO washMenuDTO) {
 		
-		return washMenuMapper.update(toWashMenuVO(washMenuDTO));
+		return 0;
+		//return washMenuMapper.update(toWashMenuVO(washMenuDTO));
 	}
 
 	@Override

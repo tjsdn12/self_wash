@@ -85,8 +85,8 @@
 						class="col-sm-3 text-end control-label col-form-label">회원 상태</label>
 					<div class="col-sm-9">
 						<select name="memStatus" id="memStatus">
-							<option value="ADMIN">휴먼회원</option>
-							<option value="MANAGER">탈퇴회원</option>
+							<option value="HUMEN">휴먼회원</option>
+							<option value="DROPOUT">탈퇴회원</option>
 						</select>
 					</div>
 				</div>

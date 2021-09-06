@@ -37,7 +37,9 @@ public class EquipmentManageServiceImpl implements EquipmentManageService {
 
 	@Override
 	public int update(EquipmentManageDTO equipmentManageDTO) {
-		return equipmentManageMapper.update(toEquipmentManageVO(equipmentManageDTO));
+		
+		return 0;
+		
 	}
 
 	@Override
@@ -49,7 +51,9 @@ public class EquipmentManageServiceImpl implements EquipmentManageService {
 	@Override
 	public EquipmentManageDTO getOneEquipmentManage(String equipmentCode) {
 		
-		return toEquipmentManageDTO(equipmentManageMapper.getOneEquipmentManage(equipmentCode));
+		EquipmentManageDTO equipmentManageDTO = new EquipmentManageDTO();
+		equipmentManageDTO.setEquipmentManageVO(equipmentManageMapper.getOneEquipmentManage(equipmentCode));
+		return equipmentManageDTO;
 	}
 
 	

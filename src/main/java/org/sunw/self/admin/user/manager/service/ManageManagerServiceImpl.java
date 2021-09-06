@@ -34,9 +34,10 @@ public class ManageManagerServiceImpl implements ManageManagerService {
 
 	@Override
 	public ManageManagerDTO getOneManager(String mgrId) {
-		
-			return toManagerDTO(manageManagerMapper.getOneManager(mgrId));
-		}
+		ManageManagerDTO manageManagerDTO = new ManageManagerDTO();
+		manageManagerDTO.setManageManagerVO(manageManagerMapper.getOneManager(mgrId));
+		return manageManagerDTO;
+	}
 
 	@Override
 	public int getManagerCnt() {
@@ -46,7 +47,8 @@ public class ManageManagerServiceImpl implements ManageManagerService {
 
 	@Override
 	public int update(ManageManagerDTO manageManagerDTO) {
-		return manageManagerMapper.update(toManagerVO(manageManagerDTO));
+		return 0;
+//		return manageManagerMapper.update(toManagerVO(manageManagerDTO));
 	}
 
 	@Override

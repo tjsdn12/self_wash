@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">문의사항 분류</label>
 					<div class="col-sm-9">
 						<select name="classification" id="classification">
-							<option value="MANAGER">매니져 회원문의</option>
+							<option value="MANAGER">매니저 회원문의</option>
 							<option value="USER">사용자 회원문의</option>
 						</select>
 					</div>
@@ -59,19 +59,19 @@
 					</div>
 				</div>
 					<div class="form-group row">
-					<label for="replyContent"
-						class="col-sm-3 text-end control-label col-form-label">답변 제목</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="replyContent" name="replyContent"
-							placeholder="<c:out value='${InquiryDTO.replyContent }'></c:out>">
-					</div>
-				</div>
-					<div class="form-group row">
 					<label for="replyTitle"
-						class="col-sm-3 text-end control-label col-form-label">답변 내용</label>
+						class="col-sm-3 text-end control-label col-form-label">답변 제목</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="replyTitle" name="replyTitle"
 							placeholder="<c:out value='${InquiryDTO.replyTitle }'></c:out>">
+					</div>
+				</div>
+					<div class="form-group row">
+					<label for="replyContent"
+						class="col-sm-3 text-end control-label col-form-label">답변 내용</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="replyContent" name="replyContent"
+							placeholder="<c:out value='${InquiryDTO.replyContent }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">

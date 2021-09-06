@@ -71,7 +71,7 @@ public class OrderManageController {
 	@GetMapping("detail")
 	public void selectOrderManage(OrderManageDTO orderManageDTO,Model model) {
 		OrderManageDTO getOne =orderManageService.getOneOrderManage(orderManageDTO.getOrderId());
-		model.addAttribute("orderManageDTO",getOne);
+		model.addAttribute("orderManageVO",getOne.getOrderManageVO());
 		log.info(model);
 	}
 }

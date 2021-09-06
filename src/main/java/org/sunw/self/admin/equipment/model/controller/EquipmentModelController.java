@@ -68,7 +68,7 @@ public class EquipmentModelController {
 	@GetMapping("/detail")
 	public void selectEquipmentModel(EquipmentModelDTO equipmentModelDTO, Model model) {
 		EquipmentModelDTO getOne =equipmentModelService.getOneEquipmentModel(equipmentModelDTO.getEquipmentModelId());
-		model.addAttribute("equipmentModelDTO",getOne);
+		model.addAttribute("equipmentModelVO",getOne.getEquipmentModelVO());
 		log.info(model);
 	}
 }

@@ -20,15 +20,5 @@ public interface InquiryService {
 	
 	public int delete(String inquiryId);
 
-	default InquiryDTO toInquiryDTO(InquiryVO inquiryVO) {
-		InquiryDTO inquiryDTO= new InquiryDTO();
-		BeanUtils.copyProperties(inquiryDTO,inquiryVO);
-		return inquiryDTO;
-	}
-	default InquiryVO toInquiryVO(InquiryDTO inquiryDTO) {
-		InquiryVO inquiryVO =new InquiryVO();
-		BeanUtils.copyProperties(inquiryVO, inquiryDTO);
-		return inquiryVO;
-	}
 
 }

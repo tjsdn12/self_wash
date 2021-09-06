@@ -71,7 +71,7 @@ public class WashMenuController {
 	@GetMapping("detail")
 	public void selectWashMenu(WashMenuDTO washMenuDTO,Model model) {
 		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
-		model.addAttribute("washMenuDTO",getOne);
+		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
 		log.info(model);
 	}
 

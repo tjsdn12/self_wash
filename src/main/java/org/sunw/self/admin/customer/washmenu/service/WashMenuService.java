@@ -20,17 +20,6 @@ public interface WashMenuService {
 	
 	public int delete(String washMenuId);
 	
-	default WashMenuDTO toWashMenuDTO(WashMenuVO washMenuVO) {
-		WashMenuDTO washMenuDTO= new WashMenuDTO();
-		BeanUtils.copyProperties(washMenuDTO,washMenuVO);
-		return washMenuDTO;
-	}
-	
-	default WashMenuVO toWashMenuVO(WashMenuDTO washMenuDTO) {
-		WashMenuVO washMenuVO =new WashMenuVO();
-		BeanUtils.copyProperties(washMenuVO, washMenuDTO);
-		return washMenuVO;
-	}
 
 	
 	

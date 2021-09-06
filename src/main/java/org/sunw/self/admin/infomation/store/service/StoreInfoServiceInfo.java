@@ -35,14 +35,16 @@ public class StoreInfoServiceInfo implements StoreInfoService {
 
 	@Override
 	public StoreInfoDTO getOneStoreInfo(String sId) {
+		StoreInfoDTO storeInfoDTO = new StoreInfoDTO();
+		storeInfoDTO.setStoreInfoVO(storeInfoMapper.getOneStoreInfo(sId));
+		return storeInfoDTO;
 		
-		return toStoreInfoDTO(storeInfoMapper.getOneStoreInfo(sId));
 	}
 
 	@Override
 	public int update(StoreInfoDTO storeInfoDTO) {
-		
-		return storeInfoMapper.update(toStoreInfoVO(storeInfoDTO));
+		return 0;
+		//return storeInfoMapper.update(toStoreInfoVO(storeInfoDTO));
 	}
 
 	@Override

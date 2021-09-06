@@ -70,7 +70,7 @@ public class EquipmentManageController {
 	@GetMapping("/detail")
 	public void selectEquipmentManage(EquipmentManageDTO equipmentManageDTO,Model model) {
 		EquipmentManageDTO getOne =equipmentManageService.getOneEquipmentManage(equipmentManageDTO.getEquipmentCode());
-		model.addAttribute("equipmentManageDTO",getOne);
+		model.addAttribute("equipmentManageVO",getOne.getEquipmentManageVO());
 		log.info(model);
 	}
 	

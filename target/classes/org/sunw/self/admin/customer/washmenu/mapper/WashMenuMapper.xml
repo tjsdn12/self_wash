@@ -44,7 +44,8 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	
 	<select id="getOneWashMenu"
 	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
-	SELECT MENU_PRICE, 
+	SELECT WASH_MENU_ID,
+		MENU_PRICE, 
 		EQUIPMENT_MODEL_ID, 
 		MENU_NAME, 
 		DETERGENT_USE_AT

@@ -74,9 +74,9 @@ public class ManageUserController {
 	}
 	
 	@GetMapping("/detail")
-	public void detail(ManageUserDTO manageUserDTO, Model model) {
+	public void selectUser(ManageUserDTO manageUserDTO, Model model) {
 		ManageUserDTO getOne =manageUserService.getOneUser(manageUserDTO.getMemId());
-		model.addAttribute("manageUserDTO",getOne);
+		model.addAttribute("manageUserVO",getOne.getManageUserVO());
 		log.info(model);
 	}
 	

@@ -20,15 +20,5 @@ public interface OrderMenuService {
 	
 	public int delete(String orderMenuId);
 	
-	default OrderMenuDTO toOrderMenuDTO(OrderMenuVO orderMenuVO) {
-		OrderMenuDTO orderMenuDTO= new OrderMenuDTO();
-		BeanUtils.copyProperties(orderMenuDTO,orderMenuVO);
-		return orderMenuDTO;
-	}
-	default OrderMenuVO toOrderMenuVO(OrderMenuDTO orderMenuDTO) {
-		OrderMenuVO orderMenuVO =new OrderMenuVO();
-		BeanUtils.copyProperties(orderMenuVO, orderMenuDTO);
-		return orderMenuVO;
-	}
 
 }

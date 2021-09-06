@@ -9,18 +9,15 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="card">
-			<form class="form-horizontal" id="actionForm" action="/customer/washmenu/list"
-				method="get">
+			<form class="form-horizontal" id="actionForm" 
+			action="/customer/washmenu/list" method="get">
 				<div class="card-body">
 					<h4 class="card-title">WashMenuDetailPage</h4>
 					<div class="form-group row">
 						<label for="washMenuId"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="washMenuId"
-								id="washMenuId"
-								value="<c:out value='${WashMenuDTO.washMenuId }'></c:out>"
-								readonly="readonly">
+							<c:out value='${washMenuVO.washMenuId }'></c:out>
 						</div>
 					</div>
 
@@ -28,10 +25,7 @@
 						<label for="menuPrice"
 							class="col-sm-3 text-end control-label col-form-label">상품가격</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="menuPrice"
-								id="menuPrice"
-								value="<c:out value='${WashMenuDTO.menuPrice }'></c:out>"
-								>
+							<c:out value='${washMenuVO.menuPrice }'></c:out>
 						</div>
 					</div>
 
@@ -39,10 +33,7 @@
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비 번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="equipmentModelId"
-								name="equipmentModelId"
-								value="<c:out value='${WashMenuDTO.equipmentModelId }'></c:out>"
-								>
+							<c:out value='${washMenuVO.equipmentModelId }'></c:out>
 						</div>
 					</div>
 
@@ -50,20 +41,18 @@
 						<label for="menuName"
 							class="col-sm-3 text-end control-label col-form-label">메뉴 명</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="menuName"
-								name="menuName"
-								value="<c:out value='${WashMenuDTO.menuName }'></c:out>"
-								>
+								<c:out value='${washMenuVO.menuName }'></c:out>
 						</div>
 					</div>
 				<div class="form-group row">
 					<label for="detergentUseAt"
 						class="col-sm-3 text-end control-label col-form-label">세제 사용 여부</label>
 					<div class="col-sm-9">
-						<select name="detergentUseAt" id="detergentUseAt">
-							<option value="0">세제 사용 유</option>
-							<option value="1">세제 사용 무</option>
-						</select>
+						<c:choose>
+							<c:when test="${manageManagerVO.detergentUseAt == '0'} }">세제사용유
+							</c:when>
+							<c:otherwise>세제사용무</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 					

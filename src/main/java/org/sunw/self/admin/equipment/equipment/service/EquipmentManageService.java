@@ -24,15 +24,5 @@ public interface EquipmentManageService {
 	
 	public int delete (String equipmentCode);
 	
-	default EquipmentManageDTO toEquipmentManageDTO(EquipmentManageVO equipmentManageVO) {
-		EquipmentManageDTO equipmentManageDTO = new EquipmentManageDTO();
-		BeanUtils.copyProperties(equipmentManageDTO,equipmentManageVO);
-		return equipmentManageDTO;
-	}
-	default EquipmentManageVO toEquipmentManageVO(EquipmentManageDTO equipmentManageDTO) {
-		EquipmentManageVO equipmentManageVO =new EquipmentManageVO();
-		BeanUtils.copyProperties(equipmentManageVO, equipmentManageDTO);
-		return equipmentManageVO;
-	}
 
 }

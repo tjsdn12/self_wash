@@ -17,71 +17,49 @@
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비관리번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="equipmentModelId"
-								id="equipmentModelId"
-								value="<c:out value='${EquipmentModelDTO.equipmentModelId }'></c:out>"
-								readonly="readonly">
-						</div>
+							<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>
 					</div>
 
 					<div class="form-group row">
 						<label for="equipmentName"
 							class="col-sm-3 text-end control-label col-form-label">장비명</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="equipmentName"
-								id="equipmentName"
-								value="<c:out value='${EquipmentModelDTO.equipmentName }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.equipmentName }'></c:out>
 						</div>
 					</div>
 						<div class="form-group row">
 						<label for="manufacturingCompany"
 							class="col-sm-3 text-end control-label col-form-label">제조회사이름</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="manufacturingCompany"
-								id="manufacturingCompany"
-								value="<c:out value='${EquipmentModelDTO.manufacturingCompany }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.manufacturingCompany }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="manufacturerNumber"
 							class="col-sm-3 text-end control-label col-form-label">제조회사전화번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="manufacturerNumber"
-								id="manufacturerNumber"
-								value="<c:out value='${EquipmentModelDTO.manufacturerNumber }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.manufacturerNumber }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="categoryId"
 							class="col-sm-3 text-end control-label col-form-label">카테고리번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="categoryId"
-								id="categoryId"
-								value="<c:out value='${EquipmentModelDTO.categoryId }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.categoryId }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="repairer"
 							class="col-sm-3 text-end control-label col-form-label">수리처</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="repairer"
-								id="repairer"
-								value="<c:out value='${EquipmentModelDTO.repairer }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.repairer }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="repairerNumber"
 							class="col-sm-3 text-end control-label col-form-label">수리처 전화번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="repairerNumber"
-								id="repairerNumber"
-								value="<c:out value='${EquipmentModelDTO.repairerNumber }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.repairerNumber }'></c:out>
 						</div>
 					</div>
 
@@ -89,10 +67,11 @@
 					<label for="exposureYesNo"
 						class="col-sm-3 text-end control-label col-form-label">소비자 노출여부</label>
 					<div class="col-sm-9">
-						<select name="exposureYesNo" id="exposureYesNo">
-							<option value="ADMIN">노출</option>
-							<option value="MANAGER">비노출</option>
-						</select>
+						<c:choose>
+						<c:when test="${equipmentModelVO.exposureYesNo == '0'} }">
+						비노출</c:when>
+						<c:otherwise>노출</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				
@@ -100,20 +79,14 @@
 						<label for="equipmentPhoto"
 							class="col-sm-3 text-end control-label col-form-label">장비사진</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="equipmentPhoto"
-								name="equipmentPhoto"
-								value="<c:out value='${EquipmentModelDTO.equipmentPhoto }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.equipmentPhoto }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="equipmentSpec"
 							class="col-sm-3 text-end control-label col-form-label">장비스펙</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="equipmentSpec"
-								name="equipmentSpec"
-								value="<c:out value='${EquipmentModelDTO.equipmentSpec }'></c:out>"
-								>
+							<c:out value='${equipmentModelVO.equipmentSpec }'></c:out>
 						</div>
 					</div>
 					

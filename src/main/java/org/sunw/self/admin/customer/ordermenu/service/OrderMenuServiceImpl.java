@@ -34,14 +34,15 @@ public class OrderMenuServiceImpl implements OrderMenuService {
 
 	@Override
 	public OrderMenuDTO getOneOrderMenu(String orderMenuId) {
-		
-		return toOrderMenuDTO(orderMenuMapper.getOneOrderMenu(orderMenuId));
+		OrderMenuDTO orderMenuDTO = new OrderMenuDTO();
+		orderMenuDTO.setOrderMenuVO(orderMenuMapper.getOneOrderMenu(orderMenuId));
+		return orderMenuDTO;
 	}
 
 	@Override
 	public int update(OrderMenuDTO orderMenuDTO) {
-		
-		return orderMenuMapper.update(toOrderMenuVO(orderMenuDTO));
+		return 0;
+		//return orderMenuMapper.update(toOrderMenuVO(orderMenuDTO));
 	}
 
 	@Override

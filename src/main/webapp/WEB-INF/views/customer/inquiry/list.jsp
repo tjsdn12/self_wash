@@ -58,8 +58,8 @@
 								<td>${item2.qnaContents }</td>
 								<td>${item2.classification }</td>
 								<td>${item2.memId }</td>
-								<td>${item2.replyContent }</td>
 								<td>${item2.replyTitle }</td>
+								<td>${item2.replyContent }</td>
 								<td>${item2.dateOfInquiry }</td>
 								<td>${item2.answerDate }</td>
 								<td>${item2.answerId }</td>

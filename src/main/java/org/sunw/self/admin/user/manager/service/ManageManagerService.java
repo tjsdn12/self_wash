@@ -23,18 +23,5 @@ public interface ManageManagerService {
 	
 	ManageManagerDTO getOneManager(String mgrId);
 	
-	default ManageManagerDTO toManagerDTO(ManageManagerVO manageManagerVO) {
-		ManageManagerDTO manageManagerDTO =new ManageManagerDTO();
-		BeanUtils.copyProperties(manageManagerDTO, manageManagerVO);
-		//같은 필드 변수가 있을때 내용물을 카피
-		return manageManagerDTO;	
-	}
-	
-	default ManageManagerVO toManagerVO(ManageManagerDTO manageManagerDTO) {
-		ManageManagerVO manageManagerVO =new ManageManagerVO();
-		BeanUtils.copyProperties(manageManagerVO, manageManagerDTO);
-		return manageManagerVO;
-	}
-	
 	
 }

@@ -25,19 +25,6 @@ public interface ManageUserService {
 	
 	ManageUserDTO getOneUser(String memId);
 	
-	default ManageUserDTO toUserDTO(ManageUserVO manageUserVO) {
-		ManageUserDTO manageUserDTO =new ManageUserDTO();
-		BeanUtils.copyProperties(manageUserDTO, manageUserVO);
-		return manageUserDTO;
-	}
-	
-	default  ManageUserVO toUserVO(ManageUserDTO manageUserDTO) {
-		ManageUserVO manageUserVO =new ManageUserVO();
-		BeanUtils.copyProperties(manageUserVO, manageUserDTO);
-		return manageUserVO;
-	}
-	
-	
 	
 }
 

@@ -33,14 +33,16 @@ public class OrderManageServiceImpl implements OrderManageService{
 
 	@Override
 	public OrderManageDTO getOneOrderManage(String OrderId) {
-		
-		return toOrderManageDTO(orderManageMapper.getOneOrderManage(OrderId));
+		OrderManageDTO orderManageDTO = new OrderManageDTO();
+		orderManageDTO.setOrderManageVO(orderManageMapper.getOneOrderManage(OrderId));
+		return orderManageDTO;
 	}
 
 	@Override
 	public int update(OrderManageDTO orderManageDTO) {
 		
-		return orderManageMapper.update(toOrderManageVO(orderManageDTO));
+		return 0;
+		//return orderManageMapper.update(toOrderManageVO(orderManageDTO));
 	}
 
 	@Override

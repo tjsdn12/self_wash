@@ -20,15 +20,5 @@ public interface OrderManageService {
 	
     public int delete (String OrderId);
 	
-	default OrderManageDTO toOrderManageDTO(OrderManageVO orderManageVO) {
-		OrderManageDTO orderManageDTO= new OrderManageDTO();
-		BeanUtils.copyProperties(orderManageDTO,orderManageVO);
-		return orderManageDTO;
-	}
-	default OrderManageVO toOrderManageVO(OrderManageDTO orderManageDTO) {
-		OrderManageVO orderManageVO =new OrderManageVO();
-		BeanUtils.copyProperties(orderManageVO, orderManageDTO);
-		return orderManageVO;
-	}
 
 }

@@ -20,14 +20,5 @@ public interface StoreInfoService {
 	
 	public int delete(String sId);
 	
-	default StoreInfoDTO toStoreInfoDTO(StoreInfoVO storeInfoVO) {
-		StoreInfoDTO storeInfoDTO = new StoreInfoDTO();
-		BeanUtils.copyProperties(storeInfoDTO,storeInfoVO);
-		return storeInfoDTO;
-	}
-	default StoreInfoVO toStoreInfoVO(StoreInfoDTO storeInfoDTO) {
-		StoreInfoVO storeInfoVO =new StoreInfoVO();
-		BeanUtils.copyProperties(storeInfoVO, storeInfoDTO);
-		return storeInfoVO;
-	}
+	
 }

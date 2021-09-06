@@ -38,7 +38,9 @@ public class ManageUserServiceImpl implements ManageUserService {
 
 	@Override
 	public ManageUserDTO getOneUser(String memId) {
-		return toUserDTO(manageUserMapper.getOneUser(memId));
+		ManageUserDTO manageUserDTO = new ManageUserDTO();
+		manageUserDTO.setManageUserVO(manageUserMapper.getOneUser(memId));
+		return manageUserDTO;
 	}
 
 	@Override
@@ -49,8 +51,8 @@ public class ManageUserServiceImpl implements ManageUserService {
 
 	@Override
 	public int update(ManageUserDTO manageUserDTO) {
-		
-		return manageUserMapper.update(toUserVO(manageUserDTO));
+		return 0;
+		//return manageUserMapper.update(toUserVO(manageUserDTO));
 	}
 
 	@Override
