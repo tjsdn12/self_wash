@@ -17,7 +17,7 @@
 							href="20">20</a> <a class="dropdown-item" href="50">50</a> <a
 							class="dropdown-item" href="100">100</a>
 					</div>
-					<h3 class="card-title mb-0" style="margin-left: 50px">UserTables</h3>
+					<h3 class="card-title mb-0" style="margin-left: 50px">UserList</h3>
 				</div>
 			</div>
 			<div class="list-responsive">
