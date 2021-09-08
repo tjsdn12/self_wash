@@ -47,7 +47,8 @@ namespace="org.sunw.self.admin.customer.ordermenu.mapper.OrderMenuMapper">
 	
 	<select id="getOneOrderMenu"
 	resultType="org.sunw.self.admin.customer.ordermenu.domain.OrderMenuVO">
-	SELECT ORDER_MENU_ID,
+	SELECT 
+		   ORDER_MENU_ID,
 		   ORDER_MENU_NAME,
 		   PRICE,
 		   AMOUNT,

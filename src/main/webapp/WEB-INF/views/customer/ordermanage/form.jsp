@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">주문번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="orderId" name="orderId"
-								value="<c:out value='${OrderManageDTO.orderId }'></c:out>">
+								value="<c:out value='${orderManageVO.orderId }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">주문일자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="orderDate" name="orderDate" readonly="readonly"
-								placeholder="<c:out value='${OrderManageDTO.orderDate }'></c:out>">
+								placeholder="<c:out value='${orderManageVO.orderDate }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">주문자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="orderer" name="orderer"
-								placeholder="<c:out value='${OrderManageDTO.orderer }'></c:out>">
+								placeholder="<c:out value='${orderManageVO.orderer }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -37,7 +37,7 @@
 						class="col-sm-3 text-end control-label col-form-label">주문자 핸드폰번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="recipientPhone" name="recipientPhone"
-							placeholder="<c:out value='${OrderManageDTO.recipientPhone }'></c:out>">
+							placeholder="<c:out value='${orderManageVO.recipientPhone }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">총합</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="accumulatePoint" name="accumulatePoint"
-							placeholder="<c:out value='${OrderManageDTO.accumulatePoint }'></c:out>">
+							placeholder="<c:out value='${orderManageVO.accumulatePoint }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,8 +53,8 @@
 						class="col-sm-3 text-end control-label col-form-label">결제수단</label>
 					<div class="col-sm-9">
 						<select name="methodOfPayment" id="methodOfPayment">
-							<option value="0">카드</option>
-							<option value="1">현금</option>
+							<option value="0" selected="selected">카드</option>
+							<option value="1" selected="selected">현금</option>
 						</select>
 					</div>
 				</div>
@@ -63,9 +63,9 @@
 						class="col-sm-3 text-end control-label col-form-label">주문상태</label>
 					<div class="col-sm-9">
 						<select name="orderStatus" id="orderStatus">
-							<option value="0">결제대기</option>
-							<option value="1">진행중</option>
-							<option value="2">환불완료</option>
+							<option value="0" selected="selected">결제대기</option>
+							<option value="1" selected="selected">진행중</option>
+							<option value="2" selected="selected">환불완료</option>
 						</select>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 						class="col-sm-3 text-end control-label col-form-label">적립포인트</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="accumulatePoint" name="accumulatePoint"
-							placeholder="<c:out value='${OrderManageDTO.accumulatePoint }'></c:out>">
+							placeholder="<c:out value='${orderManageVO.accumulatePoint }'></c:out>">
 					</div>
 				</div>
 				<div class="border-top">

@@ -11,6 +11,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm"
 				action="/user/manager/list" method="get">
+				<input type="hidden" name="mgrId" value='<c:out value="${manageManagerVO.mgrId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">ManagerDetailPage</h4>
 					<div class="form-group row">
@@ -98,7 +99,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTable()">취소</button>
+							onclick="goTable()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -111,7 +112,7 @@
 
 <script type="text/javascript">
 	function goTable() {
-		let form = document.querySelector("#actionForm");
+		const form = document.querySelector("#actionForm");
 		form.action = "/user/manager/list";
 		form.method = "get";
 		form.innerHTML = "";
@@ -123,14 +124,9 @@
 			.addEventListener(
 					"click",
 					function(e) {
-						const value = document.querySelector("#mgrId").value;
-						document.querySelector("#actionForm").innerHTML = "<input type='hidden' name='mgrId' value='"+value+"' />"
-
+						const form = document.querySelector("#actionForm");
+						form.action = "/user/manager/form";
 						document.querySelector("#actionForm").submit();
-					})
-
-	document.querySelector("#tablesBtn").addEventListener("click", function(e) {
-		goTable();
-	}, false);
+					});
 </script>
 

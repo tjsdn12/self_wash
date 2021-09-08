@@ -12,8 +12,8 @@
 						<label for="sId"
 							class="col-sm-3 text-end control-label col-form-label">매장번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="sId" name="sId" readonly="readonly"
-								value="<c:out value='${StoreInfoDTO.sId }'></c:out>">
+							<input type="text" class="form-control" id="sId" name="sId" 
+								value="<c:out value='${storeInfoVO.sId }'></c:out>" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">상호명</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="sName" name="sName"
-								placeholder="<c:out value='${StoreInfoDTO.sName }'></c:out>">
+								placeholder="<c:out value='${storeInfoVO.sName }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">가게주소</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="sLocation" name="sLocation"
-								placeholder="<c:out value='${StoreInfoDTO.sLocation }'></c:out>">
+								placeholder="<c:out value='${storeInfoVO.sLocation }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -37,7 +37,7 @@
 						class="col-sm-3 text-end control-label col-form-label">관리자</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="manager" name="manager"
-							placeholder="<c:out value='${StoreInfoDTO.manager }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.manager }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">시도구분</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="attemptClassification" name="attemptClassification"
-							placeholder="<c:out value='${StoreInfoDTO.attemptClassification }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.attemptClassification }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,7 +53,7 @@
 						class="col-sm-3 text-end control-label col-form-label">시군구분</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="cityCountyClassification" name="cityCountyClassification"
-							placeholder="<c:out value='${StoreInfoDTO.cityCountyClassification }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.cityCountyClassification }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -61,7 +61,7 @@
 						class="col-sm-3 text-end control-label col-form-label">사업자 번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="businessNumber" name="businessNumber"
-							placeholder="<c:out value='${StoreInfoDTO.businessNumber }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.businessNumber }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -69,7 +69,7 @@
 						class="col-sm-3 text-end control-label col-form-label">관리자 주민번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="managerResidentNumber" name="managerResidentNumber"
-							placeholder="<c:out value='${StoreInfoDTO.managerResidentNumber }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.managerResidentNumber }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -77,7 +77,7 @@
 						class="col-sm-3 text-end control-label col-form-label">우편번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="postCode" name="postCode"
-							placeholder="<c:out value='${StoreInfoDTO.postCode }'></c:out>">
+							placeholder="<c:out value='${storeInfoVO.postCode }'></c:out>">
 					</div>
 				</div>
 				<div class="border-top">

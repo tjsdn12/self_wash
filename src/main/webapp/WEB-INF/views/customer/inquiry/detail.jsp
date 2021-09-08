@@ -11,6 +11,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm"
 				action="/customer/incuiry/list" method="get">
+				<input type="hidden" name="inquiryId" value='<c:out value="${inquiryVO.inquiryId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">InquiryDetail Page</h4>
 					<div class="form-group row">
@@ -124,18 +125,15 @@
 	
 	
 	
-	document.querySelector("#modifyBtn").addEventListener("click",function(e){
-		const value = document.querySelector("#inquiryId").value;
-		document.querySelector("#actionForm").innerHTML = 
-			"<input type='hidden' name='inquiryId' value='"+value+"' />"
-		
-		document.querySelector("#actionForm").submit();
-	})
-	
-	
-	document.querySelector("#tablesBtn").addEventListener("click",function (e){
-		goTable();
-	},false);
+	document
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/customer/inquiry/form";
+				document.querySelector("#actionForm").submit();
+			});
 	</script>
 
 

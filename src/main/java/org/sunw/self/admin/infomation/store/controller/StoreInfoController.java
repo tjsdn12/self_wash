@@ -35,14 +35,11 @@ public class StoreInfoController {
 		
 	}
 	@GetMapping("/form")
-	public void form() {
+	public void form(StoreInfoDTO storeInfoDTO, Model model) {
+		StoreInfoDTO getOne = storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
+		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
+		log.info(model);
 		
-	}
-	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody StoreInfoDTO storeInfoDTO){
-		Map<String, String> result = new HashMap<String, String>();
-		storeInfoService.insert(storeInfoDTO);
-		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
 	}
 	@PutMapping("/form")
 	@ResponseBody

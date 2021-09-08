@@ -8,7 +8,7 @@
 		<selectKey order="AFTER" resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
-		INSERT INTO MGR
+		INSERT INTO SELF_WASH.MGR
 		(
 		PW,
 		NAME,

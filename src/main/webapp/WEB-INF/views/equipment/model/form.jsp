@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비관리번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
-								value="<c:out value='${EquipmentModelDTO.equipmentModelId }'></c:out>">
+								value="<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비명</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentName" name="equipmentName"
-								placeholder="<c:out value='${EquipmentModelDTO.equipmentName }'></c:out>">
+								placeholder="<c:out value='${equipmentModelVO.equipmentName }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">제조회사이름</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="manufacturingCompany" name="manufacturingCompany"
-								placeholder="<c:out value='${EquipmentModelDTO.manufacturingCompany }'></c:out>">
+								placeholder="<c:out value='${equipmentModelVO.manufacturingCompany }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -37,15 +37,15 @@
 						class="col-sm-3 text-end control-label col-form-label">제조회사 전화번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="categoryId" name="categoryId"
-							placeholder="<c:out value='${EquipmentModelDTO.categoryId }'></c:out>">
+							placeholder="<c:out value='${equipmentModelVO.categoryId }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="purchasePrice"
+					<label for="categoryId"
 						class="col-sm-3 text-end control-label col-form-label">카테고리 번호</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="purchasePrice" name="purchasePrice"
-							placeholder="<c:out value='${EquipmentModelDTO.purchasePrice }'></c:out>">
+						<input type="text" class="form-control" id="categoryId" name="categoryId"
+							placeholder="<c:out value='${equipmentModelVO.categoryId }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,7 +53,7 @@
 						class="col-sm-3 text-end control-label col-form-label">수리처</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="repairer" name="repairer"
-							placeholder="<c:out value='${EquipmentModelDTO.repairer }'></c:out>">
+							placeholder="<c:out value='${equipmentModelVO.repairer }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">
@@ -61,7 +61,7 @@
 						class="col-sm-3 text-end control-label col-form-label">수리처 전화번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="repairerNumber" name="repairerNumber"
-							placeholder="<c:out value='${EquipmentModelDTO.repairerNumber }'></c:out>">
+							placeholder="<c:out value='${equipmentModelVO.repairerNumber }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -69,8 +69,8 @@
 						class="col-sm-3 text-end control-label col-form-label">소비자 노출여부</label>
 					<div class="col-sm-9">
 						<select name="exposureYesNo" id="exposureYesNo">
-							<option value="1">노출</option>
-							<option value="0">비노출</option>
+							<option value="1" selected="selected">노출</option>
+							<option value="0" selected="selected">비노출</option>
 						</select>
 					</div>
 				</div>

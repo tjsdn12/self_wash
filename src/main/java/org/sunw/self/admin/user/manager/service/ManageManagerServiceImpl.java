@@ -46,8 +46,10 @@ public class ManageManagerServiceImpl implements ManageManagerService {
 	}
 
 	@Override
+	//저장버튼
 	public int update(ManageManagerDTO manageManagerDTO) {
-		return 0;
+		//List<ManageManagerVO> list = manageManagerMapper.ge
+		return manageManagerMapper.update(manageManagerDTO.getManageManagerVO());
 //		return manageManagerMapper.update(toManagerVO(manageManagerDTO));
 	}
 

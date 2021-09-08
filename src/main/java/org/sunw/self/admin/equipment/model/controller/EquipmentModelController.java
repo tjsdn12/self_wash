@@ -34,14 +34,11 @@ public class EquipmentModelController {
 		model.addAttribute("getAllEquipmentModelList",equipmentModelService.getAllEquipmentModelList(equipmentModelDTO));
 	}
 	@GetMapping("/form")
-	public void form() {
+	public void form(EquipmentModelDTO equipmentModelDTO, Model model) {
+		EquipmentModelDTO getOne = equipmentModelService.getOneEquipmentModel(equipmentModelDTO.getEquipmentModelId());
+		model.addAttribute("equipmentModelVO",getOne.getEquipmentModelVO());
+		log.info(model);
 		
-	}
-	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody EquipmentModelDTO equipmentModelDTO){
-		Map<String, String> result =new HashMap<String, String>();
-		equipmentModelService.insert(equipmentModelDTO);
-		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
 	}
 	@PutMapping("/form")
 	@ResponseBody
@@ -61,7 +58,7 @@ public class EquipmentModelController {
 		ResultDTO result =new ResultDTO();
 		boolean isSuccess =equipmentModelService.delete(equipmentModelDTO.getEquipmentModelVO().getequipmentModelId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"d.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}

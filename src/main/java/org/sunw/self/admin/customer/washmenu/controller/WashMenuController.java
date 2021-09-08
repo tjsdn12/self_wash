@@ -36,14 +36,11 @@ public class WashMenuController {
 		
 	}
 	@GetMapping("/form")
-	public void form() {
+	public void form(WashMenuDTO washMenuDTO,Model model) {
+		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
+		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
+		log.info(model);
 		
-	}
-	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>>form(@RequestBody WashMenuDTO washMenuDTO){
-		Map<String, String> result = new HashMap<String, String>();
-		washMenuService.insert(washMenuDTO);
-		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
 	}
 	@PutMapping("/form")
 	@ResponseBody
@@ -63,7 +60,7 @@ public class WashMenuController {
 		ResultDTO result = new ResultDTO();
 		boolean isSuccess =washMenuService.delete(washMenuDTO.getWashMenuVO().getWashMenuId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"d.";
+		String message = isSuccess?"삭제되었습니다..":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}

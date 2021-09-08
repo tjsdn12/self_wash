@@ -11,6 +11,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm"
 				action="/customer/ordermanage/list" method="get">
+				<input type="hidden" name="orderId" value='<c:out value="${orderManageVO.orderId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">OrderManageDetailPage</h4>
 					<div class="form-group row">
@@ -94,7 +95,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTables()">취소</button>
+							onclick="goTables()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -115,18 +116,13 @@
 	}
 
 	document
-			.querySelector("#modifyBtn")
-			.addEventListener(
-					"click",
-					function(e) {
-						const value = document.querySelector("#orderId").value;
-						document.querySelector("#actionForm").innerHTML = "<input type='hidden' name='orderId' value='"+value+"' />"
-
-						document.querySelector("#actionForm").submit();
-					})
-
-	document.querySelector("#tablesBtn").addEventListener("click", function(e) {
-		goTable();
-	}, false);
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/customer/ordermanage/form";
+				document.querySelector("#actionForm").submit();
+			});
 </script>
 

@@ -38,14 +38,10 @@ public class ManageUserController {
 	}
 	
 	@GetMapping("/form")
-	public void form() {
-		
-	}
-	@PostMapping("/form")
-	public ResponseEntity<Map<String, String>> from (@RequestBody ManageUserDTO manageUserDTO){
-		Map<String, String> result =new HashMap<String, String>();
-		manageUserService.insert(manageUserDTO);
-		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
+	public void form(ManageUserDTO manageUserDTO ,Model model) {
+		ManageUserDTO getOne = manageUserService.getOneUser(manageUserDTO.getMemId());
+		model.addAttribute("manageUserVO",getOne.getManageUserVO());
+		log.info(model);
 	}
 	
 	@PutMapping("/form")
@@ -67,7 +63,7 @@ public class ManageUserController {
 		ResultDTO result =new ResultDTO();
 		boolean isSuccess =manageUserService.delete(manageUserDTO.getManageUserVO().getMemId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다.":"d.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	

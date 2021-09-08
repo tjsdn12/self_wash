@@ -9,8 +9,9 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="card">
-			<form class="form-horizontal" id="actionForm" action="/equipment/manage/list"
-				method="get">
+			<form class="form-horizontal" id="actionForm" 
+				action="/equipment/manage/list" method="get">
+				<input type="hidden" name="equipmentModelId" value='<c:out value="${equipmentModelVO.equipmentModelId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">EquipmentModelDetailPage</h4>
 					<div class="form-group row">
@@ -95,7 +96,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTables()">취소</button>
+							onclick="goTables()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -117,18 +118,15 @@
 	}
 	
 	
-	
-	document.querySelector("#modifyBtn").addEventListener("click",function(e){
-		const value = document.querySelector("#equipmentModelId").value;
-		document.querySelector("#actionForm").innerHTML = 
-			"<input type='hidden' name='equipmentModelId' value='"+value+"' />"
-		
-		document.querySelector("#actionForm").submit();
-	})
-	
-	
-	document.querySelector("#tablesBtn").addEventListener("click",function (e){
-		goTable();
-	},false);
+	document
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/equipment/model/form";
+				document.querySelector("#actionForm").submit();
+			});
+
 	</script>
 

@@ -13,7 +13,15 @@
 							class="col-sm-3 text-end control-label col-form-label">아이디</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="mgrId" id="mgrId"
-								value="<c:out value='${ManageManagerDTO.mgrId }'></c:out>" readonly="readonly">
+								value="<c:out value='${manageManagerVO.mgrId }'></c:out>" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="pw"
+							class="col-sm-3 text-end control-label col-form-label">비밀번호</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="pw" name="pw"
+								placeholder="<c:out value='${manageManagerVO.pw }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,15 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">이름</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="name" id="name"
-								placeholder="<c:out value='${ManageManagerDTO.name }'></c:out>">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="pw"
-							class="col-sm-3 text-end control-label col-form-label">비밀번호</label>
-						<div class="col-sm-9">
-							<input type="password" class="form-control" id="pw" name="pw"
-								placeholder="<c:out value='${ManageManagerDTO.pw }'></c:out>">
+								placeholder="<c:out value='${manageManagerVO.name }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -37,7 +37,7 @@
 							class="col-sm-3 text-end control-label col-form-label">전화번호</label>
 						<div class="col-sm-9">
 							<input type="number" class="form-control" id="phone" name="phone"
-								placeholder="<c:out value='${ManageManagerDTO.phone }'></c:out>">
+								placeholder="<c:out value='${manageManagerVO.phone }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -45,15 +45,15 @@
 							class="col-sm-3 text-end control-label col-form-label">메일</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="email" name="email"
-								placeholder="<c:out value='${ManageManagerDTO.email }'></c:out>">
+								placeholder="<c:out value='${manageManagerVO.email }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
-					<label for="sId"
-						class="col-sm-3 text-end control-label col-form-label">지점번호</label>
+					<label for="sName"
+						class="col-sm-3 text-end control-label col-form-label">지점명</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="sId" name="sId"
-							placeholder="<c:out value='${ManageManagerDTO.sId }'></c:out>">
+						<input type="text" class="form-control" id="sName" name="sName"
+							placeholder="<c:out value='${manageManagerVO.sName }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -61,8 +61,8 @@
 						class="col-sm-3 text-end control-label col-form-label">관리자 등급</label>
 					<div class="col-sm-9">
 						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN">관리자</option>
-							<option value="MANAGER">지점 매니저</option>
+							<option value="ADMIN" selected="selected">관리자</option>
+							<option value="MANAGER" selected="selected">지점 매니저</option>
 						</select>
 					</div>
 				</div>
@@ -71,9 +71,9 @@
 						class="col-sm-3 text-end control-label col-form-label">승인여부</label>
 					<div class="col-sm-9">
 						<select name="approvalStatus" id="approvalStatus">
-							<option value="0">대기</option>
-							<option value="1">승인</option>
-							<option value="2">거절</option>
+							<option value="0" selected="selected">대기</option>
+							<option value="1" selected="selected">승인</option>
+							<option value="2" selected="selected">거절</option>
 						</select>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">취소</button>
+							onclick="goLists()">목록</button>
 					</div>
 				</div>
 			</form>

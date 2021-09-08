@@ -38,30 +38,24 @@ public class ManageManagerController {
 	
 	
 	@GetMapping("/form")
-	public void form() {
-		
+	public void form(ManageManagerDTO manageManagerDTO, Model model) {
+		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
+		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
+		log.info(model);
 	}
+	
 	@PutMapping("/form")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody ManageManagerDTO manageManagerDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = manageManagerService.insert(manageManagerDTO)>0;
+		boolean isSuccess = manageManagerService.update(manageManagerDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}
 	
-	
-	@PostMapping("/form")
-	public ResponseEntity<Map<String,String>> form(@RequestBody ManageManagerDTO manageManagerDTO){
-		
-		Map<String, String> result =new HashMap<String, String>();
-		manageManagerService.insert(manageManagerDTO);
-		return new ResponseEntity<Map<String,String>>(result,HttpStatus.OK);
-		
-	}
 	@DeleteMapping("/list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
@@ -69,7 +63,7 @@ public class ManageManagerController {
 		ResultDTO result =new ResultDTO();
 		boolean isSuccess = manageManagerService.delete(manageManagerDTO.getManageManagerVO().getMgrId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"d.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}

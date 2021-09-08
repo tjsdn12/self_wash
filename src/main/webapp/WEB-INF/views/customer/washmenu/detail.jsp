@@ -11,6 +11,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm" 
 			action="/customer/washmenu/list" method="get">
+			<input type="hidden" name="washMenuId" value='<c:out value="${washMenuVO.washMenuId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">WashMenuDetailPage</h4>
 					<div class="form-group row">
@@ -63,7 +64,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTable()">취소</button>
+							onclick="goTable()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -86,17 +87,14 @@
 	
 	
 	
-	document.querySelector("#modifyBtn").addEventListener("click",function(e){
-		const value = document.querySelector("#washMenuId").value;
-		document.querySelector("#actionForm").innerHTML = 
-			"<input type='hidden' name='washMenuId' value='"+value+"' />"
-		
-		document.querySelector("#actionForm").submit();
-	})
-	
-	
-	document.querySelector("#tablesBtn").addEventListener("click",function (e){
-		goTable();
-	},false);
+	document
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/customer/washmenu/form";
+				document.querySelector("#actionForm").submit();
+			});
 	</script>
 

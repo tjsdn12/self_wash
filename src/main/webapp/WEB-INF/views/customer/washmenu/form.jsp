@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="washMenuId" id="washMenuId"
-								value="<c:out value='${WashMenuDTO.washMenuId }'></c:out>" readonly="readonly">
+								value="<c:out value='${washMenuVO.washMenuId }'></c:out>" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">상품가격</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="menuPrice" id="menuPrice"
-								placeholder="<c:out value='${WashMenuDTO.menuPrice }'></c:out>">
+								placeholder="<c:out value='${washMenuVO.menuPrice }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
 						<div class="col-sm-9">
 							<input type="text class="form-control" id="equipmentModelId" name="equipmentModelId"
-								placeholder="<c:out value='${WashMenuDTO.equipmentModelId }'></c:out>">
+								placeholder="<c:out value='${washMenuVO.equipmentModelId }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -37,7 +37,7 @@
 							class="col-sm-3 text-end control-label col-form-label">메뉴 명</label>
 						<div class="col-sm-9">
 							<input type="number" class="form-control" id="menuName" name="menuName"
-								placeholder="<c:out value='${WashMenuDTO.menuName }'></c:out>">
+								placeholder="<c:out value='${washMenuVO.menuName }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -45,8 +45,8 @@
 						class="col-sm-3 text-end control-label col-form-label">세제사용 여부</label>
 					<div class="col-sm-9">
 						<select name="detergentUseAt" id="detergentUseAt">
-							<option value="0">세제사용 유</option>
-							<option value="1">세제사용 무</option>
+							<option value="0" selected="selected">세제사용 유</option>
+							<option value="1" selected="selected">세제사용 무</option>
 						</select>
 					</div>
 				</div>

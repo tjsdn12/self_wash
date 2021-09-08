@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">일대일 문의번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="inquiryId" readonly="readonly" id="inquiryId"
-								value="<c:out value='${InquiryDTO.inquiryId }'></c:out>" >
+								value="<c:out value='${inquiryVO.inquiryId }'></c:out>" >
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">관리자 번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="mgrId" id="mgrId"
-								placeholder="<c:out value='${InquiryDTO.mgrId }'></c:out>">
+								placeholder="<c:out value='${inquiryVO.mgrId }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">문의 제목</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="qnaTitle" name="qnaTitle"
-								placeholder="<c:out value='${InquiryDTO.qnaTitle }'></c:out>">
+								placeholder="<c:out value='${inquiryVO.qnaTitle }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -37,7 +37,7 @@
 							class="col-sm-3 text-end control-label col-form-label">문의 내용</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="qnaContents" name="qnaContents"
-								placeholder="<c:out value='${InquiryDTO.qnaContents }'></c:out>">
+								placeholder="<c:out value='${inquiryVO.qnaContents }'></c:out>">
 						</div>
 					</div>
 			<div class="form-group row">
@@ -45,8 +45,8 @@
 						class="col-sm-3 text-end control-label col-form-label">문의사항 분류</label>
 					<div class="col-sm-9">
 						<select name="classification" id="classification">
-							<option value="MANAGER">매니저 회원문의</option>
-							<option value="USER">사용자 회원문의</option>
+							<option value="MANAGER" selected="selected">매니저 회원문의</option>
+							<option value="USER" selected="selected">사용자 회원문의</option>
 						</select>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 						class="col-sm-3 text-end control-label col-form-label">회원 아이디</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="joinDate" name="memId" readonly="memId"
-							placeholder="<c:out value='${InquiryDTO.memId }'></c:out>">							
+							placeholder="<c:out value='${inquiryVO.memId }'></c:out>">							
 					</div>
 				</div>
 					<div class="form-group row">
@@ -63,7 +63,7 @@
 						class="col-sm-3 text-end control-label col-form-label">답변 제목</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="replyTitle" name="replyTitle"
-							placeholder="<c:out value='${InquiryDTO.replyTitle }'></c:out>">
+							placeholder="<c:out value='${inquiryVO.replyTitle }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">
@@ -71,7 +71,7 @@
 						class="col-sm-3 text-end control-label col-form-label">답변 내용</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="replyContent" name="replyContent"
-							placeholder="<c:out value='${InquiryDTO.replyContent }'></c:out>">
+							placeholder="<c:out value='${inquiryVO.replyContent }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">
@@ -79,7 +79,7 @@
 						class="col-sm-3 text-end control-label col-form-label">등록일시</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="dateOfInquiry" name="dateOfInquiry" readonly="readonly"
-							placeholder="<c:out value='${InquiryDTO.dateOfInquiry }'></c:out>">
+							placeholder="<c:out value='${inquiryVO.dateOfInquiry }'></c:out>">
 					</div>
 				</div>
 					</div>
@@ -88,7 +88,7 @@
 						class="col-sm-3 text-end control-label col-form-label">답변일시</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="answerDate" name="answerDate" readonly="readonly"
-							placeholder="<c:out value='${InquiryDTO.answerDate }'></c:out>">
+							placeholder="<c:out value='${inquiryVO.answerDate }'></c:out>">
 					</div>
 				</div>
 							<div class="form-group row">
@@ -96,7 +96,7 @@
 						class="col-sm-3 text-end control-label col-form-label">관리자 아이디</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="answerId" name="answerId" readonly="readonly"
-							placeholder="<c:out value='${InquiryDTO.answerId }'></c:out>">
+							placeholder="<c:out value='${inquiryVO.answerId }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -104,8 +104,8 @@
 						class="col-sm-3 text-end control-label col-form-label">비공개 여부</label>
 					<div class="col-sm-9">
 						<select name="whetherItIsPrivate" id="whetherItIsPrivate">
-							<option value="0">공개</option>
-							<option value="1">비공개</option>
+							<option value="0" selected="selected">공개</option>
+							<option value="1" selected="selected">비공개</option>
 						</select>
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">취소</button>
+							onclick="goLists()">목록</button>
 					</div>
 				</div>
 			</form>

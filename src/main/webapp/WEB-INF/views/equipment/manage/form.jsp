@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentCode" name="equipmentCode"
-								value="<c:out value='${EquipmentManageDTO.equipmentCode }'></c:out>">
+								value="<c:out value='${equipmentManageVO.equipmentCode }'></c:out>" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">책임자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="tptb" name="tptb"
-								placeholder="<c:out value='${EquipmentManageDTO.tptb }'></c:out>">
+								placeholder="<c:out value='${equipmentManageVO.tptb }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비모델</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
-								placeholder="<c:out value='${EquipmentManageDTO.equipmentModelId }'></c:out>">
+								placeholder="<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -37,7 +37,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비정검일자</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="regularInspectionDate" name="regularInspectionDate"
-							placeholder="<c:out value='${EquipmentManageDTO.regularInspectionDate }'></c:out>">
+							placeholder="<c:out value='${equipmentManageVO.regularInspectionDate }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비구매가격</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="purchasePrice" name="purchasePrice"
-							placeholder="<c:out value='${EquipmentManageDTO.purchasePrice }'></c:out>">
+							placeholder="<c:out value='${equipmentManageVO.purchasePrice }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,7 +53,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비구매일시</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="purchaseDatetime" name="purchaseDatetime"
-							placeholder="<c:out value='${EquipmentManageDTO.purchaseDatetime }'></c:out>">
+							placeholder="<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -61,8 +61,8 @@
 						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
 					<div class="col-sm-9">
 						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN">관리유</option>
-							<option value="MANAGER">관리무</option>
+							<option value="ADMIN" selected="selected">관리유</option>
+							<option value="MANAGER" selected="selected">관리무</option>
 						</select>
 					</div>
 				</div>
@@ -71,9 +71,9 @@
 						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
 					<div class="col-sm-9">
 						<select name="equipmentStatus" id="equipmentStatus">
-							<option value="0">대기</option>
-							<option value="1">사용</option>
-							<option value="2">거절</option>
+							<option value="0" selected="selected">대기</option>
+							<option value="1" selected="selected">사용</option>
+							<option value="2" selected="selected">거절</option>
 						</select>
 					</div>
 				</div>
