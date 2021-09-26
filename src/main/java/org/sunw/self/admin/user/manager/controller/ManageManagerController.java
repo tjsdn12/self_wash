@@ -1,5 +1,6 @@
 package org.sunw.self.admin.user.manager.controller;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
@@ -31,7 +31,7 @@ public class ManageManagerController {
 	ManageManagerService manageManagerService;
 	
 	@GetMapping("/list")
-	public void list(ManageManagerDTO manageManagerDTO, Model model) {
+	public void goList(ManageManagerDTO manageManagerDTO, Model model) {
 		
 		model.addAttribute("getAllManagerList", manageManagerService.getAllManagerList(manageManagerDTO ));
 	}
@@ -39,6 +39,30 @@ public class ManageManagerController {
 	
 	@GetMapping("/form")
 	public void form(ManageManagerDTO manageManagerDTO, Model model) {
+		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
+		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
+		log.info(model);
+		
+		
+		
+	}
+	
+	
+	
+	@DeleteMapping("/list")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO delete(@RequestBody ManageManagerDTO manageManagerDTO) {
+		ResultDTO result =new ResultDTO();
+		boolean isSuccess = manageManagerService.delete(manageManagerDTO.getManageManagerVO().getMgrId())>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
+	
+	@GetMapping("/detail")
+	public void selectManager(ManageManagerDTO manageManagerDTO,Model model) {
 		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
 		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
 		log.info(model);
@@ -56,22 +80,7 @@ public class ManageManagerController {
 		return result;
 	}
 	
-	@DeleteMapping("/list")
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public ResultDTO delete(@RequestBody ManageManagerDTO manageManagerDTO) {
-		ResultDTO result =new ResultDTO();
-		boolean isSuccess = manageManagerService.delete(manageManagerDTO.getManageManagerVO().getMgrId())>0;
-		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
-		result.setMessage(message);
-		return result;
-	}
-	@GetMapping("/detail")
-	public void selectManager(ManageManagerDTO manageManagerDTO,Model model) {
-		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
-		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
-		log.info(model);
-	}
-	
+
+
+
 }

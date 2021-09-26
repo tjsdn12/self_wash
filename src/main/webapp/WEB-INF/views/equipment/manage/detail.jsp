@@ -29,30 +29,7 @@
 							<c:out value='${equipmentManageVO.tptb }'></c:out>
 						</div>
 					</div>
-
 						<div class="form-group row">
-					<label for="regularInspection"
-						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
-					<div class="col-sm-9">
-						<c:choose>
-						<c:when test="${equipmentManageVO.regularInspection == 'ADMIN' }">
-						관리유</c:when>
-						<c:otherwise>관리무</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="equipmentStatus"
-						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
-					<div class="col-sm-9">
-						<c:choose>
-						<c:when test="${equipmentManageVO.equipmentStatus == '0' }">대기</c:when>
-						<c:when test="${equipmentManageVO.equipmentStatus == '1' }">사용</c:when>
-						<c:otherwise>거절</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-					<div class="form-group row">
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비모델</label>
 						<div class="col-sm-9">
@@ -80,6 +57,28 @@
 							<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>
 						</div>
 					</div>
+						<div class="form-group row">
+					<label for="regularInspection"
+						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
+					<div class="col-sm-9">
+						<c:choose>
+						<c:when test="${equipmentManageVO.regularInspection == 'care' }">
+						관리유</c:when>
+						<c:otherwise>관리무</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="equipmentStatus"
+						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
+					<div class="col-sm-9">
+						<c:choose>
+						<c:when test="${equipmentManageVO.equipmentStatus == 'standby' }">대기</c:when>
+						<c:when test="${equipmentManageVO.equipmentStatus == 'useable' }">사용</c:when>
+						<c:otherwise>거절</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
 				
 					
 

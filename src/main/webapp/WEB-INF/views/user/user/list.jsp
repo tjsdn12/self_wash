@@ -51,7 +51,7 @@
 										<span class="checkmark"></span>
 								</label></td>
 								<td><a href="#" onclick="goSelect(this)">${item2.memId }</a></td>
-								<td>${item2.name }</td>
+								<td>${item2.memName }</td>
 								<td>${item2.phone }</td>
 								<td>${item2.kakaoAuthorizationKey }</td>
 								<td>${item2.pw }</td>

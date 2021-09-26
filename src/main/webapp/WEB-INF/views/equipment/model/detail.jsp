@@ -20,7 +20,7 @@
 						<div class="col-sm-9">
 							<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>
 					</div>
-
+				</div>
 					<div class="form-group row">
 						<label for="equipmentName"
 							class="col-sm-3 text-end control-label col-form-label">장비명</label>
@@ -69,7 +69,7 @@
 						class="col-sm-3 text-end control-label col-form-label">소비자 노출여부</label>
 					<div class="col-sm-9">
 						<c:choose>
-						<c:when test="${equipmentModelVO.exposureYesNo == '0'} }">
+						<c:when test="${equipmentModelVO.exposureYesNo == 'nonexpose'} }">
 						비노출</c:when>
 						<c:otherwise>노출</c:otherwise>
 						</c:choose>

@@ -12,7 +12,7 @@
 						<label for="equipmentCode"
 							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="equipmentCode" name="equipmentCode"
+							<input type="text" class="form-control" name="equipmentCode" id="equipmentCode" 
 								value="<c:out value='${equipmentManageVO.equipmentCode }'></c:out>" readonly="readonly">
 						</div>
 					</div>
@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">책임자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="tptb" name="tptb"
-								placeholder="<c:out value='${equipmentManageVO.tptb }'></c:out>">
+								value="<c:out value='${equipmentManageVO.tptb }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,7 +29,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비모델</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
-								placeholder="<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>">
+								value="<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -37,7 +37,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비정검일자</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="regularInspectionDate" name="regularInspectionDate"
-							placeholder="<c:out value='${equipmentManageVO.regularInspectionDate }'></c:out>">
+							value="<c:out value='${equipmentManageVO.regularInspectionDate }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비구매가격</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="purchasePrice" name="purchasePrice"
-							placeholder="<c:out value='${equipmentManageVO.purchasePrice }'></c:out>">
+							value="<c:out value='${equipmentManageVO.purchasePrice }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,16 +53,16 @@
 						class="col-sm-3 text-end control-label col-form-label">장비구매일시</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="purchaseDatetime" name="purchaseDatetime"
-							placeholder="<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>">
+							value="<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="authorLevel"
+					<label for="regularInspection"
 						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
 					<div class="col-sm-9">
-						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN" selected="selected">관리유</option>
-							<option value="MANAGER" selected="selected">관리무</option>
+						<select name="regularInspection" id="regularInspection">
+							<option value="care" <c:if test="${equipmentManageVO.regularInspection == 'care'}">selected="selected"</c:if>>관리유</option>
+							<option value="dontCare" <c:if test="${equipmentManageVO.regularInspection == 'dontCare'}">selected="selected"</c:if>>관리무</option>
 						</select>
 					</div>
 				</div>
@@ -71,9 +71,9 @@
 						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
 					<div class="col-sm-9">
 						<select name="equipmentStatus" id="equipmentStatus">
-							<option value="0" selected="selected">대기</option>
-							<option value="1" selected="selected">사용</option>
-							<option value="2" selected="selected">거절</option>
+							<option value="standby" <c:if test="${equipmentManageVO.equipmentStatus == 'standby'}">selected="selected"</c:if>>대기</option>
+							<option value="useable" <c:if test="${equipmentManageVO.equipmentStatus == 'useable'}">selected="selected"</c:if>>사용</option>
+							<option value="refuse" <c:if test="${equipmentManageVO.equipmentStatus == 'refuse'}">selected="selected"</c:if>>거절</option>
 						</select>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">취소</button>
+							onclick="goLists()">목록</button>
 					</div>
 				</div>
 			</form>

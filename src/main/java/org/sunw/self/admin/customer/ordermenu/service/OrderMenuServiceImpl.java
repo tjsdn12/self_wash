@@ -41,8 +41,9 @@ public class OrderMenuServiceImpl implements OrderMenuService {
 
 	@Override
 	public int update(OrderMenuDTO orderMenuDTO) {
-		return 0;
-		//return orderMenuMapper.update(toOrderMenuVO(orderMenuDTO));
+		
+		return orderMenuMapper.update(orderMenuDTO.getOrderMenuVO());
+		
 	}
 
 	@Override

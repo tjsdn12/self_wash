@@ -10,7 +10,6 @@ namespace= "org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
 		</selectKey>
 	INSERT INTO EQUIPMENT_MODEL
 	(
-	EQUIPMENT_MODEL_ID,
 	EQUIPMENT_NAME, 
 	MANUFACTURING_COMPANY, 
 	MANUFACTURER_NUMBER, 
@@ -23,7 +22,6 @@ namespace= "org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
 	)
 	VALUES
 	(
-	#{equipmentModelId},
 	#{equipmentName}, 
 	#{manufacturingCompany}, 
 	#{manufacturerNumber}, 
@@ -78,14 +76,14 @@ namespace= "org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
 	<update id="update">
 	UPDATE EQUIPMENT_MODEL
 	SET 
-	EQUIPMENT_NAME				= #{equipmentName}					
-	MANUFACTURING_COMPANY		= #{manufacturingCompany}		
-	MANUFACTURER_NUMBER			= #{manufacturerNumber}		
-	CATEGORY_ID					= #{categoryId}		
-	REPAIRER					= #{repairer}	
-	REPAIRER_NUMBER				= #{repairerNumber}			
-	EXPOSURE_YES_NO				= #{exposureYesNo}	
-	EQUIPMENT_PHOTO				= #{equipmentPhoto}
+	EQUIPMENT_NAME				= #{equipmentName},					
+	MANUFACTURING_COMPANY		= #{manufacturingCompany},		
+	MANUFACTURER_NUMBER			= #{manufacturerNumber},		
+	CATEGORY_ID					= #{categoryId},		
+	REPAIRER					= #{repairer},	
+	REPAIRER_NUMBER				= #{repairerNumber},			
+	EXPOSURE_YES_NO				= #{exposureYesNo},	
+	EQUIPMENT_PHOTO				= #{equipmentPhoto},
 	EQUIPMENT_SPEC				= #{equipmentSpec}		
 	WHERE EQUIPMENT_MODEL_ID	= #{equipmentModelId}
 	</update>

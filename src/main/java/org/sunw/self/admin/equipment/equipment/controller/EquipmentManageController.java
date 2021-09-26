@@ -46,7 +46,7 @@ public class EquipmentManageController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody EquipmentManageDTO equipmentManageDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = equipmentManageService.insert(equipmentManageDTO)>0;
+		boolean isSuccess = equipmentManageService.update(equipmentManageDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
@@ -60,7 +60,7 @@ public class EquipmentManageController {
 		ResultDTO result = new ResultDTO();
 		boolean isSuccess =equipmentManageService.delete(equipmentManageDTO.getEquipmentManageVO().getequipmentCode())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"오류가 발생하였습니다.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}

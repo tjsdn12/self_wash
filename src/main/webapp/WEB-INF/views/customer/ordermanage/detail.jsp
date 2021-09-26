@@ -57,7 +57,7 @@
 							class="col-sm-3 text-end control-label col-form-label">결제수단</label>
 						<div class="col-sm-9">
 							<c:choose>
-								<c:when test="${orderManageVO.methodOfPayment == '0'} }">
+								<c:when test="${orderManageVO.methodOfPayment == 'card' }">
 						카드
 						</c:when>
 								<c:otherwise>
@@ -71,10 +71,10 @@
 							class="col-sm-3 text-end control-label col-form-label">주문상태</label>
 						<div class="col-sm-9">
 							<c:choose>
-								<c:when test="${orderManageVO.orderStatus == '0'} }">
-						결제대기
-						</c:when>
-								<c:when test="${orderManageVO.orderStatus == '1'} }">진행중</c:when>
+								<c:when test="${orderManageVO.orderStatus == 'waiting' }">결제대기
+							</c:when>
+								<c:when test="${orderManageVO.orderStatus == 'ongoing' }">진행중
+							</c:when>
 								<c:otherwise>
 								환불완료
 								</c:otherwise>

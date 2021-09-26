@@ -78,31 +78,21 @@
 <script type="text/javascript">
 	
 	function goTable(){
-		let form = document.querySelector("#actionForm");
+		const form = document.querySelector("#actionForm");
 		form.action = "/customer/ordermenu/list";
 		form.method = "get";
 		form.innerHTML="";
 		form.submit();
 	}
 	
-	
-	
-	document.querySelector("#modifyBtn").addEventListener("click",function(e){
-		const value = document.querySelector("#orderMenuId").value;
-		document.querySelector("#actionForm").innerHTML = 
-			"<input type='hidden' name='orderMenuId' value='"+value+"' />"
-		
-		document.querySelector("#actionForm").submit();
-	})
-	
-	
 	document
-			.querySelector("#modifyBtn")
-			.addEventListener(
-					"click",
-					function(e) {
-						const form = document.querySelector("#actionForm");
-						form.action = "/customer/ordermenu/form";
-						document.querySelector("#actionForm").submit();
-					});	</script>
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/customer/ordermenu/form";
+				document.querySelector("#actionForm").submit();
+			});	
+	</script>
 

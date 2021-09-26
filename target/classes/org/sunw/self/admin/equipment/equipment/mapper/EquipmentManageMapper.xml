@@ -10,7 +10,6 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 		</selectKey>
 	INSERT INTO EQUIPMENT
 	(
-	EQUIPMENT_CODE, 
 	TPTB, 
 	EQUIPMENT_STATUS, 
 	EQUIPMENT_MODEL_ID, 
@@ -21,7 +20,6 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	)
 	VALUES
 	(
-	#{equipmentCode}, 
 	#{tptb}, 
 	#{equipmentStatus}, 
 	#{equipmentModelId}, 
@@ -74,12 +72,12 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	<update id="update">
 	UPDATE self_wash.equipment
 	SET 
-	TPTB					= #{tptb}					
-	EQUIPMENT_STATUS		= #{equipmentStatus}		
-	EQUIPMENT_MODEL_ID		= #{equipmentModelId}		
-	REGULAR_INSPECTION		= #{regularInspection}		
-	REGULAR_INSPECTION_DATE	= #{regularInspectionDate}	
-	PURCHASE_PRICE			= #{purchasePrice}			
+	TPTB					= #{tptb},					
+	EQUIPMENT_STATUS		= #{equipmentStatus},		
+	EQUIPMENT_MODEL_ID		= #{equipmentModelId},		
+	REGULAR_INSPECTION		= #{regularInspection},		
+	REGULAR_INSPECTION_DATE	= #{regularInspectionDate},	
+	PURCHASE_PRICE			= #{purchasePrice},			
 	PURCHASE_DATETIME		= #{purchaseDatetime}			
 	WHERE EQUIPMENT_CODE	= #{equipmentCode}
 	</update>

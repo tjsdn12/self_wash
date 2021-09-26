@@ -32,9 +32,9 @@
 
 					<div class="form-group row">
 						<label for="equipmentModelId"
-							class="col-sm-3 text-end control-label col-form-label">장비 번호</label>
+							class="col-sm-3 text-end control-label col-form-label">장비명</label>
 						<div class="col-sm-9">
-							<c:out value='${washMenuVO.equipmentModelId }'></c:out>
+							<c:out value='${washMenuVO.equipmentName }'></c:out>
 						</div>
 					</div>
 
@@ -50,7 +50,7 @@
 						class="col-sm-3 text-end control-label col-form-label">세제 사용 여부</label>
 					<div class="col-sm-9">
 						<c:choose>
-							<c:when test="${manageManagerVO.detergentUseAt == '0'} }">세제사용유
+							<c:when test="${manageManagerVO.detergentUseAt == 'using' }">세제사용유
 							</c:when>
 							<c:otherwise>세제사용무</c:otherwise>
 						</c:choose>
@@ -78,7 +78,7 @@
 	<script type="text/javascript">
 	
 	function goTable(){
-		let form = document.querySelector("#actionForm");
+		const form = document.querySelector("#actionForm");
 		form.action = "/customer/washmenu/list";
 		form.method = "get";
 		form.innerHTML="";

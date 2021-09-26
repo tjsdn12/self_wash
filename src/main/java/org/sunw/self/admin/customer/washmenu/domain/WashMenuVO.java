@@ -18,6 +18,6 @@ public class WashMenuVO {
 	 String equipmentModelId;	
 	 String menuName;			
 	 String detergentUseAt;	
-
+	 String equipmentName;
 
 }

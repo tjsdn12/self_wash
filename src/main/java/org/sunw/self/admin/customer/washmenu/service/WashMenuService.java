@@ -2,9 +2,9 @@ package org.sunw.self.admin.customer.washmenu.service;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuVO;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 
 public interface WashMenuService {
 	
@@ -20,7 +20,7 @@ public interface WashMenuService {
 	
 	public int delete(String washMenuId);
 	
-
+	public List<EquipmentModelVO>getEquipmentModelList();
 	
 	
 }

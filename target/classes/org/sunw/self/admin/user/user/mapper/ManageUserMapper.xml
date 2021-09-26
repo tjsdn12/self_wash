@@ -10,7 +10,7 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
 		</selectKey>
 	INSERT INTO MEM
 	(
-	NAME, 
+	MEM_NAME, 
 	PHONE,
 	KAKAO_AUTHORIZATION_KEY, 
 	PW,
@@ -22,7 +22,7 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
     )
 	VALUES
 	(
-	#{name}, 
+	#{memName}, 
 	#{phone},
 	#{kakaoAuthorizationKey}, 
 	#{pw},
@@ -39,7 +39,7 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
 	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO"
 	parameterType="org.sunw.self.admin.user.user.domain.ManageUserDTO">
 	SELECT MEM_ID, 
-		NAME, 
+		MEM_NAME, 
 		PHONE, 
 		KAKAO_AUTHORIZATION_KEY, 
 		PW, 
@@ -62,7 +62,7 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
 	<select id="getOneUser"
 	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO">
 	SELECT MEM_ID, 
-		NAME, 
+		MEM_NAME, 
 		PHONE, 
 		KAKAO_AUTHORIZATION_KEY, 
 		PW, 
@@ -82,14 +82,14 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
 	<update id="update">
 		UPDATE self_wash.mem
 		SET 
-		NAME					= #{name}					
-		PHONE					= #{phone}					
-		KAKAO_AUTHORIZATION_KEY	= #{kakaoAuthorization_key}	
-		PW						= #{pw}						
-		MEM_STATUS				= #{memStatus}				
-		JOIN_DATE				= now()		
-		AMOUNT_CHARGE			= #{amountCharge}			
-		POINT					= #{point}					
+		MEM_NAME				= #{memName},					
+		PHONE					= #{phone},					
+		KAKAO_AUTHORIZATION_KEY	= #{kakaoAuthorizationKey},	
+		PW						= #{pw},						
+		MEM_STATUS				= #{memStatus},				
+		JOIN_DATE				= now(),		
+		AMOUNT_CHARGE			= #{amountCharge},			
+		POINT					= #{point},					
 		DATE_OF_USE				= now()				
 		WHERE MEM_ID			= #{memId}			
 

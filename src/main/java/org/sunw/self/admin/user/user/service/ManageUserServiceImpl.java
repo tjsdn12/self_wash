@@ -1,11 +1,8 @@
 package org.sunw.self.admin.user.user.service;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.stereotype.Service;
-import org.sunw.self.admin.common.domain.PageDTO;
-import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.user.user.domain.ManageUserDTO;
 import org.sunw.self.admin.user.user.domain.ManageUserVO;
 import org.sunw.self.admin.user.user.mapper.ManageUserMapper;
@@ -42,6 +39,7 @@ public class ManageUserServiceImpl implements ManageUserService {
 		manageUserDTO.setManageUserVO(manageUserMapper.getOneUser(memId));
 		return manageUserDTO;
 	}
+	
 
 	@Override
 	public int getUserCnt() {
@@ -51,13 +49,15 @@ public class ManageUserServiceImpl implements ManageUserService {
 
 	@Override
 	public int update(ManageUserDTO manageUserDTO) {
-		return 0;
-		//return manageUserMapper.update(toUserVO(manageUserDTO));
+		
+		return manageUserMapper.update(manageUserDTO.getManageUserVO());
 	}
 
 	@Override
 	public int delete(String memId) {
 		return manageUserMapper.delete(memId);
 	}
+
+
 
 }

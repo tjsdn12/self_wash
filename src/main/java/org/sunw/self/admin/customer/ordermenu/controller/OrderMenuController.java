@@ -30,7 +30,7 @@ public class OrderMenuController {
 	@Autowired
 	OrderMenuService orderMenuService;
 	
-	@GetMapping("list")
+	@GetMapping("/list")
 	public void list(OrderMenuDTO orderMenuDTO,Model model) {
 		
 		model.addAttribute("getAllOrderMenuList",orderMenuService.getAllOrderMenuList(orderMenuDTO));
@@ -49,7 +49,7 @@ public class OrderMenuController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody OrderMenuDTO orderMenuDTO) {
 		ResultDTO result =new ResultDTO();
-		boolean isSuccess = orderMenuService.insert(orderMenuDTO)>0;
+		boolean isSuccess = orderMenuService.update(orderMenuDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);

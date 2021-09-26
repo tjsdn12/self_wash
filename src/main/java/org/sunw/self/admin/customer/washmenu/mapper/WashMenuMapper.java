@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuVO;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 
 public interface WashMenuMapper {
 	
@@ -21,6 +22,8 @@ public interface WashMenuMapper {
 	public int update(WashMenuVO washMenuVO);
 	
 	public int delete(String washMenuId);
+	
+	public List<EquipmentModelVO>getEquipmentModelList();
 	
 
 }

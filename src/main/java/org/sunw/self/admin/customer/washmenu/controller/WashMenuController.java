@@ -1,17 +1,12 @@
 package org.sunw.self.admin.customer.washmenu.controller;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,13 +36,15 @@ public class WashMenuController {
 		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
 		log.info(model);
 		
+		model.addAttribute("getEquipmentModelList", washMenuService.getEquipmentModelList());
+		
 	}
 	@PutMapping("/form")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody WashMenuDTO washMenuDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess =washMenuService.insert(washMenuDTO)>0;
+		boolean isSuccess =washMenuService.update(washMenuDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);

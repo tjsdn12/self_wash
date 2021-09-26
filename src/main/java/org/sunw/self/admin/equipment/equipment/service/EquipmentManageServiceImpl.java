@@ -38,7 +38,7 @@ public class EquipmentManageServiceImpl implements EquipmentManageService {
 	@Override
 	public int update(EquipmentManageDTO equipmentManageDTO) {
 		
-		return 0;
+		return equipmentManageMapper.update(equipmentManageDTO.getEquipmentManageVO());
 		
 	}
 

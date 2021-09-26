@@ -43,7 +43,8 @@ public class StoreInfoServiceInfo implements StoreInfoService {
 
 	@Override
 	public int update(StoreInfoDTO storeInfoDTO) {
-		return 0;
+		
+		return storeInfoMapper.update(storeInfoDTO.getStoreInfoVO());
 		//return storeInfoMapper.update(toStoreInfoVO(storeInfoDTO));
 	}
 

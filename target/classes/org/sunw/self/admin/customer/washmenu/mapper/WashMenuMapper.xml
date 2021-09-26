@@ -44,25 +44,45 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	
 	<select id="getOneWashMenu"
 	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
-	SELECT WASH_MENU_ID,
-		MENU_PRICE, 
+	SELECT 
+		A.WASH_MENU_ID,
+		A.MENU_PRICE, 
+		A.EQUIPMENT_MODEL_ID, 
+		A.MENU_NAME, 
+		A.DETERGENT_USE_AT,
+		B.EQUIPMENT_NAME
+	FROM SELF_WASH.WASH_MENU A,EQUIPMENT_MODEL B
+	WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID
+	AND WASH_MENU_ID = #{washMenuId} 
+	</select>
+	
+	<select id="getEquipmentModelList"
+	resultType="org.sunw.self.admin.equipment.model.domain.EquipmentModelVO">
+	SELECT 
 		EQUIPMENT_MODEL_ID, 
-		MENU_NAME, 
-		DETERGENT_USE_AT
-	FROM SELF_WASH.WASH_MENU
-	WHERE WASH_MENU_ID=#{washMenuId}
+		EQUIPMENT_NAME, 
+		MANUFACTURING_COMPANY, 
+		MANUFACTURER_NUMBER, 
+		CATEGORY_ID, 
+		REPAIRER, 
+		REPAIRER_NUMBER, 
+		EXPOSURE_YES_NO, 
+		EQUIPMENT_PHOTO, 
+		EQUIPMENT_SPEC
+	FROM SELF_WASH.EQUIPMENT_MODEL
+	
 	</select>
 	
 	<select id="getWashMenuStatusCnt">
 	SELECT COUNT(*) FROM SELF_WASH.WASH_MENU
 	</select>
 	
-	<update id="updete">
+	<update id="update">
 	UPDATE self_wash.wash_menu
 	SET 
-	MENU_PRICE				=#{menuPrice} 
-	EQUIPMENT_MODEL_ID		=#{equipmentModelId} 
-	MENU_NAME				=#{menuName} 
+	MENU_PRICE				=#{menuPrice}, 
+	EQUIPMENT_MODEL_ID		=#{equipmentModelId}, 
+	MENU_NAME				=#{menuName}, 
 	DETERGENT_USE_AT		=#{detergentUseAt}
 	WHERE WASH_MENU_ID		=#{washMenuId}
 	</update>

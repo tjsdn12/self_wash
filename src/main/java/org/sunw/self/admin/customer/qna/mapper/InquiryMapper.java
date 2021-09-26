@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.sunw.self.admin.customer.qna.domain.InquiryDTO;
 import org.sunw.self.admin.customer.qna.domain.InquiryVO;
+import org.sunw.self.admin.user.manager.domain.ManageManagerVO;
+import org.sunw.self.admin.user.user.domain.ManageUserVO;
 
 public interface InquiryMapper {
 	
@@ -21,5 +23,9 @@ public interface InquiryMapper {
 	public int update(InquiryVO inquiryVO);
 	
 	public int delete(String inquiryId);
+	
+	public List<ManageManagerVO>getOneManagerId();
+	
+	public List<ManageUserVO>getOneUserId();
 
 }

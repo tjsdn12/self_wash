@@ -37,8 +37,8 @@ public class EquipmentModelServiceImpl implements EquipmentModelService{
 
 	@Override
 	public int update(EquipmentModelDTO equipmentModelDTO) {
-		return 0;
-		//return equipmentModelMapper.update(toEquipmentModelVO(equipmentModelDTO));
+		
+		return equipmentModelMapper.update(equipmentModelDTO.getEquipmentModelVO());
 	}
 
 	@Override

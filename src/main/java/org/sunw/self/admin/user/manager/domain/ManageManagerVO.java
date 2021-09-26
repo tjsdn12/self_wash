@@ -15,7 +15,7 @@ import lombok.ToString;
 public class ManageManagerVO {
 	String mgrId;
 	String pw;
-	String name;
+	String mgrName;
 	String authorLevel;
 	String phone;
 	String email;

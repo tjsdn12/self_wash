@@ -91,7 +91,7 @@
 						class="col-sm-3 text-end control-label col-form-label">비공개 여부</label>
 					<div class="col-sm-9">
 						<c:choose>
-						<c:when test="${inquiryVO.whetherItIsPrivate == '0' }">공개</c:when>
+						<c:when test="${inquiryVO.whetherItIsPrivate == 'public' }">공개</c:when>
 						<c:otherwise>비공개</c:otherwise>
 						</c:choose>
 					</div>

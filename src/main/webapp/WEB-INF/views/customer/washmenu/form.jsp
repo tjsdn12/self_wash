@@ -21,23 +21,27 @@
 							class="col-sm-3 text-end control-label col-form-label">상품가격</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="menuPrice" id="menuPrice"
-								placeholder="<c:out value='${washMenuVO.menuPrice }'></c:out>">
+								value="<c:out value='${washMenuVO.menuPrice }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="equipmentModelId"
-							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
+							class="col-sm-3 text-end control-label col-form-label">장비명</label>
 						<div class="col-sm-9">
-							<input type="text class="form-control" id="equipmentModelId" name="equipmentModelId"
-								placeholder="<c:out value='${washMenuVO.equipmentModelId }'></c:out>">
+								<select name="equipmentModelId" id="equipmentModelId" >
+	 						<option>::: 장비 선택하기 :::</option>
+								<c:forEach items="${getEquipmentModelList }" var="item2">
+									<option value="${item2.equipmentModelId }">${item2.equipmentName }</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="menuName"
-							class="col-sm-3 text-end control-label col-form-label">메뉴 명</label>
+							class="col-sm-3 text-end control-label col-form-label">메뉴명</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" id="menuName" name="menuName"
-								placeholder="<c:out value='${washMenuVO.menuName }'></c:out>">
+							<input type="text" class="form-control" id="menuName" name="menuName"
+								value="<c:out value='${washMenuVO.menuName }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
@@ -45,8 +49,8 @@
 						class="col-sm-3 text-end control-label col-form-label">세제사용 여부</label>
 					<div class="col-sm-9">
 						<select name="detergentUseAt" id="detergentUseAt">
-							<option value="0" selected="selected">세제사용 유</option>
-							<option value="1" selected="selected">세제사용 무</option>
+							<option value="using" <c:if test="${washMenuVO.detergentUseAt == 'using'}">selected="selected"</c:if>>세제사용o</option>
+							<option value="notUsed" <c:if test="${washMenuVO.detergentUseAt == 'notUsed'}">selected="selected"</c:if>>세제사용x</option>
 						</select>
 					</div>
 				</div>
@@ -89,5 +93,27 @@
 			}
 		});
 	}
+	
+	function change(style) {
+	    
+		   if( style == "selectBox01" )
+			   {
+		       view1.style.display = "inline"
+			   view2.style.display = "none"
+			   view3.style.display = "none"
+			   }
+		   if( style == "selectBox02" )
+		      {
+		       view1.style.display = "none"
+			   view2.style.display = "inline"
+			   view3.style.display = "none"
+			   }
+			if( style == "selectBox04" )
+		      {
+		       view1.style.display = "none"
+			   view2.style.display = "none"
+			   view3.style.display = "none"
+			   }
+		   	}
 	
 </script>

@@ -17,19 +17,19 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="name"
+						<label for="memName"
 							class="col-sm-3 text-end control-label col-form-label">이름</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name"
-								placeholder="<c:out value='${manageUserVO.name }'></c:out>">
+							<input type="text" class="form-control" name="memName" id="memName"
+								value="<c:out value='${manageUserVO.memName }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="phone"
 							class="col-sm-3 text-end control-label col-form-label">전화번호</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" id="phone" name="phone"
-								placeholder="<c:out value='${manageUserVO.phone }'></c:out>">
+							<input type="text" class="form-control" id="phone" name="phone"
+								value="<c:out value='${manageUserVO.phone }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -39,7 +39,7 @@
 						<div class="col-sm-9">
 							<input type="text" class="form-control"
 								id="kakaoAuthorizationKey" name="kakaoAuthorizationKey"
-								placeholder="<c:out value='${manageUserVO.kakaoAuthorizationKey }'></c:out>">
+								value="<c:out value='${manageUserVO.kakaoAuthorizationKey }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -47,7 +47,7 @@
 							class="col-sm-3 text-end control-label col-form-label">비밀번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="pw" name="pw"
-								placeholder="<c:out value='${manageUserVO.pw }'></c:out>">
+								value="<c:out value='${manageUserVO.pw }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -55,7 +55,7 @@
 							class="col-sm-3 text-end control-label col-form-label">가입일자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="joinDate" name="joinDate" 
-								placeholder="<c:out value='${manageUserVO.joinDate }'></c:out>">
+								value="<c:out value='${manageUserVO.joinDate }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -64,7 +64,7 @@
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="amountCharge"
 								name="amountCharge"
-								placeholder="<c:out value='${manageUserVO.amountCharge }'></c:out>">
+								value="<c:out value='${manageUserVO.amountCharge }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -72,7 +72,7 @@
 							class="col-sm-3 text-end control-label col-form-label">회원포인트</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="point" name="point"
-								placeholder="<c:out value='${manageUserVO.point }'></c:out>">
+								value="<c:out value='${manageUserVO.point }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -80,13 +80,12 @@
 							class="col-sm-3 text-end control-label col-form-label">이용일자</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="dateOfUse" name="dateOfUse" 
-								placeholder="<c:out value='${manageUserVO.dateOfUse }'></c:out>">
+								value="<c:out value='${manageUserVO.dateOfUse }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="memStatus"
-							class="col-sm-3 text-end control-label col-form-label">회원
-							상태</label>
+							class="col-sm-3 text-end control-label col-form-label">회원상태</label>
 						<div class="col-sm-9">
 							<select name="memStatus" id="memStatus">
 								<option value="HUMEN" selected="selected">휴먼회원</option>
@@ -99,7 +98,7 @@
 							<button type="button" id="modifyBtn" class="btn btn-primary"
 								onclick="save()">저장</button>
 							<button type="button" id="cancelBtn" class="btn btn-primary"
-								onclick="goLists()">취소</button>
+								onclick="goList()">취소</button>
 						</div>
 					</div>
 			</form>
@@ -136,4 +135,22 @@
 			}
 		});
 	}
+	
+	function goList() {
+		const form = document.querySelector("#actionForm");
+		form.action = "/user/user/list";
+		form.method = "get";
+		form.innerHTML = "";
+		form.submit();
+	}
+
+	document
+			.querySelector("#modifyBtn")
+			.addEventListener(
+					"click",
+					function(e) {
+						const form = document.querySelector("#actionForm");
+						form.action = "/user/user/form";
+						document.querySelector("#actionForm").submit();
+					});
 </script>

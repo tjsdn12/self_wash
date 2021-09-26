@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.infomation.store.domain.StoreInfoDTO;
 import org.sunw.self.admin.infomation.store.service.StoreInfoService;
+import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -46,7 +47,7 @@ public class StoreInfoController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody StoreInfoDTO storeInfoDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = storeInfoService.insert(storeInfoDTO)>0;
+		boolean isSuccess = storeInfoService.update(storeInfoDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
@@ -59,7 +60,7 @@ public class StoreInfoController {
 		ResultDTO result =new ResultDTO();
 		boolean isSuccess = storeInfoService.delete(storeInfoDTO.getStoreInfoVO().getsId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"d.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}

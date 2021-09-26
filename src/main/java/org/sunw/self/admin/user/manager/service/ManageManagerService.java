@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.sunw.self.admin.common.domain.PageDTO;
+import org.sunw.self.admin.infomation.store.domain.StoreInfoVO;
 import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 import org.sunw.self.admin.user.manager.domain.ManageManagerVO;
 
@@ -22,6 +23,9 @@ public interface ManageManagerService {
 	public int delete(String mgrId);
 	
 	ManageManagerDTO getOneManager(String mgrId);
+	
+	public List<StoreInfoVO> getStoreList();
+	
 	
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
+import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 import org.sunw.self.admin.user.user.domain.ManageUserDTO;
 import org.sunw.self.admin.user.user.service.ManageUserService;
 
@@ -48,8 +49,8 @@ public class ManageUserController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody ManageUserDTO manageUserDTO) {
-		ResultDTO result =new ResultDTO();
-		boolean isSuccess =manageUserService.insert(manageUserDTO)>0;
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = manageUserService.update(manageUserDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.sunw.self.admin.customer.qna.domain.InquiryDTO;
 import org.sunw.self.admin.customer.qna.domain.InquiryVO;
 import org.sunw.self.admin.customer.qna.mapper.InquiryMapper;
+import org.sunw.self.admin.user.manager.domain.ManageManagerVO;
+import org.sunw.self.admin.user.manager.mapper.ManageManagerMapper;
+import org.sunw.self.admin.user.user.domain.ManageUserVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -41,14 +44,26 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int update(InquiryDTO inquiryDTO) {
-		return 0;
-		//return inquiryMapper.update(toInquiryVO(inquiryDTO));
+		
+		return inquiryMapper.update(inquiryDTO.getInquiryVO());
 	}
 
 	@Override
 	public int delete(String inquiryId) {
 		
 		return inquiryMapper.delete(inquiryId);
+	}
+
+	@Override
+	public List<ManageManagerVO> getOneManagerId() {
+		List<ManageManagerVO>list = inquiryMapper.getOneManagerId();
+		return list;
+	}
+
+	@Override
+	public List<ManageUserVO> getOneUserId() {
+		List<ManageUserVO>list = inquiryMapper.getOneUserId();
+		return list;
 	}
 	
 	

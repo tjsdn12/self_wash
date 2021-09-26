@@ -47,7 +47,7 @@ public class OrderManageController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody OrderManageDTO orderManageDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = orderManageService.insert(orderManageDTO)>0;
+		boolean isSuccess = orderManageService.update(orderManageDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);

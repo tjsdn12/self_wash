@@ -72,12 +72,12 @@ namespace="org.sunw.self.admin.customer.order.mapper.OrderManageMapper">
 	<update id="update">
 	UPDATE SELF_WASH.ORDER
 	SET 
-	ORDER_DATE				= NOW()		
-	ORDERER					= #{orderer}		
-	RECIPIENT_PHONE			= #{recipientPhone}		
-	TOTAL_PAYMENT			= #{totalPayment}	
-	METHOD_OF_PAYMENT		= #{methodOfPayment}			
-	ORDER_STATUS			= #{orderStatus}
+	ORDER_DATE				= NOW(),		
+	ORDERER					= #{orderer},		
+	RECIPIENT_PHONE			= #{recipientPhone},		
+	TOTAL_PAYMENT			= #{totalPayment},	
+	METHOD_OF_PAYMENT		= #{methodOfPayment},			
+	ORDER_STATUS			= #{orderStatus},
 	ACCUMULATE_POINT		= #{accumulatePoint}			
 	WHERE ORDER_ID			= #{orderId}
 	</update>

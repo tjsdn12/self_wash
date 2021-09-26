@@ -22,10 +22,10 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="name"
+						<label for="memName"
 							class="col-sm-3 text-end control-label col-form-label">이름</label>
 						<div class="col-sm-9">
-							<c:out value='${manageUserVO.name }'></c:out>
+							<c:out value='${manageUserVO.memName }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -94,7 +94,7 @@
 			<div class="card-body">
 				<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 				<button type="button" id="tablesBtn" class="btn btn-primary"
-					onclick="goTables()">list</button>
+					onclick="goList()">목록</button>
 			</div>
 		</div>
 		</form>
@@ -107,7 +107,7 @@
 
 
 <script type="text/javascript">
-	function goTable() {
+	function goList() {
 		let form = document.querySelector("#actionForm");
 		form.action = "/user/user/list";
 		form.method = "get";

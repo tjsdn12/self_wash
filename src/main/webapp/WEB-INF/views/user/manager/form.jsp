@@ -21,15 +21,15 @@
 							class="col-sm-3 text-end control-label col-form-label">비밀번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="pw" name="pw"
-								placeholder="<c:out value='${manageManagerVO.pw }'></c:out>">
+								value="<c:out value='${manageManagerVO.pw }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="name"
+						<label for="mgrName"
 							class="col-sm-3 text-end control-label col-form-label">이름</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name"
-								placeholder="<c:out value='${manageManagerVO.name }'></c:out>">
+							<input type="text" class="form-control" name="mgrName" id="mgrName"
+								value="<c:out value='${manageManagerVO.mgrName }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -37,7 +37,7 @@
 							class="col-sm-3 text-end control-label col-form-label">전화번호</label>
 						<div class="col-sm-9">
 							<input type="number" class="form-control" id="phone" name="phone"
-								placeholder="<c:out value='${manageManagerVO.phone }'></c:out>">
+								value="<c:out value='${manageManagerVO.phone }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -45,24 +45,29 @@
 							class="col-sm-3 text-end control-label col-form-label">메일</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="email" name="email"
-								placeholder="<c:out value='${manageManagerVO.email }'></c:out>">
+								value="<c:out value='${manageManagerVO.email }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
-					<label for="sName"
+					<label for="sId"
 						class="col-sm-3 text-end control-label col-form-label">지점명</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="sName" name="sName"
-							placeholder="<c:out value='${manageManagerVO.sName }'></c:out>">
+						<select name="sId" id="sId" >
+	 						<option>::: 지점 선택하기 :::</option>
+								<c:forEach items="${getStoreList }" var="item2">
+									<option value="${item2.sId }">${item2.sName }</option>
+								</c:forEach>
+							</select>
 					</div>
+				</div>
 				</div>
 				<div class="form-group row">
 					<label for="authorLevel"
 						class="col-sm-3 text-end control-label col-form-label">관리자 등급</label>
 					<div class="col-sm-9">
 						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN" selected="selected">관리자</option>
-							<option value="MANAGER" selected="selected">지점 매니저</option>
+							<option value="ADMIN" <c:if test="${manageManagerVO.authorLevel == 'ADMIN'}">selected="selected"</c:if>>관리자</option>
+							<option value="MANAGER" <c:if test="${manageManagerVO.authorLevel == 'MANAGER'}">selected="selected"</c:if>>지점 매니저</option>
 						</select>
 					</div>
 				</div>
@@ -71,9 +76,9 @@
 						class="col-sm-3 text-end control-label col-form-label">승인여부</label>
 					<div class="col-sm-9">
 						<select name="approvalStatus" id="approvalStatus">
-							<option value="0" selected="selected">대기</option>
-							<option value="1" selected="selected">승인</option>
-							<option value="2" selected="selected">거절</option>
+							<option value="0" <c:if test="${manageManagerVO.approvalStatus == '0'}">selected="selected"</c:if>>대기</option>
+							<option value="1" <c:if test="${manageManagerVO.approvalStatus == '1'}">selected="selected"</c:if>>승인</option>
+							<option value="2" <c:if test="${manageManagerVO.approvalStatus == '2'}">selected="selected"</c:if>>거절</option>
 						</select>
 					</div>
 				</div>
@@ -81,7 +86,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">목록</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -117,4 +122,46 @@
 		});
 	}
 	
+	function change(style) {
+	    
+		   if( style == "selectBox01" )
+			   {
+		       view1.style.display = "inline"
+			   view2.style.display = "none"
+			   view3.style.display = "none"
+			   }
+		   if( style == "selectBox02" )
+		      {
+		       view1.style.display = "none"
+			   view2.style.display = "inline"
+			   view3.style.display = "none"
+			   }
+			if( style == "selectBox04" )
+		      {
+		       view1.style.display = "none"
+			   view2.style.display = "none"
+			   view3.style.display = "none"
+			   }
+		   	}
+	
+	function goList() {
+		const form = document.querySelector("#actionForm");
+		form.action = "/user/manager/list";
+		form.method = "get";
+		form.innerHTML = "";
+		form.submit();
+	}
+
+	document
+			.querySelector("#modifyBtn")
+			.addEventListener(
+					"click",
+					function(e) {
+						const form = document.querySelector("#actionForm");
+						form.action = "/user/manager/form";
+						document.querySelector("#actionForm").submit();
+					});
+
+
+
 </script>

@@ -58,6 +58,36 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 				#{perSheet}
 	</select>
 	
+	<select id="getOneManagerId"
+	resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
+	SELECT 
+		MGR_ID, 
+		PW, 
+		MGR_NAME, 
+		AUTHOR_LEVEL, 
+		PHONE, 
+		EMAIL, 
+		APPROVAL_STATUS, 
+		S_ID
+	FROM SELF_WASH.MGR
+	</select>
+	
+	<select id="getOneUserId"
+	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO">
+	SELECT 
+		MEM_ID, 
+		MEM_NAME, 
+		PHONE, 
+		KAKAO_AUTHORIZATION_KEY, 
+		PW, 
+		MEM_STATUS, 
+		JOIN_DATE, 
+		AMOUNT_CHARGE, 
+		POINT, 
+		DATE_OF_USE
+	FROM SELF_WASH.MEM
+	</select>
+	
 	<select id="getInquiryCnt" resultType="int">
 	SELECT COUNT(*)
 	FROM SELF_WASH.QNA
@@ -91,16 +121,16 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 	<update id="update">
 	UPDATE SELF_WASH.QNA
 	SET 
-	MGR_ID					=#{mgrId}					
-	QNA_TITLE				=#{qnaTitle}				
-	QNA_CONTENTS			=#{qnaContents}			
-	CLASSIFICATION			=#{classification}			
-	MEM_ID					=#{memId}					
-	REPLY_CONTENT			=#{replyContent}			
-	REPLY_TITLE				=#{replyTitle}				
-	DATE_OF_INQUIRY			=now()		
-	ANSWER_DATE				=now()				
-	ANSWER_ID				=#{answerId}				
+	MGR_ID					=#{mgrId},					
+	QNA_TITLE				=#{qnaTitle},				
+	QNA_CONTENTS			=#{qnaContents},			
+	CLASSIFICATION			=#{classification},			
+	MEM_ID					=#{memId},					
+	REPLY_CONTENT			=#{replyContent},			
+	REPLY_TITLE				=#{replyTitle},				
+	DATE_OF_INQUIRY			=now(),		
+	ANSWER_DATE				=now(),				
+	ANSWER_ID				=#{answerId},				
 	WHETHER_IT_IS_PRIVATE	=#{whetherItIsPrivate}
 	WHERE INQUIRY_ID		=#{inquiryId}
 	</update>

@@ -46,11 +46,12 @@
 										<span class="checkmark"></span>
 								</label></td>
 								<td><a href="#" onclick="goSelect(this)">${item2.mgrId }</a></td>
-								<td>${item2.name }</td>
+								<td>${item2.mgrName }</td>
 								<td>${item2.pw }</td>
 								<td>${item2.email }</td>
 								<td>${item2.phone }</td>
 								<td>
+								
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteMgr(<c:out value='${item2.mgrId }'/>)">삭제</button>
 					</div>

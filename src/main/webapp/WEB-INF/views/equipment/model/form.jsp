@@ -21,7 +21,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비명</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentName" name="equipmentName"
-								placeholder="<c:out value='${equipmentModelVO.equipmentName }'></c:out>">
+								value="<c:out value='${equipmentModelVO.equipmentName }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -29,15 +29,15 @@
 							class="col-sm-3 text-end control-label col-form-label">제조회사이름</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="manufacturingCompany" name="manufacturingCompany"
-								placeholder="<c:out value='${equipmentModelVO.manufacturingCompany }'></c:out>">
+								value="<c:out value='${equipmentModelVO.manufacturingCompany }'></c:out>">
 						</div>
 					</div>
 				<div class="form-group row">
-					<label for="categoryId"
+					<label for="manufacturerNumber"
 						class="col-sm-3 text-end control-label col-form-label">제조회사 전화번호</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="categoryId" name="categoryId"
-							placeholder="<c:out value='${equipmentModelVO.categoryId }'></c:out>">
+						<input type="text" class="form-control" id="manufacturerNumber" name="manufacturerNumber"
+							value="<c:out value='${equipmentModelVO.manufacturerNumber }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -45,7 +45,7 @@
 						class="col-sm-3 text-end control-label col-form-label">카테고리 번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="categoryId" name="categoryId"
-							placeholder="<c:out value='${equipmentModelVO.categoryId }'></c:out>">
+							value="<c:out value='${equipmentModelVO.categoryId }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -53,7 +53,7 @@
 						class="col-sm-3 text-end control-label col-form-label">수리처</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="repairer" name="repairer"
-							placeholder="<c:out value='${equipmentModelVO.repairer }'></c:out>">
+							value="<c:out value='${equipmentModelVO.repairer }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">
@@ -61,7 +61,7 @@
 						class="col-sm-3 text-end control-label col-form-label">수리처 전화번호</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="repairerNumber" name="repairerNumber"
-							placeholder="<c:out value='${equipmentModelVO.repairerNumber }'></c:out>">
+							value="<c:out value='${equipmentModelVO.repairerNumber }'></c:out>">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -69,8 +69,8 @@
 						class="col-sm-3 text-end control-label col-form-label">소비자 노출여부</label>
 					<div class="col-sm-9">
 						<select name="exposureYesNo" id="exposureYesNo">
-							<option value="1" selected="selected">노출</option>
-							<option value="0" selected="selected">비노출</option>
+							<option value="expose" <c:if test="${equipmentModelVO.exposureYesNo == 'expose'}">selected="selected"</c:if>>노출</option>
+							<option value="nonexpose" <c:if test="${equipmentModelVO.exposureYesNo == 'nonexpose'}">selected="selected"</c:if>>비노출</option>
 						</select>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비사진</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="equipmentPhoto" name="equipmentPhoto"
-							placeholder="<c:out value='${EquipmentModelDTO.equipmentPhoto }'></c:out>">
+							value="<c:out value='${EquipmentModelDTO.equipmentPhoto }'></c:out>">
 					</div>
 				</div>
 					<div class="form-group row">
@@ -87,7 +87,7 @@
 						class="col-sm-3 text-end control-label col-form-label">장비스펙</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="equipmentSpec" name="equipmentSpec"
-							placeholder="<c:out value='${EquipmentModelDTO.equipmentSpec }'></c:out>">
+							value="<c:out value='${EquipmentModelDTO.equipmentSpec }'></c:out>">
 					</div>
 				</div>
 				<div class="border-top">

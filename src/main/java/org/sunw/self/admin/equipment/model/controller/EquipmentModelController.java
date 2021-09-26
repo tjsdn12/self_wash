@@ -45,7 +45,7 @@ public class EquipmentModelController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO save(@RequestBody EquipmentModelDTO equipmentModelDTO) {
 		ResultDTO result = new ResultDTO();
-		boolean isSuccess = equipmentModelService.insert(equipmentModelDTO)>0;
+		boolean isSuccess = equipmentModelService.update(equipmentModelDTO)>0;
 		result.setSuccess(isSuccess);
 		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);

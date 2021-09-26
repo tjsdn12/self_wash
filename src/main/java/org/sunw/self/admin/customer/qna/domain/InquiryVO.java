@@ -26,6 +26,9 @@ public class InquiryVO {
 		String answerId;	
 		String whetherItIsPrivate;
 		
+		String memName;
+		String mgrName;
+		
 		
 		
 	

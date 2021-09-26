@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuVO;
 import org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,14 +45,19 @@ public class WashMenuServiceImpl implements WashMenuService {
 	@Override
 	public int update(WashMenuDTO washMenuDTO) {
 		
-		return 0;
-		//return washMenuMapper.update(toWashMenuVO(washMenuDTO));
+		return washMenuMapper.update(washMenuDTO.getWashMenuVO());
 	}
 
 	@Override
 	public int delete(String washMenuId) {
 		
 		return washMenuMapper.delete(washMenuId);
+	}
+
+	@Override
+	public List<EquipmentModelVO> getEquipmentModelList() {
+		List<EquipmentModelVO>list = washMenuMapper.getEquipmentModelList();
+		return list;
 	}
 
 }

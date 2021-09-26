@@ -3,8 +3,6 @@ package org.sunw.self.admin.user.user.service;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
-import org.sunw.self.admin.common.domain.PageDTO;
 import org.sunw.self.admin.user.user.domain.ManageUserDTO;
 import org.sunw.self.admin.user.user.domain.ManageUserVO;
 
