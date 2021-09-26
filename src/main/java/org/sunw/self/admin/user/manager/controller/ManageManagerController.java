@@ -43,7 +43,7 @@ public class ManageManagerController {
 		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
 		log.info(model);
 		
-		
+		model.addAttribute("getStoreList", manageManagerService.getStoreList());
 		
 	}
 	
@@ -80,7 +80,25 @@ public class ManageManagerController {
 		return result;
 	}
 	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO savee(@RequestBody ManageManagerDTO manageManagerDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = manageManagerService.update(manageManagerDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
+	
+	@GetMapping("/register")
+	public void register(ManageManagerDTO manageManagerDTO, Model model) {
+		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());
+		model.addAttribute("manageManagerVO",getOne.getManageManagerVO());
+		log.info(model);
+	
 
-
+	}
 
 }

@@ -33,7 +33,7 @@
 							<th scope="col">메일</th>
 							<th scope="col">전화번호</th>
 							<th scope="col"><input type="button" value="등록"
-								class="btn-info" onclick="location.href='/user/manager/form'">
+								class="btn-info" onclick="location.href='/user/manager/register'">
 							</th>
 						</tr>
 					</thead>
