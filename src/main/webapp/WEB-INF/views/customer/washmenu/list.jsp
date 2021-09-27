@@ -33,7 +33,7 @@
 							<th scope="col">메뉴명</th>
 							<th scope="col">세제 사용 여부</th>
 							<th scope="col"><input type="button" value="등록"
-								class="btn-info" onclick="location.href='/customer/washmenu/form'">
+								class="btn-info" onclick="location.href='/customer/washmenu/register'">
 							</th>
 						</tr>
 					</thead>

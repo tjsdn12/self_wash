@@ -36,7 +36,7 @@
 							<th scope="col">장비구매 가격</th>
 							<th scope="col">장비구매 일자</th>
 							<th scope="col"><input type="button" value="장비관리등록"
-								class="btn-info" onclick="location.href='/equipment/manage/form'">
+								class="btn-info" onclick="location.href='/equipment/manage/register'">
 							</th>
 						</tr>
 					</thead>
@@ -58,7 +58,7 @@
 								<td>${item2.purchaseDatetime }</td>
 								<td>
 					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteEquipmentCode(<c:out value='${item2.equipmentCode }'/>)">삭제</button>
+						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteEquipmentST(<c:out value='${item2.equipmentCode }'/>)">삭제</button>
 					</div>
 								</td>
 							</tr>
@@ -150,7 +150,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 		
 	}
 	
-	function deleteEquipmentCode(equipmentCode) {
+	function deleteEquipmentST(equipmentCode) {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
 			url : '/equipment/manage/list',

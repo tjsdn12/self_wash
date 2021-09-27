@@ -29,11 +29,11 @@ import lombok.extern.log4j.Log4j;
 public class StoreInfoController {
 	@Autowired
 	StoreInfoService storeInfoService;
-	@GetMapping("/list")
-	public void list(StoreInfoDTO storeInfoDTO, Model model) {
+	
+	@GetMapping("list")
+	public void list(StoreInfoDTO storeInfoDTO ,Model model) {
 	
 		model.addAttribute("getAllStoreInfoList",storeInfoService.getAllStoreInfoList(storeInfoDTO));
-		
 	}
 	@GetMapping("/form")
 	public void form(StoreInfoDTO storeInfoDTO, Model model) {
@@ -71,6 +71,26 @@ public class StoreInfoController {
 		log.info(model);
 	}
 	
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody StoreInfoDTO storeInfoDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = storeInfoService.insert(storeInfoDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
+	
+	@GetMapping("/register")
+	public void register(StoreInfoDTO storeInfoDTO, Model model) {
+		StoreInfoDTO getOne = storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
+		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
+		log.info(model);
+		
+	}
 	
 
 }

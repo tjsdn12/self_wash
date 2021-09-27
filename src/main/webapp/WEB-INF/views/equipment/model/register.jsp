@@ -7,13 +7,13 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm">
 				<div class="card-body">
-					<h4 class="card-title">EquipmentModelFormPage</h4>
+					<h4 class="card-title">EquipmentModelRegisterPage</h4>
 					<div class="form-group row">
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비관리번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
-								value="<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>">
+								value="<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -94,7 +94,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goList()">취소</button>
+							onclick="goLists()">취소</button>
 					</div>
 				</div>
 				
@@ -105,48 +105,39 @@
 <%@include file="/WEB-INF/views/includes/modal.jsp"%>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 <script>
-function save() {
-	const data = $('#actionForm').serializeObject();
-	$.ajax({
-		url : '/equipment/model/form',
-		type : 'PUT',
-		//응답 받고 
-		headers : { // Http header
-			// 요청 보낼때 내가 보낼 data의 타입
-			"Content-Type" : "application/json",
-		},
-		//
-		dataType : 'JSON', // 데이터 타입 (html, xml, json, text 등등)
-		data : JSON.stringify({equipmentModelVO: data}),
-		success : function onData(data) {
-			alert(data.message);
-			if(data.success) {
-				location.href = '/equipment/model/list';
+	function save() {
+		const data = $('#actionForm').serializeObject();
+		$.ajax({
+			url : '/equipment/model/register',
+			type : 'PUT',
+			//응답 받고 
+			headers : { // Http header
+				// 요청 보낼때 내가 보낼 data의 타입
+				"Content-Type" : "application/json",
+			},
+			//
+			dataType : 'JSON', // 데이터 타입 (html, xml, json, text 등등)
+			data : JSON.stringify({equipmentModelVO: data}),
+			success : function onData(data) {
+				alert(data.message);
+				if(data.success) {
+					location.href = '/equipment/model/list';
+				}
+			},
+			error : function onError(error) {
+				console.log("AA");
+				console.error(error);
 			}
-		},
-		error : function onError(error) {
-			console.log("AA");
-			console.error(error);
-		}
-	});
+		});
+	}
 	
-	function goList(){
+	function goList() {
 		const form = document.querySelector("#actionForm");
 		form.action = "/equipment/model/list";
 		form.method = "get";
-		form.innerHTML="";
+		form.innerHTML = "";
 		form.submit();
 	}
-	
-	document
-	.querySelector("#modifyBtn")
-	.addEventListener(
-			"click",
-			function(e) {
-				const form = document.querySelector("#actionForm");
-				form.action = "/equipment/model/form";
-				document.querySelector("#actionForm").submit();
-			});
 
 	
 </script>

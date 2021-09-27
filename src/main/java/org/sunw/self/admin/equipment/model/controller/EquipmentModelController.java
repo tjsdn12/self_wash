@@ -51,7 +51,7 @@ public class EquipmentModelController {
 		result.setMessage(message);
 		return result;
 	}
-	@DeleteMapping("list")
+	@DeleteMapping("/list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO delete(@RequestBody EquipmentModelDTO equipmentModelDTO) {
@@ -67,5 +67,25 @@ public class EquipmentModelController {
 		EquipmentModelDTO getOne =equipmentModelService.getOneEquipmentModel(equipmentModelDTO.getEquipmentModelId());
 		model.addAttribute("equipmentModelVO",getOne.getEquipmentModelVO());
 		log.info(model);
+	}
+	
+	@GetMapping("/register")
+	public void register(EquipmentModelDTO equipmentModelDTO, Model model) {
+		EquipmentModelDTO getOne = equipmentModelService.getOneEquipmentModel(equipmentModelDTO.getEquipmentModelId());
+		model.addAttribute("equipmentModelVO",getOne.getEquipmentModelVO());
+		log.info(model);
+		
+	}
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody EquipmentModelDTO equipmentModelDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = equipmentModelService.insert(equipmentModelDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
 	}
 }

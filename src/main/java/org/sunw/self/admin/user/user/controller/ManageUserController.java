@@ -77,5 +77,24 @@ public class ManageUserController {
 		log.info(model);
 	}
 	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody ManageUserDTO manageUserDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = manageUserService.insert(manageUserDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
+	
+	@GetMapping("/register")
+	public void register(ManageUserDTO manageUserDTO ,Model model) {
+		ManageUserDTO getOne = manageUserService.getOneUser(manageUserDTO.getMemId());
+		model.addAttribute("manageUserVO",getOne.getManageUserVO());
+		log.info(model);
+	}
+	
 	
 }

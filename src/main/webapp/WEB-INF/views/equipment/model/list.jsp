@@ -38,7 +38,7 @@
 							<th scope="col">장비사진</th>
 							<th scope="col">장비스펙</th>
 							<th scope="col"><input type="button" value="장비등록"
-								class="btn-info" onclick="location.href='/equipment/model/form'">
+								class="btn-info" onclick="location.href='/equipment/model/register'">
 							</th>
 						</tr>
 					</thead>

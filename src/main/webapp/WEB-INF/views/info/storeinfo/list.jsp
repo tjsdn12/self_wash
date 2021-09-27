@@ -37,7 +37,7 @@
 							<th scope="col">관리자 주민번호</th>
 							<th scope="col">우편번호</th>
 							<th scope="col"><input type="button" value="매장등록"
-								class="btn-info" onclick="location.href='/info/storeinfo/form'">
+								class="btn-info" onclick="location.href='/info/storeinfo/register'">
 							</th>
 						</tr>
 					</thead>

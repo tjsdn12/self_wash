@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">아이디</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="mgrId" id="mgrId"
-								value="<c:out value='${manageManagerVO.mgrId }'></c:out>">
+								value="<c:out value='${manageManagerVO.mgrId }'></c:out>" readonly="readonly"> 
 						</div>
 					</div>
 					<div class="form-group row">
@@ -122,28 +122,7 @@
 		});
 	}
 	
-	function change(style) {
-	    
-		   if( style == "selectBox01" )
-			   {
-		       view1.style.display = "inline"
-			   view2.style.display = "none"
-			   view3.style.display = "none"
-			   }
-		   if( style == "selectBox02" )
-		      {
-		       view1.style.display = "none"
-			   view2.style.display = "inline"
-			   view3.style.display = "none"
-			   }
-			if( style == "selectBox04" )
-		      {
-		       view1.style.display = "none"
-			   view2.style.display = "none"
-			   view3.style.display = "none"
-			   }
-		   	}
-	
+
 	function goList() {
 		const form = document.querySelector("#actionForm");
 		form.action = "/user/manager/list";

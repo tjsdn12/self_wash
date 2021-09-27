@@ -50,23 +50,46 @@ public class WashMenuController {
 		result.setMessage(message);
 		return result;
 	}
-	@DeleteMapping("list")
+	
+	@DeleteMapping("/list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO delete(@RequestBody WashMenuDTO washMenuDTO) {
 		ResultDTO result = new ResultDTO();
 		boolean isSuccess =washMenuService.delete(washMenuDTO.getWashMenuVO().getWashMenuId())>0;
 		result.setSuccess(isSuccess);
-		String message = isSuccess?"삭제되었습니다..":"오류가 발생하였습니다.";
+		String message = isSuccess?"삭제되었습니다.":"오류가 발생하였습니다.";
 		result.setMessage(message);
 		return result;
 	}
 	
-	@GetMapping("detail")
+	@GetMapping("/detail")
 	public void selectWashMenu(WashMenuDTO washMenuDTO,Model model) {
 		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
 		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
 		log.info(model);
 	}
 
+	
+	@GetMapping("/register")
+	public void register(WashMenuDTO washMenuDTO,Model model) {
+		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
+		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
+		log.info(model);
+		
+		model.addAttribute("getEquipmentModelList", washMenuService.getEquipmentModelList());
+		
+	}
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody WashMenuDTO washMenuDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess =washMenuService.insert(washMenuDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
 }

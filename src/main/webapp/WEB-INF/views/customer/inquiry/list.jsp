@@ -40,7 +40,7 @@
 							<th scope="col">관리자아이디</th>
 							<th scope="col">비공개 여부</th>
 							<th scope="col"><input type="button" value="답변 등록"
-								class="btn-info" onclick="location.href='/customer/inquiry/form'">
+								class="btn-info" onclick="location.href='/customer/inquiry/register'">
 							</th>
 						</tr>
 					</thead>

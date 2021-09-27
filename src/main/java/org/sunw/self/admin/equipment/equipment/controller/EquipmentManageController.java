@@ -71,6 +71,26 @@ public class EquipmentManageController {
 		log.info(model);
 	}
 	
+	@GetMapping("/register")
+	public void register(EquipmentManageDTO equipmentManageDTO, Model model) {
+		EquipmentManageDTO getOne = equipmentManageService.getOneEquipmentManage(equipmentManageDTO.getEquipmentCode());
+		model.addAttribute("equipmentManageVO",getOne.getEquipmentManageVO());
+		log.info(model); 
+		
+	}
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody EquipmentManageDTO equipmentManageDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = equipmentManageService.insert(equipmentManageDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	
+	}
 	
 
 }

@@ -96,7 +96,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTables()">목록</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -127,6 +127,24 @@
 				form.action = "/equipment/model/form";
 				document.querySelector("#actionForm").submit();
 			});
+	function goList(){
+		const form = document.querySelector("#actionForm");
+		form.action = "/equipment/model/list";
+		form.method = "get";
+		form.innerHTML="";
+		form.submit();
+	}
+	
+	document
+	.querySelector("#modifyBtn")
+	.addEventListener(
+			"click",
+			function(e) {
+				const form = document.querySelector("#actionForm");
+				form.action = "/equipment/model/form";
+				document.querySelector("#actionForm").submit();
+			});
+
 
 	</script>
 

@@ -38,7 +38,7 @@
 							<th scope="col">포인트</th>
 							<th scope="col">이용날자</th>
 							<th scope="col"><input type="button" value="등록"
-								class="btn-info" onclick="location.href='/user/user/form'">
+								class="btn-info" onclick="location.href='/user/user/register'">
 							</th>
 						</tr>
 					</thead>

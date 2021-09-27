@@ -31,7 +31,7 @@ public class InquiryController {
 	InquiryService inquiryService;
 	
 	@GetMapping("/list")
-	public void list(InquiryDTO inquiryDTO,Model model) {
+	public void goList(InquiryDTO inquiryDTO,Model model) {
 		
 		model.addAttribute("getAllInquiryList",inquiryService.getAllInquiryList(inquiryDTO));
 		
@@ -79,5 +79,28 @@ public class InquiryController {
 		model.addAttribute("inquiryVO",getOne.getInquiryVO());
 		log.info(model);
 	}
+	
+	@GetMapping("/register")
+	public void register(InquiryDTO inquiryDTO, Model model) {
+		InquiryDTO getOne = inquiryService.getOneInquiry(inquiryDTO.getInquiryId());
+		model.addAttribute("inquiryVO",getOne.getInquiryVO());
+		log.info(model);
+		
+		model.addAttribute("getOneManagerId", inquiryService.getOneManagerId());
+		
+		model.addAttribute("getOneUserId" , inquiryService.getOneUserId());
+		
+	}
 
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody InquiryDTO inquiryDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = inquiryService.insert(inquiryDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
 }

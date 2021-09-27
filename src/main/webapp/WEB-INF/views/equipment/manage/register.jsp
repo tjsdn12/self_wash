@@ -7,7 +7,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm">
 				<div class="card-body">
-					<h4 class="card-title">EquipmentManageFormPage</h4>
+					<h4 class="card-title">EquipmentManageRegisterPage</h4>
 					<div class="form-group row">
 						<label for="equipmentCode"
 							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
@@ -94,7 +94,7 @@
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/equipment/manage/form',
+			url : '/equipment/manage/register',
 			type : 'PUT',
 			//응답 받고 
 			headers : { // Http header
@@ -124,16 +124,15 @@
 		form.innerHTML = "";
 		form.submit();
 	}
-
+/* 
 	document
 			.querySelector("#modifyBtn")
 			.addEventListener(
 					"click",
 					function(e) {
 						const form = document.querySelector("#actionForm");
-						form.action = "/equipment/manage/form";
+						form.action = "/equipment/manage/register";
 						document.querySelector("#actionForm").submit();
-					});
-
+					}); */
 	
 </script>

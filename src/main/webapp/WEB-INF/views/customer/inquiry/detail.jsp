@@ -101,7 +101,7 @@
 				<div class="border-top">
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" >수정</button>
-						<button type="button" id="tablesBtn" class="btn btn-primary" onclick="goTables()">확인</button>
+						<button type="button" id="tablesBtn" class="btn btn-primary" onclick="goTable()">목록</button>
 					</div>
 				</div>
 			</form>

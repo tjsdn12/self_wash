@@ -7,7 +7,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm">
 				<div class="card-body">
-					<h4 class="card-title">WashMenuformPage</h4>
+					<h4 class="card-title">WashMenuRegisterPage</h4>
 					<div class="form-group row">
 						<label for="washMenuId"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 번호</label>
@@ -71,7 +71,7 @@
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/customer/washmenu/form',
+			url : '/customer/washmenu/register',
 			type : 'PUT',
 			//응답 받고 
 			headers : { // Http header
@@ -94,28 +94,6 @@
 		});
 	}
 	
-	function change(style) {
-	    
-		   if( style == "selectBox01" )
-			   {
-		       view1.style.display = "inline"
-			   view2.style.display = "none"
-			   view3.style.display = "none"
-			   }
-		   if( style == "selectBox02" )
-		      {
-		       view1.style.display = "none"
-			   view2.style.display = "inline"
-			   view3.style.display = "none"
-			   }
-			if( style == "selectBox04" )
-		      {
-		       view1.style.display = "none"
-			   view2.style.display = "none"
-			   view3.style.display = "none"
-			   }
-		   	}
-	
 	function goList() {
 		const form = document.querySelector("#actionForm");
 		form.action = "/customer/washmenu/list";
@@ -130,9 +108,10 @@
 					"click",
 					function(e) {
 						const form = document.querySelector("#actionForm");
-						form.action = "/customer/washmenu/form";
+						form.action = "/customer/washmenu/register";
 						document.querySelector("#actionForm").submit();
 					});
+
 
 	
 </script>

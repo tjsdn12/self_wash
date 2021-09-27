@@ -88,7 +88,7 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	</update>
 	
 	<delete id="delete">
-	DELETE FROM SELF_WASH.ORDER WHERE WASH_MENU_ID = #{washMenuId}
+	DELETE FROM SELF_WASH.WASH_MENU WHERE WASH_MENU_ID = #{washMenuId}
 	</delete>
 	
 </mapper>

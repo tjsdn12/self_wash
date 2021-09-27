@@ -88,7 +88,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTables()">목록</button>
+							onclick="goTable()">목록</button>
 					</div>
 				</div>
 			</form>

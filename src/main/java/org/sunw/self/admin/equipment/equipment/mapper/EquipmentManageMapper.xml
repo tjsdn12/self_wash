@@ -83,7 +83,8 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	</update>
 	
 	<delete id="delete">
-	DELETE FROM EQUIPMENT WHERE EQUIMENT_CODE = #{equipmentCode}
+	DELETE FROM SELF_WASH.EQUIPMENT WHERE EQUIPMENT_CODE = #{equipmentCode}
+
 	</delete>
 	
 </mapper>  
