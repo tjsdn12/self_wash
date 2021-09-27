@@ -78,6 +78,7 @@ public class InquiryController {
 		InquiryDTO getOne = inquiryService.getOneInquiry(inquiryDTO.getInquiryId());
 		model.addAttribute("inquiryVO",getOne.getInquiryVO());
 		log.info(model);
+		log.info(inquiryDTO.getInquiryId());
 	}
 	
 	@GetMapping("/register")

@@ -24,7 +24,7 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 		)
 		VALUES
 		(
-		#{mgrId}
+		#{mgrId},
 		#{qnaTitle}, 
 		#{qnaContents}, 
 		#{classification}, 

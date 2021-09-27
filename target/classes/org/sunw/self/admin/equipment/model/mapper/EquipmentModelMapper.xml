@@ -8,7 +8,7 @@ namespace= "org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
 		<selectKey order="AFTER" resultType="int">
 		SELECT LAST_INSERT_ID()
 		</selectKey>
-	INSERT INTO EQUIPMENT_MODEL
+	INSERT INTO SELF_WASH.EQUIPMENT_MODEL
 	(
 	EQUIPMENT_NAME, 
 	MANUFACTURING_COMPANY, 

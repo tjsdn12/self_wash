@@ -113,7 +113,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">목록</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -148,5 +148,11 @@
 			}
 		});
 	}
-	
+	function goList(){
+		const form = document.querySelector("#actionForm");
+		form.action = "/customer/inquiry/list";
+		form.method = "get";
+		form.innerHTML="";
+		form.submit();
+	}
 </script>

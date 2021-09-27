@@ -7,7 +7,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm">
 				<div class="card-body">
-					<h4 class="card-title">OrderMenuFormPage</h4>
+					<h4 class="card-title">OrderMenuRegisterPage</h4>
 					<div class="form-group row">
 						<label for="orderMenuId"
 							class="col-sm-3 text-end control-label col-form-label">주문메뉴 번호</label>
@@ -73,7 +73,7 @@
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/customer/ordermenu/form',
+			url : '/customer/ordermenu/register',
 			type : 'PUT',
 			//응답 받고 
 			headers : { // Http header
@@ -110,7 +110,7 @@
 					"click",
 					function(e) {
 						const form = document.querySelector("#actionForm");
-						form.action = "/customer/ordermenu/form";
+						form.action = "/customer/ordermenu/register";
 						document.querySelector("#actionForm").submit();
 					});
 	

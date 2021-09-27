@@ -124,15 +124,6 @@
 		form.innerHTML = "";
 		form.submit();
 	}
-/* 
-	document
-			.querySelector("#modifyBtn")
-			.addEventListener(
-					"click",
-					function(e) {
-						const form = document.querySelector("#actionForm");
-						form.action = "/equipment/manage/register";
-						document.querySelector("#actionForm").submit();
-					}); */
+
 	
 </script>

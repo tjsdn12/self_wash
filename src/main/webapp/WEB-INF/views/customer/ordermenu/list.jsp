@@ -34,7 +34,7 @@
 							<th scope="col">주문메뉴 번호</th>
 							<th scope="col">회원번호</th>
 							<th scope="col"><input type="button" value="주문메뉴 등록"
-								class="btn-info" onclick="location.href='/customer/ordermenu/form'">
+								class="btn-info" onclick="location.href='/customer/ordermenu/register'">
 							</th>
 						</tr>
 					</thead>

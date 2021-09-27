@@ -7,7 +7,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm">
 				<div class="card-body">
-					<h4 class="card-title">OrderManageFormPage</h4>
+					<h4 class="card-title">OrderManageRegisterPage</h4>
 					<div class="form-group row">
 						<label for="orderId"
 							class="col-sm-3 text-end control-label col-form-label">주문번호</label>
@@ -81,7 +81,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">목록</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -94,7 +94,7 @@
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/customer/ordermanage/form',
+			url : '/customer/ordermanage/register',
 			type : 'PUT',
 			//응답 받고 
 			headers : { // Http header
@@ -117,4 +117,11 @@
 		});
 	}
 	
+	function goList() {
+		const form = document.querySelector("#actionForm");
+		form.action = "/customer/ordermanage/list";
+		form.method = "get";
+		form.innerHTML = "";
+		form.submit();
+	}
 </script>

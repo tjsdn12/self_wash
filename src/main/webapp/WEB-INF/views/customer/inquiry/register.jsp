@@ -156,14 +156,5 @@
 		form.submit();
 	}
 
-	document
-			.querySelector("#modifyBtn")
-			.addEventListener(
-					"click",
-					function(e) {
-						const form = document.querySelector("#actionForm");
-						form.action = "/customer/inquiry/register";
-						document.querySelector("#actionForm").submit();
-					});
 	
 </script>

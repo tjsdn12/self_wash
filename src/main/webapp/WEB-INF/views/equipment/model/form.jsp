@@ -94,7 +94,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goList()">취소</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 				
@@ -129,6 +129,7 @@ function save() {
 			console.error(error);
 		}
 	});
+}
 	
 	function goList(){
 		const form = document.querySelector("#actionForm");
@@ -137,7 +138,6 @@ function save() {
 		form.innerHTML="";
 		form.submit();
 	}
-	
 	document
 	.querySelector("#modifyBtn")
 	.addEventListener(
@@ -147,6 +147,7 @@ function save() {
 				form.action = "/equipment/model/form";
 				document.querySelector("#actionForm").submit();
 			});
+
 
 	
 </script>

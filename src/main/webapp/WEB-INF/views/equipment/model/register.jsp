@@ -94,7 +94,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goLists()">취소</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 				

@@ -109,24 +109,7 @@
 
 <script type="text/javascript">
 	
-	function goTable(){
-		let form = document.querySelector("#actionForm");
-		form.action = "/equipment/model/list";
-		form.method = "get";
-		form.innerHTML="";
-		form.submit();
-	}
-	
-	
-	document
-	.querySelector("#modifyBtn")
-	.addEventListener(
-			"click",
-			function(e) {
-				const form = document.querySelector("#actionForm");
-				form.action = "/equipment/model/form";
-				document.querySelector("#actionForm").submit();
-			});
+
 	function goList(){
 		const form = document.querySelector("#actionForm");
 		form.action = "/equipment/model/list";

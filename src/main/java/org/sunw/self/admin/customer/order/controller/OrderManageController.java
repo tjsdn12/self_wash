@@ -71,4 +71,23 @@ public class OrderManageController {
 		model.addAttribute("orderManageVO",getOne.getOrderManageVO());
 		log.info(model);
 	}
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody OrderManageDTO orderManageDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = orderManageService.insert(orderManageDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
+	
+	@GetMapping("/register")
+	public void register(OrderManageDTO orderManageDTO, Model model) {
+		OrderManageDTO getOne = orderManageService.getOneOrderManage(orderManageDTO.getOrderId());
+		model.addAttribute("orderManageVO",getOne.getOrderManageVO());
+		log.info(model);
+	}
 }

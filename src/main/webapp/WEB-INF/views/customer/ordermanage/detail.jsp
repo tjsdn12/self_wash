@@ -95,7 +95,7 @@
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
 						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTables()">목록</button>
+							onclick="goList()">목록</button>
 					</div>
 				</div>
 			</form>
@@ -107,7 +107,7 @@
 
 
 <script type="text/javascript">
-	function goTable() {
+	function goList() {
 		let form = document.querySelector("#actionForm");
 		form.action = "/customer/ordermanage/list";
 		form.method = "get";

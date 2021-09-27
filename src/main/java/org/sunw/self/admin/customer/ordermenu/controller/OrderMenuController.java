@@ -74,5 +74,24 @@ public class OrderMenuController {
 		log.info(model);
 	}
 	
+	@GetMapping("/register")
+	public void register(OrderMenuDTO orderMenuDTO, Model model) {
+		OrderMenuDTO getOne = orderMenuService.getOneOrderMenu(orderMenuDTO.getOrderMenuId());
+		model.addAttribute("orderMenuVO",getOne.getOrderMenuVO());
+		log.info(model);
+		
+	}
+	
+	@PutMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO register(@RequestBody OrderMenuDTO orderMenuDTO) {
+		ResultDTO result =new ResultDTO();
+		boolean isSuccess = orderMenuService.insert(orderMenuDTO)>0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"저장에 성공하였습니다.":"오류가 발생하였습니다.";
+		result.setMessage(message);
+		return result;
+	}
 	
 }

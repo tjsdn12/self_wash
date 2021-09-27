@@ -36,7 +36,7 @@
 							<th scope="col">주문상태</th>
 							<th scope="col">적립 포인트</th>
 							<th scope="col"><input type="button" value="주문관리 등록"
-								class="btn-info" onclick="location.href='/customer/ordermanage/form'">
+								class="btn-info" onclick="location.href='/customer/ordermanage/register'">
 							</th>
 						</tr>
 					</thead>
@@ -153,7 +153,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	function deleteOrderId(orderId) {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
-			url : '/order/manage/list',
+			url : '/customer/ordermanage/list',
 			type : 'Delete',
 			//응답 받고 
 			headers : { // Http header
