@@ -1,4 +1,4 @@
-package org.sunw.self.admin.customer.order.sesrvice;
+package org.sunw.self.admin.customer.order.service;
 
 import java.util.List;
 

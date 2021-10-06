@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.customer.order.domain.OrderManageDTO;
-import org.sunw.self.admin.customer.order.sesrvice.OrderManageService;
+import org.sunw.self.admin.customer.order.service.OrderManageService;
 import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
 
 import lombok.extern.log4j.Log4j;

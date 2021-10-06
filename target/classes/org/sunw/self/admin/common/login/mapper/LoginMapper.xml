@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="org.sunw.self.admin.common.login.mapper.LoginMapper">
+
+	<select id="getLoginInfo"
+		resultType="org.sunw.self.admin.common.login.domain.LoginVO">
+		SELECT MGR_ID, 
+			PW, 
+			MGR_NAME, 
+			AUTHOR_LEVEL, 
+			PHONE, 
+			EMAIL, 
+			APPROVAL_STATUS, 
+			S_ID
+		FROM MGR
+		WHERE PHONE =#{phone}
+		AND PW=#{pw}
+	</select>
+	
+</mapper>
