@@ -54,18 +54,19 @@ public class InquiryServiceImpl implements InquiryService {
 		return inquiryMapper.delete(inquiryId);
 	}
 
+
 	@Override
-	public List<ManageManagerVO> getOneManagerId() {
-		List<ManageManagerVO>list = inquiryMapper.getOneManagerId();
+	public List<ManageUserVO> getUserList() {
+		List<ManageUserVO>list = inquiryMapper.getUserList();
 		return list;
 	}
 
 	@Override
-	public List<ManageUserVO> getOneUserId() {
-		List<ManageUserVO>list = inquiryMapper.getOneUserId();
+	public List<ManageManagerVO> getManagerList() {
+		List<ManageManagerVO>list = inquiryMapper.getManagerList();
 		return list;
 	}
-	
+
 	
 
 }

@@ -101,5 +101,17 @@ public class ManageManagerController {
 	
 
 	}
+	
+	@PostMapping("/register")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO phoneCheck(@RequestBody ManageManagerDTO manageManagerDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = manageManagerService.phoneCheck(manageManagerDTO)==0;
+		result.setSuccess(isSuccess);
+		String message = isSuccess?"사용할수있는 번호입니다.":"사용할수없는 번호입니다.";
+		result.setMessage(message);
+		return result;
+	}
 
 }

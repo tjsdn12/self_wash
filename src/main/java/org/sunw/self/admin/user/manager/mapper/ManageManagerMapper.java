@@ -26,4 +26,6 @@ public interface ManageManagerMapper {
 	
 	public List<StoreInfoVO> getStoreList();
 	
+	public int phoneCheck(ManageManagerVO manageManagerVO);
+	
 }

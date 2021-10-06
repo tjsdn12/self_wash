@@ -67,5 +67,13 @@ public class ManageManagerServiceImpl implements ManageManagerService {
 		return manageManagerMapper.delete(mgrId);
 	}
 
+	@Override
+	public int phoneCheck(ManageManagerDTO manageManagerDTO) {
+		
+		return manageManagerMapper.phoneCheck(manageManagerDTO.getManageManagerVO());
+	}
+	
+	
+
 
 }

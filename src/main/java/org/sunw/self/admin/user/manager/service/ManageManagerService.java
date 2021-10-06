@@ -26,6 +26,7 @@ public interface ManageManagerService {
 	
 	public List<StoreInfoVO> getStoreList();
 	
+	public int phoneCheck(ManageManagerDTO manageManagerDTO);
 	
 	
 }

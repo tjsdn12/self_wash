@@ -58,21 +58,9 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 				#{perSheet}
 	</select>
 	
-	<select id="getOneManagerId"
-	resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
-	SELECT 
-		MGR_ID, 
-		PW, 
-		MGR_NAME, 
-		AUTHOR_LEVEL, 
-		PHONE, 
-		EMAIL, 
-		APPROVAL_STATUS, 
-		S_ID
-	FROM SELF_WASH.MGR
-	</select>
+
 	
-	<select id="getOneUserId"
+	<select id="getUserList"
 	resultType="org.sunw.self.admin.user.user.domain.ManageUserVO">
 	SELECT 
 		MEM_ID, 
@@ -116,6 +104,19 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 	
 	<select id="getInquirystatusCnt">
 	SELECT COUNT(*) FROM SELF_WASH.QNA
+	</select>
+	
+	<select id="getManagerList"
+	resultType="org.sunw.self.admin.user.manager.domain.ManageManagerVO">
+	SELECT MGR_ID, 
+			PW, 
+			MGR_NAME, 
+			AUTHOR_LEVEL, 
+			PHONE, 
+			EMAIL, 
+			APPROVAL_STATUS, 
+			S_ID
+		FROM MGR
 	</select>
 	
 	<update id="update">

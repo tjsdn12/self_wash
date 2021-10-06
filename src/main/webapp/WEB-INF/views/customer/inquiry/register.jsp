@@ -17,13 +17,17 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="mgrId"
-							class="col-sm-3 text-end control-label col-form-label">관리자 번호</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="mgrId" id="mgrId"
-								value="<c:out value='${inquiryVO.mgrId }'></c:out>">
-						</div>
+					<label for="mgrId"
+						class="col-sm-3 text-end control-label col-form-label">관리자 번호</label>
+					<div class="col-sm-9">
+						<select name="mgrId" id="mgrId" >
+	 						<option>::: 관리자 선택 :::</option>
+								<c:forEach items="${getManagerList }" var="item2">
+									<option value="${item2.mgrId }">${item2.mgrName }</option>
+								</c:forEach>
+							</select>
 					</div>
+				</div>
 					<div class="form-group row">
 						<label for="qnaTitle"
 							class="col-sm-3 text-end control-label col-form-label">문의 제목</label>
@@ -50,12 +54,16 @@
 						</select>
 					</div>
 				</div>
-				<div class="form-group row">
+					<div class="form-group row">
 					<label for="memId"
-						class="col-sm-3 text-end control-label col-form-label">회원 아이디</label>
+						class="col-sm-3 text-end control-label col-form-label">사용자 번호</label>
 					<div class="col-sm-9">
-						<input type="text" class="form-control" id="memId" name="memId" 
-							value="<c:out value='${inquiryVO.memId }'></c:out>">							
+						<select name="memId" id="memId" >
+	 						<option>::: 사용자 선택 :::</option>
+								<c:forEach items="${getUserList }" var="item2">
+									<option value="${item2.memId }">${item2.memName }</option>
+								</c:forEach>
+							</select>
 					</div>
 				</div>
 					<div class="form-group row">

@@ -21,8 +21,8 @@ public interface InquiryService {
 	public int update(InquiryDTO inquiryDTO);
 	
 	public int delete(String inquiryId);
-
-	public List<ManageManagerVO> getOneManagerId();
 	
-	public List<ManageUserVO> getOneUserId();
+	public List<ManageUserVO> getUserList();
+	
+	public List<ManageManagerVO> getManagerList();
 }

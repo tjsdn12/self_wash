@@ -83,9 +83,6 @@
 	FROM SELF_WASH.STORE
 	</select>
 
-	<select id="getManagerCnt">
-		SELECT COUNT(*) FROM MGR
-	</select>
 
 	<update id="update">
 		UPDATE MGR
@@ -103,4 +100,9 @@
 	<delete id="delete">
 		DELETE FROM MGR WHERE MGR_ID = #{mgrId}
 	</delete>
+	
+	<select id="phoneCheck" resultType="int">
+	SELECT COUNT(*) FROM MGR
+	WHERE PHONE =#{phone}
+	</select>
 </mapper>

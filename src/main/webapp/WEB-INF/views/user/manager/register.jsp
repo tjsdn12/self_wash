@@ -34,10 +34,11 @@
 					</div>
 					<div class="form-group row">
 						<label for="phone"
-							class="col-sm-3 text-end control-label col-form-label">전화번호</label>
+							class="col-sm-3 text-end control-label col-form-label">번호</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" id="phone" name="phone"
+							<input type="text" class="form-control" id="phone" name="phone"
 								value="<c:out value='${manageManagerVO.phone }'></c:out>">
+							<button class="phoneChk" type="button" id="phoneChk" onclick="phoneChking();" value="N">중복확인</button>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -142,7 +143,33 @@
 						form.action = "/user/manager/register";
 						document.querySelector("#actionForm").submit();
 					});
-
+	
+	
+	function phoneChking() {
+		const data = $('#actionForm').serializeObject();
+		$.ajax({
+			url : '/user/manager/register',
+			type : 'POST',
+			//응답 받고 
+			headers : { // Http header
+				// 요청 보낼때 내가 보낼 data의 타입
+				"Content-Type" : "application/json",
+			},
+			//
+			dataType : 'JSON', // 데이터 타입 (html, xml, json, text 등등)
+			data : JSON.stringify({manageManagerVO: data}),
+			success : function onData(data) {
+				alert(data.message);
+				
+			},
+			error : function onError(error) {
+				console.log("AA");
+				console.error(error);
+			}
+		});
+	}
+	
+	
 
 
 </script>
