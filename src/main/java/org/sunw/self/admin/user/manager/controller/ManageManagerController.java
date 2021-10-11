@@ -33,6 +33,12 @@ public class ManageManagerController {
 	ManageManagerService manageManagerService;
 	
 	
+	@GetMapping("/list")
+	public void list(ManageManagerDTO manageManagerDTO,Model model) {
+		
+		model.addAttribute("getAllManagerList",manageManagerService.getAllManagerList(manageManagerDTO));
+	}
+	
 	@GetMapping("/form")
 	public void form(ManageManagerDTO manageManagerDTO, Model model) {
 		ManageManagerDTO getOne = manageManagerService.getOneManager(manageManagerDTO.getMgrId());

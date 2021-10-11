@@ -256,7 +256,7 @@
 							<ul class="dropdown-menu dropdown-menu-end user-dd animated"
 								aria-labelledby="navbarDropdown">
 								<c:if test="${sessionScope.loginInfo == null}">
-								<a class="dropdown-item" href="common/login/login"><i 
+								<a class="dropdown-item" href="/common/login/login"><i 
 									class="fa fa-power-off me-1 ms-1"></i> Login(<c:out value="${loginInfo.mgrName}" />)</a></c:if>
 								<div class="dropdown-divider"></div>
 								<c:if test="${sessionScope.loginInfo != null}">
