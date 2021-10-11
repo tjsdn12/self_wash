@@ -32,12 +32,6 @@ public class ManageManagerController {
 	@Autowired
 	ManageManagerService manageManagerService;
 	
-	@GetMapping("/list")
-	public void goList(ManageManagerDTO manageManagerDTO, Model model) {
-		
-		model.addAttribute("getAllManagerList", manageManagerService.getAllManagerList(manageManagerDTO ));
-	}
-	
 	
 	@GetMapping("/form")
 	public void form(ManageManagerDTO manageManagerDTO, Model model) {

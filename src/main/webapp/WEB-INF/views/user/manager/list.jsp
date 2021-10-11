@@ -115,16 +115,6 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	   },false)
 	});
 	
-	document.querySelectorAll(".dropdown-item").forEach(a=>{
-	    a.addEventListener("click",function (e){
-	        e.preventDefault();
-	        e.stopPropagation();
-	        console.log(a.getAttribute('href'));
-	        document.querySelector(".current_perSheet").value = a.getAttribute('href');
-	        document.querySelector(".current_page").value = 1;
-	        document.querySelector("#actionForm").submit();
-	    },false)
-	});
 	
 	function goSelect(dom){
 		console.log(dom);

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.common.login.domain.LoginDTO;
 import org.sunw.self.admin.common.login.domain.LoginVO;
 import org.sunw.self.admin.common.login.service.LoginService;
+import org.sunw.self.admin.infomation.store.domain.StoreInfoDTO;
 
 @Controller
 @RequestMapping("/common/login")
@@ -26,10 +28,12 @@ public class LoginController {
 	
 	
 	@GetMapping("/login")
-	public void goLogin() {
+	public void loginForm(LoginDTO loginDTO, Model model) {
 		
+		model.addAttribute("loginInfo" , loginService.getLoginInfo(loginDTO));
 		
 	}
+	
 	
 	@PostMapping("/login")
 	@ResponseBody
@@ -53,5 +57,25 @@ public class LoginController {
 		return result;
 		
 	}
+	
+	
+	
+	
+	
+	
+	@PostMapping("/logout")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO logOutInfo(HttpServletRequest request) {
+		ResultDTO result = new ResultDTO();
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return result;
+	}
+	
+	
 
+	
+	
 }

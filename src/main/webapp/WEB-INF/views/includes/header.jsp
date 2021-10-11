@@ -255,8 +255,13 @@
 						</a>
 							<ul class="dropdown-menu dropdown-menu-end user-dd animated"
 								aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="/common/login/login"><i
-									class="fa fa-power-off me-1 ms-1"></i> Login(<c:out value="${loginInfo.mgrName}" />)</a>
+								<c:if test="${sessionScope.loginInfo == null}">
+								<a class="dropdown-item" href="common/login/login"><i 
+									class="fa fa-power-off me-1 ms-1"></i> Login(<c:out value="${loginInfo.mgrName}" />)</a></c:if>
+								<div class="dropdown-divider"></div>
+								<c:if test="${sessionScope.loginInfo != null}">
+								<a class="dropdown-item" onclick="logout()"><i
+									class="fa fa-power-off me-1 ms-1"></i> Logout(<c:out value="${loginInfo.mgrName}" />)</a></c:if>
 								<div class="dropdown-divider"></div>
 							</ul></li>
 						<!-- ============================================================== -->
@@ -280,58 +285,49 @@
 					<ul id="sidebarnav" class="pt-4">
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/info/storeinfo/list" aria-expanded="false"><i
-								class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+							href="http://localhost:8080/info/storeinfo/list" aria-expanded="false"><span class="hide-menu">StoreInfo</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/customer/inquiry/list" aria-expanded="false"><i
-								class="mdi mdi-chart-bar"></i><span class="hide-menu">Charts</span></a></li>
+							href="http://localhost:8080/customer/inquiry/list" aria-expanded="false"><span class="hide-menu">QnA</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/customer/washmenu/list" aria-expanded="false"><i
-								class="mdi mdi-blur-linear"></i><span class="hide-menu">Full
-									Width</span></a></li>
+							href="http://localhost:8080/customer/washmenu/list" aria-expanded="false"><span class="hide-menu">WashMenu</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-receipt"></i><span class="hide-menu">Forms
+							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">Equipment
 							</span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"><a href="http://localhost:8080/equipment/manage/list"
-									class="sidebar-link"><i class="mdi mdi-note-outline"></i><span
-										class="hide-menu"> Form Basic </span></a></li>
+									class="sidebar-link"><span
+										class="hide-menu"> Manage </span></a></li>
 								<li class="sidebar-item"><a href="http://localhost:8080/equipment/model/list"
-									class="sidebar-link"><i class="mdi mdi-note-plus"></i><span
-										class="hide-menu"> Form Wizard </span></a></li>
+									class="sidebar-link"><span
+										class="hide-menu"> Model </span></a></li>
 							</ul></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-face"></i><span class="hide-menu">Icons </span></a>
+							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">User </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"><a href="http://localhost:8080/user/manager/list"
-									class="sidebar-link"><i class="mdi mdi-emoticon"></i><span
-										class="hide-menu"> Material Icons </span></a></li>
+									class="sidebar-link"><span
+										class="hide-menu"> Manager </span></a></li>
 								<li class="sidebar-item"><a href="http://localhost:8080/user/user/list"
-									class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span
-										class="hide-menu"> Font Awesome Icons </span></a></li>
+									class="sidebar-link"><span
+										class="hide-menu"> User </span></a></li>
 							</ul></li>
 						
 				
 						<li class="sidebar-item"><a
 							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-account-key"></i><span class="hide-menu">Authentication
+							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">Order
 							</span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"><a
-									href="http://localhost:8080/customer/ordermanage/list" class="sidebar-link"><i
-										class="mdi mdi-all-inclusive"></i><span class="hide-menu">
-											Login </span></a></li>
+									href="http://localhost:8080/customer/ordermanage/list" class="sidebar-link"><span class="hide-menu">
+											Manage </span></a></li>
 								<li class="sidebar-item"><a
-									href="http://localhost:8080/customer/ordermenu/list" class="sidebar-link"><i
-										class="mdi mdi-all-inclusive"></i><span class="hide-menu">
-											Register </span></a></li>
+									href="http://localhost:8080/customer/ordermenu/list" class="sidebar-link"><span class="hide-menu">
+											Menu </span></a></li>
 							</ul></li>
 				
 					</ul>
@@ -347,3 +343,23 @@
 		<!-- Page wrapper  -->
 		<!-- ============================================================== -->
 		<div class="page-wrapper">
+		
+		<script type="text/javascript">
+		
+		function logout() {
+			const data = $('#actionForm').serializeObject();
+			$.ajax({
+				url : '/common/login/logout',
+				type : 'POST',
+				//응답 받고 
+				headers : { // Http header
+					// 요청 보낼때 내가 보낼 data의 타입
+					"Content-Type" : "application/json",
+				}
+				
+			});
+		}
+		
+	
+		
+		</script>

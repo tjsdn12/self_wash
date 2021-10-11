@@ -1,25 +1,21 @@
 package org.sunw.self.admin.infomation.store.controller;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.sunw.self.admin.common.domain.ResultDTO;
+import org.sunw.self.admin.common.login.domain.LoginDTO;
 import org.sunw.self.admin.infomation.store.domain.StoreInfoDTO;
 import org.sunw.self.admin.infomation.store.service.StoreInfoService;
-import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -35,6 +31,8 @@ public class StoreInfoController {
 	
 		model.addAttribute("getAllStoreInfoList",storeInfoService.getAllStoreInfoList(storeInfoDTO));
 	}
+	
+	
 	@GetMapping("/form")
 	public void form(StoreInfoDTO storeInfoDTO, Model model) {
 		StoreInfoDTO getOne = storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());

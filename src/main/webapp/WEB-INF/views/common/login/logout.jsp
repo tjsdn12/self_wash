@@ -9,7 +9,7 @@
 			<div class="card-body">
 				<form class="form-horizontal" id="actionForm">
 					<div class="card-body">
-						<h4 class="card-title">LoginPage</h4>
+						<h4 class="card-title">LogoutPage</h4>
 						<div class="form-group row">
 							<label for="phone"
 								class="col-sm-3 text-end control-label col-form-label">휴대폰번호</label>
@@ -28,8 +28,8 @@
 					</div>
 					<div class="border-top">
 						<div class="card-body">
-							<button type="button" id="loginBtn" class="btn btn-primary"
-								onclick="login()">로그인</button>
+							<button type="button" id="logoutBtn" class="btn btn-primary"
+								onclick="logout()">로그아웃</button>
 						</div>
 					</div>
 				</form>
@@ -40,10 +40,10 @@
 
 <script>
 
-function login() {
+function logout() {
 	const data = $('#actionForm').serializeObject();
 	$.ajax({
-		url : '/common/login/login',
+		url : '/common/login/logout',
 		type : 'POST',
 		//응답 받고 
 		headers : { // Http header

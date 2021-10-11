@@ -1,5 +1,7 @@
 package org.sunw.self.admin.common.login.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 import org.sunw.self.admin.common.login.domain.LoginDTO;
 import org.sunw.self.admin.common.login.domain.LoginVO;
@@ -23,5 +25,14 @@ public class LoginServiceImpl implements LoginService {
 		log.info(loginDTO);
 		return loginVO;
 	}
+
+	@Override
+	public void logout(HttpSession session) {
+		
+		session.invalidate();
+		
+	}
+	
+	
 
 }

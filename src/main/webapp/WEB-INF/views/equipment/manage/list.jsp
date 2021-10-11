@@ -123,6 +123,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	   },false)
 	});
 	
+	/**
 	document.querySelectorAll(".dropdown-item").forEach(a=>{
 	    a.addEventListener("click",function (e){
 	        e.preventDefault();
@@ -133,7 +134,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	        document.querySelector("#actionForm").submit();
 	    },false)
 	});
-	
+	*/
 	function goSelect(dom){
 		console.log(dom);
 		const equipmentCode =dom.innerHTML;

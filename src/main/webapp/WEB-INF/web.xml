@@ -48,4 +48,18 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+
+	<!-- 인터셉터 객체 생성 -->
+<beans:bean id="AuthLoginInterceptor" class="com.test.login.AuthLoginInterceptor">
+</beans:bean>
+<!-- Interceptor 설정 -->
+<interceptors>
+    <interceptor>
+        <mvc:mapping path="/**"/>         
+        <mvc:exclude-mapping path="/resources/**"/>
+        <beans:ref bean="AuthLoginInterceptor"/>
+    </interceptor>
+</interceptors>
+	
+
 </web-app>
