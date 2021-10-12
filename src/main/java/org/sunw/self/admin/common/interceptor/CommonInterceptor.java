@@ -34,22 +34,10 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
 	     if ( obj == null ){    	 
 	         //로그인이 안되어 있는 경우 로그인 페이지로 돌려 보낸다
 	         response.sendRedirect("/common/login/login");
-	         return true;
+	         return false;
 	     }
-	     
-	     try {
-	         //admin이라는 세션key를 가진 정보가 있으면 admin페이지로 이동
-	         if(session.getAttribute("login") !=null ){
-	                 response.sendRedirect("/common/login/login");
-	                 return true;
-	         }
-	     } catch (Exception e) {
-	         e.printStackTrace();
-	     }
-	       
 	
 	     return true;
-		
 		
 	}
 	
