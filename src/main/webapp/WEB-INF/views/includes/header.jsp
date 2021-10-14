@@ -42,22 +42,25 @@
 <!--Custom JavaScript -->
 <script src="/resources/dist/js/custom.min.js"></script>
 <script>
-    $.fn.serializeObject = function() {
-    	var obj = null; 
-    	try {
-    		if ( this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) { 
-    			var arr = this.serializeArray(); 
-    			if ( arr ) { 
-    				obj = {}; 
-    				jQuery.each(arr, function() { obj[this.name] = this.value; }); 
-   				}
-    		}
-		} catch(e) {
+	$.fn.serializeObject = function() {
+		var obj = null;
+		try {
+			if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+				var arr = this.serializeArray();
+				if (arr) {
+					obj = {};
+					jQuery.each(arr, function() {
+						obj[this.name] = this.value;
+					});
+				}
+			}
+		} catch (e) {
 			alert(e.message);
-		} finally {} 
-		return obj; 
+		} finally {
+		}
+		return obj;
 	};
-    </script>
+</script>
 </head>
 
 <body>
@@ -160,7 +163,7 @@
 						<!-- ============================================================== -->
 						<!-- Comment -->
 						<!-- ============================================================== -->
-						<li class="nav-item dropdown"><a 
+						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								<i class="mdi mdi-bell font-24"></i>
@@ -256,12 +259,16 @@
 							<ul class="dropdown-menu dropdown-menu-end user-dd animated"
 								aria-labelledby="navbarDropdown">
 								<c:if test="${sessionScope.loginInfo == null}">
-								<a class="dropdown-item" href="/common/login/login"><i 
-									class="fa fa-power-off me-1 ms-1"></i> Login(<c:out value="${loginInfo.mgrName}" />)</a></c:if>
+									<a class="dropdown-item" href="/common/login/login"><i
+										class="fa fa-power-off me-1 ms-1"></i> Login(<c:out
+											value="${loginInfo.mgrName}" />)</a>
+								</c:if>
 								<div class="dropdown-divider"></div>
 								<c:if test="${sessionScope.loginInfo != null}">
-								<a class="dropdown-item" onclick="logout()"><i
-									class="fa fa-power-off me-1 ms-1"></i> Logout(<c:out value="${loginInfo.mgrName}" />)</a></c:if>
+									<a class="dropdown-item" onclick="logout()"><i
+										class="fa fa-power-off me-1 ms-1"></i> Logout(<c:out
+											value="${loginInfo.mgrName}" />)</a>
+								</c:if>
 								<div class="dropdown-divider"></div>
 							</ul></li>
 						<!-- ============================================================== -->
@@ -285,51 +292,64 @@
 					<ul id="sidebarnav" class="pt-4">
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/info/storeinfo/list" aria-expanded="false"><span class="hide-menu">StoreInfo</span></a></li>
+							href="http://localhost:8080/info/storeinfo/list"
+							aria-expanded="false"><span class="hide-menu">StoreInfo</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/customer/inquiry/list" aria-expanded="false"><span class="hide-menu">QnA</span></a></li>
+							href="http://localhost:8080/customer/inquiry/list"
+							aria-expanded="false"><span class="hide-menu">QnA</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="http://localhost:8080/customer/washmenu/list" aria-expanded="false"><span class="hide-menu">WashMenu</span></a></li>
+							href="http://localhost:8080/customer/washmenu/list"
+							aria-expanded="false"><span class="hide-menu">WashMenu</span></a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">Equipment
-							</span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="http://localhost:8080/equipment/manage/list"
-									class="sidebar-link"><span
-										class="hide-menu"> Manage </span></a></li>
-								<li class="sidebar-item"><a href="http://localhost:8080/equipment/model/list"
-									class="sidebar-link"><span
-										class="hide-menu"> Model </span></a></li>
-							</ul></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">User </span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="http://localhost:8080/user/manager/list"
-									class="sidebar-link"><span
-										class="hide-menu"> Manager </span></a></li>
-								<li class="sidebar-item"><a href="http://localhost:8080/user/user/list"
-									class="sidebar-link"><span
-										class="hide-menu"> User </span></a></li>
-							</ul></li>
-						
-				
-						<li class="sidebar-item"><a
-							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">Order
-							</span></a>
+							href="javascript:void(0)" aria-expanded="false"><span
+								class="hide-menu">Equipment </span></a>
+
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"><a
-									href="http://localhost:8080/customer/ordermanage/list" class="sidebar-link"><span class="hide-menu">
-											Manage </span></a></li>
+									href="http://localhost:8080/equipment/manage/list"
+									class="sidebar-link"><span class="hide-menu"> Manage
+									</span></a></li>
 								<li class="sidebar-item"><a
-									href="http://localhost:8080/customer/ordermenu/list" class="sidebar-link"><span class="hide-menu">
-											Menu </span></a></li>
+									href="http://localhost:8080/equipment/model/list"
+									class="sidebar-link"><span class="hide-menu"> Model
+									</span></a></li>
 							</ul></li>
-				
+
+								<!-- authorLevel ADMIN -->
+								<c:if test="${loginInfo.authorLevel == 'ADMIN'}">
+								<li class="sidebar-item"><a
+							class="sidebar-link has-arrow waves-effect waves-dark"
+							href="javascript:void(0)" aria-expanded="false"><span
+								class="hide-menu">Manage </span></a>
+								<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item"><a
+										href="http://localhost:8080/user/manager/list"
+										class="sidebar-link"><span class="hide-menu">
+												Manager </span></a></li>
+									<li class="sidebar-item"><a
+										href="http://localhost:8080/user/user/list"
+										class="sidebar-link"><span class="hide-menu"> User
+										</span></a></li>
+						</ul></li>
+					</c:if>
+
+						<li class="sidebar-item"><a
+							class="sidebar-link has-arrow waves-effect waves-dark"
+							href="javascript:void(0)" aria-expanded="false"><span
+								class="hide-menu">Order </span></a>
+							<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item"><a
+									href="http://localhost:8080/customer/ordermanage/list"
+									class="sidebar-link"><span class="hide-menu"> Manage
+									</span></a></li>
+								<li class="sidebar-item"><a
+									href="http://localhost:8080/customer/ordermenu/list"
+									class="sidebar-link"><span class="hide-menu"> Menu </span></a></li>
+							</ul></li>
+
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
@@ -343,23 +363,19 @@
 		<!-- Page wrapper  -->
 		<!-- ============================================================== -->
 		<div class="page-wrapper">
-		
-		<script type="text/javascript">
-		
-		function logout() {
-			const data = $('#actionForm').serializeObject();
-			$.ajax({
-				url : '/common/login/logout',
-				type : 'POST',
-				//응답 받고 
-				headers : { // Http header
-					// 요청 보낼때 내가 보낼 data의 타입
-					"Content-Type" : "application/json",
+
+			<script type="text/javascript">
+				function logout() {
+					const data = $('#actionForm').serializeObject();
+					$.ajax({
+						url : '/common/login/logout',
+						type : 'POST',
+						//응답 받고 
+						headers : { // Http header
+							// 요청 보낼때 내가 보낼 data의 타입
+							"Content-Type" : "application/json",
+						}
+
+					});
 				}
-				
-			});
-		}
-		
-	
-		
-		</script>
+			</script>

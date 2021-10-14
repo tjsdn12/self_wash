@@ -70,10 +70,7 @@
 						<label for="managerResidentNumber"
 							class="col-sm-3 text-end control-label col-form-label">관리자 주민번호</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="managerResidentNumber"
-								name="managerResidentNumber"
-								value="<c:out value='${StoreInfoDTO.managerResidentNumber }'></c:out>"
-								>
+						<c:out value='${StoreInfoDTO.managerResidentNumber }'></c:out>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -88,7 +85,8 @@
 
 				<div class="border-top">
 					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
+					<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
+						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button></c:if>
 						<button type="button" id="listBtn" class="btn btn-primary"
 							onclick="goTable()">목록</button>
 					</div>

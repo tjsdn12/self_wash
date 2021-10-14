@@ -24,9 +24,11 @@
 				<table class="table">
 					<thead class="thead-light">
 						<tr>
-							<th><label class="customcheckbox mb-3"> <input
+							<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
+							<th>
+							<label class="customcheckbox mb-3"> <input
 									type="checkbox" id="mainCheckbox" /> <span class="checkmark"></span>
-							</label></th>
+							</label></th></c:if>
 							<th scope="col">매장번호</th>
 							<th scope="col">상호명</th>
 							<th scope="col">가게주소</th>
@@ -36,8 +38,11 @@
 							<th scope="col">사업자 번호</th>
 							<th scope="col">관리자 주민번호</th>
 							<th scope="col">우편번호</th>
-							<th scope="col"><input type="button" value="매장등록"
+							<th scope="col">
+							<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
+							<input type="button" value="매장등록"
 								class="btn-info" onclick="location.href='/info/storeinfo/register'">
+								</c:if>
 							</th>
 						</tr>
 					</thead>
@@ -45,9 +50,10 @@
 					<tbody class="customtable">
 						<c:forEach items="${getAllStoreInfoList }" var="item2">
 							<tr>
+								<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
 								<td><label class="customcheckbox"> <input
 										type="checkbox" class="listCheckbox" value="${item2.sId }" />
-										<span class="checkmark"></span>
+										<span class="checkmark"></span></c:if>
 								</label></td>
 								<td><a href="#" onclick="goSelect(this)">${item2.sId }</a></td>
 								<td>${item2.sName }</td>
@@ -60,7 +66,9 @@
 								<td>${item2.postCode }</td>
 								<td>
 					<div class="card-body">
+					<c:if test="${loginInfo.authorLevel == 'ADMIN'}">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deletesId(<c:out value='${item2.sId }'/>)">삭제</button>
+						</c:if>
 					</div>
 								</td>
 							</tr>
