@@ -20,6 +20,16 @@
 					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentManage List</h3>
 				</div>
 			</div>
+			
+				<div class="form-group row">
+					<label for="equipmentModelId"
+						class="col-sm-3 text-end control-label col-form-label">장비찾기</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
+							value="<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>">
+							<button class="search" type="button" id="search" onclick="search();" value="N">검색</button>
+					</div>
+				</div>
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -123,18 +133,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	   },false)
 	});
 	
-	/**
-	document.querySelectorAll(".dropdown-item").forEach(a=>{
-	    a.addEventListener("click",function (e){
-	        e.preventDefault();
-	        e.stopPropagation();
-	        console.log(a.getAttribute('href'));
-	        document.querySelector(".current_perSheet").value = a.getAttribute('href');
-	        document.querySelector(".current_page").value = 1;
-	        document.querySelector("#actionForm").submit();
-	    },false)
-	});
-	*/
+
 	function goSelect(dom){
 		console.log(dom);
 		const equipmentCode =dom.innerHTML;
@@ -176,6 +175,23 @@ document.querySelectorAll(".page-link").forEach(a=>{
 				console.error(error);
 			}
 		});
+	}
+	
+	function search(){
+		console.log();
+		
+		const equipmentModelId =document.querySelector("#equipmentModelId").value;
+		
+		const form =document.querySelector("#actionForm");
+		
+		form.action ="/equipment/manage/list";
+		
+		form.method = "get";
+		
+		form.innerHTML = "<input type ='hidden' name ='equipmentModelId' value='"+equipmentModelId+"' />";
+		
+		form.submit();
+		
 	}
 
 </script>

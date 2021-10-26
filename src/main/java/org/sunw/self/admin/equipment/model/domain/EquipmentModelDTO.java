@@ -10,4 +10,6 @@ public class EquipmentModelDTO extends DefaultDTO {
 	EquipmentModelVO equipmentModelVO;
 	
 	String equipmentModelId;
+	
+	String equipmentName;
 }

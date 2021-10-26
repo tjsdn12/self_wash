@@ -10,5 +10,7 @@ public class ManageUserDTO extends DefaultDTO {
 	ManageUserVO manageUserVO;
 	
 	String memId;
+	
+	String memName;
 }
 

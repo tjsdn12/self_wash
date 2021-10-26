@@ -41,9 +41,13 @@
 			APPROVAL_STATUS, 
 			S_ID
 		FROM MGR
+		<if test='mgrName != null and mgrName != "" '>
+		WHERE MGR_NAME LIKE CONCAT('%',#{mgrName},'%')
+		</if>
 		ORDER BY MGR_ID DESC
 		LIMIT #{skip} ,
 		#{perSheet}
+		
 	</select>
 
 	<select id="getManagerListCnt" resultType="int">
@@ -105,4 +109,7 @@
 	SELECT COUNT(*) FROM MGR
 	WHERE PHONE =#{phone}
 	</select>
+	
+	
+	
 </mapper>

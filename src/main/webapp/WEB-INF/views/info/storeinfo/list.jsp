@@ -20,6 +20,18 @@
 					<h3 class="card-title mb-0" style="margin-left: 50px">StoreList</h3>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+						<label for="sName"
+							class="col-sm-3 text-end control-label col-form-label">매장찾기</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="sName" id="sName"
+								value="<c:out value='${storeInfoVO.sName }'></c:out>">
+								<button class="search" type="button" id="search" onclick="search();" value="N">검색</button>
+
+						</div>
+					</div>
+			
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -175,6 +187,23 @@ document.querySelectorAll(".page-link").forEach(a=>{
 		});
 	}
 	
+	function search(){
+		console.log();
+		
+		const sName =document.querySelector("#sName").value;
+		
+		const form =document.querySelector("#actionForm");
+		
+		form.action ="/info/storeinfo/list";
+		
+		form.method = "get";
+		
+		form.innerHTML = "<input type ='hidden' name ='sName' value='"+sName+"' />";
+		
+		form.submit();
+		
+	}
 	
 
 </script>
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>

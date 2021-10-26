@@ -53,6 +53,9 @@ namespace="org.sunw.self.admin.customer.qna.mapper.InquiryMapper">
 		ANSWER_ID, 
 		WHETHER_IT_IS_PRIVATE
 	FROM SELF_WASH.QNA
+	<if test='qnaTitle != null and qnaTitle != "" '>
+		WHERE QNA_TITLE LIKE CONCAT('%',#{qnaTitle},'%')
+		</if>
 	ORDER BY INQUIRY_ID DESC
 		LIMIT #{skip} ,
 				#{perSheet}

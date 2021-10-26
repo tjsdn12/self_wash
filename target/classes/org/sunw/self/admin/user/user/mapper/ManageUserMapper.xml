@@ -49,6 +49,9 @@ namespace= "org.sunw.self.admin.user.user.mapper.ManageUserMapper">
 		POINT, 
 		DATE_OF_USE
 	FROM MEM
+	<if test='memName != null and memName != "" '>
+		WHERE MEM_NAME LIKE CONCAT('%',#{memName},'%')
+		</if>
 	ORDER BY MEM_ID DESC
 	LIMIT #{skip},
 		#{perSheet}

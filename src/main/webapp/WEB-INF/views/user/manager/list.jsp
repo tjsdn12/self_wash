@@ -20,6 +20,16 @@
 					<h3 class="card-title mb-0" style="margin-left: 50px">ManagerList</h3>
 				</div>
 			</div>
+				<div class="form-group row">
+						<label for="mgrName"
+							class="col-sm-3 text-end control-label col-form-label">이름</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="mgrName" id="mgrName"
+								value="<c:out value='${manageManagerVO.mgrName }'></c:out>">
+								<button class="search" type="button" id="search" onclick="search();" value="N">검색</button>
+
+						</div>
+					</div>
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -99,7 +109,7 @@
 
 <%@include file="/WEB-INF/views/includes/modal.jsp"%>
 
-<form id="actionForm" action="/manager/list" method="get" >
+<form id="actionForm" action="/manager/list" method="get">
 	<input type="hidden" name="page" value="${pageMaker.pageDTO.page }" class="current_page">
 	<input type="hidden" name="perSheet" value="${pageMaker.pageDTO.perSheet }" class="current_perSheet">
 </form>
@@ -132,6 +142,25 @@ document.querySelectorAll(".page-link").forEach(a=>{
 		
 	}
 	
+	function search(){
+		console.log();
+		
+		const mgrName =document.querySelector("#mgrName").value;
+		
+		const form =document.querySelector("#actionForm");
+		
+		form.action ="/user/manager/list";
+		
+		form.method = "get";
+		
+		form.innerHTML = "<input type ='hidden' name ='mgrName' value='"+mgrName+"' />";
+		
+		form.submit();
+		
+	}
+	
+
+	
 	function deleteMgr(mgrId) {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
@@ -158,5 +187,7 @@ document.querySelectorAll(".page-link").forEach(a=>{
 			}
 		});
 	}
+	
+
 </script>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>

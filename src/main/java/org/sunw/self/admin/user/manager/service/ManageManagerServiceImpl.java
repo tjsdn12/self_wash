@@ -26,7 +26,10 @@ public class ManageManagerServiceImpl implements ManageManagerService {
 
 	@Override
 	public List<ManageManagerVO> getAllManagerList(ManageManagerDTO manageManagerDTO) {
+//		manageManagerDTO.setPerSheet(10);
+		
 		List<ManageManagerVO> list = manageManagerMapper.getAllManagerList(manageManagerDTO);
+
 		return list;
 	}
 

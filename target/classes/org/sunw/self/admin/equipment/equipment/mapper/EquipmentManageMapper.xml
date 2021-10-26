@@ -41,6 +41,9 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 		PURCHASE_PRICE, 
 		PURCHASE_DATETIME
 	FROM EQUIPMENT
+		<if test='equipmentModelId != null and equipmentModelId != "" '>
+		WHERE EQUIPMENT_MODEL_ID LIKE CONCAT('%',#{equipmentModelId},'%')
+		</if>
 	ORDER BY EQUIPMENT_CODE DESC
 	LIMIT #{skip} ,
 			#{perSheet}

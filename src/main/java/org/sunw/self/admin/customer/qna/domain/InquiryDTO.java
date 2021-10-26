@@ -10,4 +10,6 @@ public class InquiryDTO extends DefaultDTO {
 	InquiryVO inquiryVO;
 	
 	String inquiryId;
+	
+	String qnaTitle;
 }

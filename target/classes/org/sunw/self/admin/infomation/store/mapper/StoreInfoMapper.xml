@@ -44,6 +44,9 @@ namespace= "org.sunw.self.admin.infomation.store.mapper.StoreInfoMapper">
 		MANAGER_RESIDENT_NUMBER, 
 		POST_CODE
 	FROM SELF_WASH.STORE
+	<if test='sName != null and sName != "" '>
+		WHERE S_NAME LIKE CONCAT('%',#{sName},'%')
+		</if>
 	ORDER BY S_ID DESC
 	LIMIT #{skip} ,
 			#{perSheet}

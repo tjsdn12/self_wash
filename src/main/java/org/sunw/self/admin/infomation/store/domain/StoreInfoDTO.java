@@ -10,5 +10,7 @@ public class StoreInfoDTO extends DefaultDTO{
 	StoreInfoVO storeInfoVO;
 	
 	String sId;
+	
+	String sName;
 
 }

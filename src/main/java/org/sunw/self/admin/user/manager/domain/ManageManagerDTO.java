@@ -10,4 +10,6 @@ public class ManageManagerDTO extends DefaultDTO {
 	
 	String mgrId;
 	
+	String mgrName;
+	
 }

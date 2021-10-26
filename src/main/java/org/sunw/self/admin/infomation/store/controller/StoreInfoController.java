@@ -26,9 +26,11 @@ public class StoreInfoController {
 	@Autowired
 	StoreInfoService storeInfoService;
 	
-	@GetMapping("list")
+	@GetMapping("/list")
 	public void list(StoreInfoDTO storeInfoDTO ,Model model) {
 	
+		log.info(storeInfoDTO);
+		
 		model.addAttribute("getAllStoreInfoList",storeInfoService.getAllStoreInfoList(storeInfoDTO));
 	}
 	

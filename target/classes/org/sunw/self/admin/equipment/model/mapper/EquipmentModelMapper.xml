@@ -2,94 +2,97 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper 
-namespace= "org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
+<mapper
+	namespace="org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper">
 	<insert id="insert">
 		<selectKey order="AFTER" resultType="int">
-		SELECT LAST_INSERT_ID()
+			SELECT LAST_INSERT_ID()
 		</selectKey>
-	INSERT INTO SELF_WASH.EQUIPMENT_MODEL
-	(
-	EQUIPMENT_NAME, 
-	MANUFACTURING_COMPANY, 
-	MANUFACTURER_NUMBER, 
-	CATEGORY_ID, 
-	REPAIRER, 
-	REPAIRER_NUMBER, 
-	EXPOSURE_YES_NO, 
-	EQUIPMENT_PHOTO, 
-	EQUIPMENT_SPEC
-	)
-	VALUES
-	(
-	#{equipmentName}, 
-	#{manufacturingCompany}, 
-	#{manufacturerNumber}, 
-	#{categoryId}, 
-	#{repairer}, 
-	#{repairerNumber}, 
-	#{exposureYesNo}, 
-	#{equipmentPhoto}, 
-	#{equipmentSpec}
-	)
-	</insert> 
-	
+		INSERT INTO SELF_WASH.EQUIPMENT_MODEL
+		(
+		EQUIPMENT_NAME,
+		MANUFACTURING_COMPANY,
+		MANUFACTURER_NUMBER,
+		CATEGORY_ID,
+		REPAIRER,
+		REPAIRER_NUMBER,
+		EXPOSURE_YES_NO,
+		EQUIPMENT_PHOTO,
+		EQUIPMENT_SPEC
+		)
+		VALUES
+		(
+		#{equipmentName},
+		#{manufacturingCompany},
+		#{manufacturerNumber},
+		#{categoryId},
+		#{repairer},
+		#{repairerNumber},
+		#{exposureYesNo},
+		#{equipmentPhoto},
+		#{equipmentSpec}
+		)
+	</insert>
+
 	<select id="getAllEquipmentModelList"
-	resultType="org.sunw.self.admin.equipment.model.domain.EquipmentModelVO">
-	SELECT EQUIPMENT_MODEL_ID, 
-		EQUIPMENT_NAME, 
-		MANUFACTURING_COMPANY, 
-		MANUFACTURER_NUMBER, 
-		CATEGORY_ID, 
-		REPAIRER, 
-		REPAIRER_NUMBER, 
-		EXPOSURE_YES_NO, 
-		EQUIPMENT_PHOTO, 
+		resultType="org.sunw.self.admin.equipment.model.domain.EquipmentModelVO">
+		SELECT EQUIPMENT_MODEL_ID,
+		EQUIPMENT_NAME,
+		MANUFACTURING_COMPANY,
+		MANUFACTURER_NUMBER,
+		CATEGORY_ID,
+		REPAIRER,
+		REPAIRER_NUMBER,
+		EXPOSURE_YES_NO,
+		EQUIPMENT_PHOTO,
 		EQUIPMENT_SPEC
-	FROM EQUIPMENT_MODEL
-	ORDER BY EQUIPMENT_MODEL_ID DESC
-	LIMIT #{skip} ,
-			#{perSheet}
+		FROM EQUIPMENT_MODEL
+		<if test='equipmentName != null and equipmentName != "" '>
+			WHERE EQUIPMENT_NAME LIKE CONCAT('%',#{equipmentName},'%')
+		</if>
+		ORDER BY EQUIPMENT_MODEL_ID DESC
+		LIMIT #{skip} ,
+		#{perSheet}
 	</select>
-	
+
 	<select id="getEquipmentModelCnt" resultType="int">
-	SELECT COUNT(*)
-	FROM EQUIPMENT_MODEL
+		SELECT COUNT(*)
+		FROM EQUIPMENT_MODEL
 	</select>
-	
+
 	<select id="getOneEquipmentModel"
-	resultType="org.sunw.self.admin.equipment.model.domain.EquipmentModelVO">
-	SELECT EQUIPMENT_MODEL_ID, 
-		EQUIPMENT_NAME, 
-		MANUFACTURING_COMPANY, 
-		MANUFACTURER_NUMBER, 
-		CATEGORY_ID, 
-		REPAIRER, 
-		REPAIRER_NUMBER, 
-		EXPOSURE_YES_NO, 
-		EQUIPMENT_PHOTO, 
+		resultType="org.sunw.self.admin.equipment.model.domain.EquipmentModelVO">
+		SELECT EQUIPMENT_MODEL_ID,
+		EQUIPMENT_NAME,
+		MANUFACTURING_COMPANY,
+		MANUFACTURER_NUMBER,
+		CATEGORY_ID,
+		REPAIRER,
+		REPAIRER_NUMBER,
+		EXPOSURE_YES_NO,
+		EQUIPMENT_PHOTO,
 		EQUIPMENT_SPEC
-	FROM EQUIPMENT_MODEL
-	WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId}
+		FROM EQUIPMENT_MODEL
+		WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId}
 	</select>
-	
+
 	<update id="update">
-	UPDATE EQUIPMENT_MODEL
-	SET 
-	EQUIPMENT_NAME				= #{equipmentName},					
-	MANUFACTURING_COMPANY		= #{manufacturingCompany},		
-	MANUFACTURER_NUMBER			= #{manufacturerNumber},		
-	CATEGORY_ID					= #{categoryId},		
-	REPAIRER					= #{repairer},	
-	REPAIRER_NUMBER				= #{repairerNumber},			
-	EXPOSURE_YES_NO				= #{exposureYesNo},	
-	EQUIPMENT_PHOTO				= #{equipmentPhoto},
-	EQUIPMENT_SPEC				= #{equipmentSpec}		
-	WHERE EQUIPMENT_MODEL_ID	= #{equipmentModelId}
+		UPDATE EQUIPMENT_MODEL
+		SET
+		EQUIPMENT_NAME = #{equipmentName},
+		MANUFACTURING_COMPANY = #{manufacturingCompany},
+		MANUFACTURER_NUMBER = #{manufacturerNumber},
+		CATEGORY_ID = #{categoryId},
+		REPAIRER = #{repairer},
+		REPAIRER_NUMBER = #{repairerNumber},
+		EXPOSURE_YES_NO = #{exposureYesNo},
+		EQUIPMENT_PHOTO = #{equipmentPhoto},
+		EQUIPMENT_SPEC = #{equipmentSpec}
+		WHERE EQUIPMENT_MODEL_ID = #{equipmentModelId}
 	</update>
-	
+
 	<delete id="delete">
-	DELETE FROM EQUIPMENT_MODEL WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId};
+		DELETE FROM EQUIPMENT_MODEL WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId};
 	</delete>
 </mapper>
 

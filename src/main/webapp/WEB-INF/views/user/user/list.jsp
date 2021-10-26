@@ -20,6 +20,16 @@
 					<h3 class="card-title mb-0" style="margin-left: 50px">UserList</h3>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+						<label for="memName"
+							class="col-sm-3 text-end control-label col-form-label">사용자 검색</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="memName" id="memName"
+								value="<c:out value='${manageUserVO.memName }'></c:out>">
+								<button class="search" type="button" onclick="search();" value="N">검색</button>
+						</div>
+			
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -165,6 +175,25 @@ function deleteMem(memId) {
 		}
 	});
 }
+
+function search(){
+	console.log();
+	
+	const memName =document.querySelector("#memName").value;
+	
+	const form =document.querySelector("#actionForm");
+	
+	form.action ="/user/user/list";
+	
+	form.method = "get";
+	
+	form.innerHTML = "<input type ='hidden' name ='memName' value='"+memName+"' />";
+	
+	form.submit();
+	
+}
+
+
 
 </script>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>

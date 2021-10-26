@@ -20,6 +20,17 @@
 					<h3 class="card-title mb-0" style="margin-left: 50px">Inquiry List</h3>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+						<label for="qnaTitle"
+							class="col-sm-3 text-end control-label col-form-label">문의 제목 검색</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="qnaTitle" id="qnaTitle"
+								value="<c:out value='${inquiryVO.qnaTitle }'></c:out>">
+								<button class="search" type="button" id="search" onclick="search();" value="N">검색</button>
+
+						</div>
+					</div>
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -173,6 +184,23 @@ document.querySelectorAll(".page-link").forEach(a=>{
 				console.error(error);
 			}
 		});
+	}
+	
+	function search(){
+		console.log();
+		
+		const qnaTitle =document.querySelector("#qnaTitle").value;
+		
+		const form =document.querySelector("#actionForm");
+		
+		form.action ="/customer/inquiry/list";
+		
+		form.method = "get";
+		
+		form.innerHTML = "<input type ='hidden' name ='qnaTitle' value='"+qnaTitle+"' />";
+		
+		form.submit();
+		
 	}
 
 </script>
