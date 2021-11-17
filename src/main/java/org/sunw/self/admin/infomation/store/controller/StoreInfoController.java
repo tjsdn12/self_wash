@@ -1,6 +1,8 @@
 package org.sunw.self.admin.infomation.store.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.common.login.domain.LoginDTO;
+import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
+import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO;
+import org.sunw.self.admin.equipment.equipment.service.EquipmentManageService;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelDTO;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
+import org.sunw.self.admin.equipment.model.service.EquipmentModelService;
 import org.sunw.self.admin.infomation.store.domain.StoreInfoDTO;
 import org.sunw.self.admin.infomation.store.service.StoreInfoService;
 
@@ -26,12 +36,17 @@ public class StoreInfoController {
 	@Autowired
 	StoreInfoService storeInfoService;
 	
+	@Autowired
+	EquipmentManageService equipmentManageService;
+	
 	@GetMapping("/list")
 	public void list(StoreInfoDTO storeInfoDTO ,Model model) {
 	
 		log.info(storeInfoDTO);
 		
 		model.addAttribute("getAllStoreInfoList",storeInfoService.getAllStoreInfoList(storeInfoDTO));
+		PageMaker pageMaker = new PageMaker(storeInfoDTO, storeInfoService.getStoreInfoCnt(storeInfoDTO));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	
@@ -70,7 +85,16 @@ public class StoreInfoController {
 		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
 		log.info(model);
 	}
-	
+
+	@GetMapping("/popup/detail")
+	public void detail(StoreInfoDTO storeInfoDTO,Model model) {
+		StoreInfoDTO getOne =storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
+		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
+		List<EquipmentManageVO> list =equipmentManageService.getStoreEquipmentList(storeInfoDTO.getSId());
+		model.addAttribute("equipmentList",list);
+		List<EquipmentManageVO> equipmentPlacementList = equipmentManageService.getStoreEquipmentPlacementList(storeInfoDTO.getSId());
+		model.addAttribute("equipmentPlacementList",equipmentPlacementList);
+	}
 	
 	@PutMapping("/register")
 	@ResponseBody
@@ -89,7 +113,28 @@ public class StoreInfoController {
 		StoreInfoDTO getOne = storeInfoService.getOneStoreInfo(storeInfoDTO.getSId());
 		model.addAttribute("storeInfoVO",getOne.getStoreInfoVO());
 		log.info(model);
-		
+	}
+	
+
+
+	@PutMapping("/popup/detail")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO popupInsert(@RequestBody EquipmentManageDTO equipmentManageDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = equipmentManageService.insertEquipmentPlacement(equipmentManageDTO)>0;
+		result.setSuccess(isSuccess);
+		return result;
+	}
+
+	@DeleteMapping("/popup/detail")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public ResultDTO popupDelete(@RequestBody EquipmentManageDTO equipmentManageDTO) {
+		ResultDTO result = new ResultDTO();
+		boolean isSuccess = equipmentManageService.deleteEquipmentPlacement(equipmentManageDTO)>0;
+		result.setSuccess(isSuccess);
+		return result;
 	}
 	
 

@@ -7,6 +7,7 @@ import org.sunw.self.admin.common.domain.PageDTO;
 import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageDTO;
 import org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO;
 import org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper;
+import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,8 +30,7 @@ public class EquipmentManageServiceImpl implements EquipmentManageService {
 
 	@Override
 	public int getEquipmentManageCnt(EquipmentManageDTO equipmentManageDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return equipmentManageMapper.getEquipmentManageCnt(equipmentManageDTO);
 	}
 
 	
@@ -56,6 +56,25 @@ public class EquipmentManageServiceImpl implements EquipmentManageService {
 		return equipmentManageDTO;
 	}
 
+	@Override
+	public List<EquipmentManageVO> getStoreEquipmentList(String sId) {
+		return equipmentManageMapper.getStoreEquipmentList(sId);
+	}
+	
+	@Override
+	public List<EquipmentManageVO> getStoreEquipmentPlacementList(String sId) {
+		return equipmentManageMapper.getStoreEquipmentPlacementList(sId);
+	}
+	
+	@Override
+	public int insertEquipmentPlacement(EquipmentManageDTO equipmentManageDTO) {
+		return equipmentManageMapper.insertEquipmentPlacement(equipmentManageDTO);
+	}
+
+	@Override
+	public int deleteEquipmentPlacement(EquipmentManageDTO equipmentManageDTO) { 
+	return equipmentManageMapper.deleteEquipmentPlacement(equipmentManageDTO);
+	}
 	
 
 }

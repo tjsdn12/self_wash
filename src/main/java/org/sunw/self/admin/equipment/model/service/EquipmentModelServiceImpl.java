@@ -3,7 +3,6 @@ package org.sunw.self.admin.equipment.model.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.sunw.self.admin.common.domain.PageDTO;
 import org.sunw.self.admin.equipment.model.domain.EquipmentModelDTO;
 import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 import org.sunw.self.admin.equipment.model.mapper.EquipmentModelMapper;
@@ -29,8 +28,7 @@ public class EquipmentModelServiceImpl implements EquipmentModelService{
 
 	@Override
 	public int getEquipmentModelCnt(EquipmentModelDTO equipmentModelDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return equipmentModelMapper.getEquipmentModelCnt(equipmentModelDTO);
 	}
 
 	

@@ -30,8 +30,14 @@ public class WashMenuServiceImpl implements WashMenuService {
 
 	@Override
 	public int getWashMenuCnt(WashMenuDTO washMenuDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return washMenuMapper.getWashMenuCnt(washMenuDTO);
+	}
+	
+	@Override
+	public List<WashMenuVO> getEquipmentWashMenuList(WashMenuDTO washMenuDTO) {
+		List<WashMenuVO> list = washMenuMapper.getEquipmentWashMenuList(washMenuDTO);
+		return list;
+		
 	}
 
 	@Override
@@ -59,5 +65,21 @@ public class WashMenuServiceImpl implements WashMenuService {
 		List<EquipmentModelVO>list = washMenuMapper.getEquipmentModelList();
 		return list;
 	}
+
+	@Override
+	public int insertEquipmentWashMenu(WashMenuDTO washMenuDTO) {
+		washMenuMapper.deleteAllEquipmentWashMenu(washMenuDTO.getEquipmentModelId());
+		for(String washMenuId: washMenuDTO.getAddEquipmentWashMenuList()) {
+			washMenuMapper.insertEquipmentWashMenu(washMenuDTO.getEquipmentModelId(), washMenuId);
+		}
+		return 1;
+	}
+
+	@Override
+	public int deleteEquipmentWashMenu(String menuEquipmentMappingId) {
+		return washMenuMapper.deleteEquipmentWashMenu(menuEquipmentMappingId);
+	}
+	
+	
 
 }

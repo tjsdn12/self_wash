@@ -23,6 +23,8 @@ public class StoreInfoVO {
 	String businessNumber;				
 	Integer managerResidentNumber;		
 	Integer postCode;	
+	Integer storeWidth;
+	Integer storeHeight;
 	
 	public void setId(String sId) {
 		this.sId =sId;

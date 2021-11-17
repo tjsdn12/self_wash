@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.customer.qna.domain.InquiryDTO;
 import org.sunw.self.admin.customer.qna.service.InquiryService;
@@ -30,6 +31,8 @@ public class InquiryController {
 	public void goList(InquiryDTO inquiryDTO,Model model) {
 		
 		model.addAttribute("getAllInquiryList",inquiryService.getAllInquiryList(inquiryDTO));
+		PageMaker pageMaker = new PageMaker(inquiryDTO, inquiryService.getInquiryCnt(inquiryDTO));
+		model.addAttribute("pageMaker", pageMaker);
 		
 	}
 	

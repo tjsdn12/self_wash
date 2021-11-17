@@ -31,33 +31,61 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="equipmentModelId"
-							class="col-sm-3 text-end control-label col-form-label">장비명</label>
-						<div class="col-sm-9">
-							<c:out value='${washMenuVO.equipmentName }'></c:out>
-						</div>
-					</div>
-
-					<div class="form-group row">
 						<label for="menuName"
 							class="col-sm-3 text-end control-label col-form-label">메뉴 명</label>
 						<div class="col-sm-9">
 								<c:out value='${washMenuVO.menuName }'></c:out>
 						</div>
 					</div>
-				<div class="form-group row">
-					<label for="detergentUseAt"
-						class="col-sm-3 text-end control-label col-form-label">세제 사용 여부</label>
-					<div class="col-sm-9">
-						<c:choose>
-							<c:when test="${manageManagerVO.detergentUseAt == 'using' }">세제사용유
-							</c:when>
-							<c:otherwise>세제사용무</c:otherwise>
-						</c:choose>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">헹굼횟수</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.rinsingCnt }'></c:out>
+						</div>
 					</div>
-				</div>
-					
-
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">세탁기 용량</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.weight }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">탈수 횟수</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.dehydrationCnt }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">물 종류</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.waterType }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">소요 시간</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.time }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">메뉴 설명</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.menuDesc }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="equipmentType"
+							class="col-sm-3 text-end control-label col-form-label">장비 유형</label>
+						<div class="col-sm-9">
+								<c:out value='${washMenuVO.equipmentTypeName }'></c:out>
+						</div>
+					</div>
 				</div>
 
 				<div class="border-top">

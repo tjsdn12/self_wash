@@ -25,18 +25,6 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="equipmentModelId"
-							class="col-sm-3 text-end control-label col-form-label">장비명</label>
-						<div class="col-sm-9">
-								<select name="equipmentModelId" id="equipmentModelId" >
-	 						<option>::: 장비 선택하기 :::</option>
-								<c:forEach items="${getEquipmentModelList }" var="item2">
-									<option value="${item2.equipmentModelId }">${item2.equipmentName }</option>
-								</c:forEach>
-							</select>
-						</div>
-					</div>
-					<div class="form-group row">
 						<label for="menuName"
 							class="col-sm-3 text-end control-label col-form-label">메뉴명</label>
 						<div class="col-sm-9">
@@ -44,21 +32,72 @@
 								value="<c:out value='${washMenuVO.menuName }'></c:out>">
 						</div>
 					</div>
-				<div class="form-group row">
-					<label for="detergentUseAt"
-						class="col-sm-3 text-end control-label col-form-label">세제사용 여부</label>
-					<div class="col-sm-9">
-						<select name="detergentUseAt" id="detergentUseAt">
-							<option value="using" <c:if test="${washMenuVO.detergentUseAt == 'using'}">selected="selected"</c:if>>세제사용o</option>
-							<option value="notUsed" <c:if test="${washMenuVO.detergentUseAt == 'notUsed'}">selected="selected"</c:if>>세제사용x</option>
-						</select>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">헹굼횟수</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="rinsingCnt" name="rinsingCnt"
+								value="<c:out value='${washMenuVO.rinsingCnt }'></c:out>">
+						</div>
 					</div>
-				</div>
-				<div class="border-top">
-					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
-						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goList()">취소</button>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">세탁기 용량</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="weight" name="weight"
+								value="<c:out value='${washMenuVO.weight }'></c:out>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">탈수 횟수</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="dehydrationCnt" name="dehydrationCnt"
+								value="<c:out value='${washMenuVO.dehydrationCnt }'></c:out>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">물 종류</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="waterType" name="waterType"
+								value="<c:out value='${washMenuVO.waterType }'></c:out>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">소요 시간</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="time" name="time"
+								value="<c:out value='${washMenuVO.time }'></c:out>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="menuName"
+							class="col-sm-3 text-end control-label col-form-label">메뉴 설명</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="menuDesc" name="menuDesc"
+								value="<c:out value='${washMenuVO.menuDesc }'></c:out>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="equipmentType"
+							class="col-sm-3 text-end control-label col-form-label">장비 유형</label>
+						<div class="col-sm-9">
+							<select name="equipmentType" id="equipmentType">
+								<option value="1" <c:if test="${washMenuVO.equipmentType == '1'}">selected="selected"</c:if>>세탁기</option>
+								<option value="2" <c:if test="${washMenuVO.equipmentType == '2'}">selected="selected"</c:if>>건조기</option>
+								<option value="3" <c:if test="${washMenuVO.equipmentType == '3'}">selected="selected"</c:if>>신발세탁기</option>
+								<option value="4" <c:if test="${washMenuVO.equipmentType == '4'}">selected="selected"</c:if>>세탁건조기</option>
+							</select>
+						</div>
+					</div>
+					<div class="border-top">
+						<div class="card-body">
+							<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
+							<button type="button" id="cancelBtn" class="btn btn-primary"
+								onclick="goList()">취소</button>
+						</div>
 					</div>
 				</div>
 			</form>

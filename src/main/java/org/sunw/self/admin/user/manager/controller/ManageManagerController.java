@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.user.manager.domain.ManageManagerDTO;
 import org.sunw.self.admin.user.manager.service.ManageManagerService;
@@ -36,11 +37,9 @@ public class ManageManagerController {
 	@GetMapping("/list")
 	public void list(ManageManagerDTO manageManagerDTO,Model model) {
 		log.info(manageManagerDTO);
-		
 		model.addAttribute("getAllManagerList",manageManagerService.getAllManagerList(manageManagerDTO));
-		
-	
-		
+		PageMaker pageMaker = new PageMaker(manageManagerDTO, manageManagerService.getManagerListCnt(manageManagerDTO));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	

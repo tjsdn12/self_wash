@@ -10,32 +10,97 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 		</selectKey>
 	INSERT INTO SELF_WASH.WASH_MENU
 	(
-	MENU_PRICE, 
-	EQUIPMENT_MODEL_ID, 
+	MENU_PRICE,  
 	MENU_NAME, 
-	DETERGENT_USE_AT
+	RINSING_CNT, 
+	WEIGHT, 
+	DEHYDRATION_CNT, 
+	CATEGORY_ID, 
+	WATER_TYPE, 
+	`TIME`, 
+	MENU_DESC,
+	EQUIPMENT_TYPE
 	)
 	VALUES
 	(
 	#{menuPrice}, 
-	#{equipmentModelId}, 
-	#{menuName}, 
-	#{detergentUseAt}
+	#{menuName},
+	#{rinsingCnt},
+	#{weight},
+	#{dehydrationCnt}, 
+	#{categoryId},
+	#{waterType},
+	#{time},
+	#{menuDesc},
+	#{equipmentType}
 	)
 	</insert>
 	
 	<select id="getAllWashMenuList"
 	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
-	SELECT WASH_MENU_ID, 
-		MENU_PRICE, 
-		EQUIPMENT_MODEL_ID, 
-		MENU_NAME, 
-		DETERGENT_USE_AT
+		SELECT WASH_MENU_ID, 
+			MENU_PRICE, 
+			MENU_NAME, 
+			RINSING_CNT, 
+			WEIGHT, 
+			DEHYDRATION_CNT, 
+			CATEGORY_ID, 
+			WATER_TYPE, 
+			`TIME`, 
+			MENU_DESC,
+			EQUIPMENT_TYPE
 	FROM SELF_WASH.WASH_MENU
+	<if test='equipmentType != null and equipmentType != ""'>
+	WHERE
+	<if test='equipmentType == "4" '>
+		EQUIPMENT_TYPE IN ('1','2')
+	</if>
+	<if test='equipmentType != "4" '>
+		EQUIPMENT_TYPE = #{equipmentType} 
+	</if>
+	</if>
 	ORDER BY WASH_MENU_ID DESC
 		LIMIT #{skip} ,
 				#{perSheet}
 	</select>
+	<select id="getEquipmentWashMenuList"
+	resultType="org.sunw.self.admin.customer.washmenu.domain.WashMenuVO">
+		SELECT A.WASH_MENU_ID, 
+			A.MENU_PRICE, 
+			A.MENU_NAME, 
+			A.RINSING_CNT, 
+			A.WEIGHT, 
+			A.DEHYDRATION_CNT, 
+			A.CATEGORY_ID, 
+			A.WATER_TYPE, 
+			A.`TIME`, 
+			A.MENU_DESC,
+			A.EQUIPMENT_TYPE,
+			B.MENU_EQUIPMENT_MAPPING_ID,
+			B.EQUIPMENT_MODEL_ID 
+		FROM WASH_MENU A, WASH_MENU_EQUIPMENT_MAPPING B 
+		WHERE A.WASH_MENU_ID = B.WASH_MENU_ID
+		AND B.EQUIPMENT_MODEL_ID = #{equipmentModelId}
+	</select>
+	
+	<insert id="insertEquipmentWashMenu">
+	INSERT INTO WASH_MENU_EQUIPMENT_MAPPING
+	(
+	EQUIPMENT_MODEL_ID, 
+	WASH_MENU_ID
+	)
+	VALUES
+	(
+	#{equipmentModelId}, 
+	#{washMenuId}
+	)
+	</insert>
+	<delete id="deleteAllEquipmentWashMenu">
+	DELETE FROM WASH_MENU_EQUIPMENT_MAPPING WHERE EQUIPMENT_MODEL_ID = #{equipmentModelId}
+	</delete>
+	<delete id="deleteEquipmentWashMenu">
+	DELETE FROM WASH_MENU_EQUIPMENT_MAPPING WHERE MENU_EQUIPMENT_MAPPING_ID = #{menuEquipmentMappingId}
+	</delete>
 	
 	<select id="getWashMenuCnt" resultType="int">
 	SELECT COUNT(*)
@@ -47,13 +112,17 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	SELECT 
 		A.WASH_MENU_ID,
 		A.MENU_PRICE, 
-		A.EQUIPMENT_MODEL_ID, 
 		A.MENU_NAME, 
-		A.DETERGENT_USE_AT,
-		B.EQUIPMENT_NAME
-	FROM SELF_WASH.WASH_MENU A,EQUIPMENT_MODEL B
-	WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID
-	AND WASH_MENU_ID = #{washMenuId} 
+		A.RINSING_CNT, 
+		A.WEIGHT, 
+		A.DEHYDRATION_CNT, 
+		A.CATEGORY_ID, 
+		A.WATER_TYPE, 
+		A.`TIME`, 
+		A.MENU_DESC,
+		A.EQUIPMENT_TYPE
+	FROM SELF_WASH.WASH_MENU A
+	WHERE WASH_MENU_ID = #{washMenuId}
 	</select>
 	
 	<select id="getEquipmentModelList"
@@ -66,12 +135,10 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 		CATEGORY_ID, 
 		REPAIRER, 
 		REPAIRER_NUMBER, 
-		EXPOSURE_YES_NO, 
 		EQUIPMENT_PHOTO, 
 		EQUIPMENT_SPEC
 	FROM SELF_WASH.EQUIPMENT_MODEL
-	
-	</select>
+		</select>
 	
 	<select id="getWashMenuStatusCnt">
 	SELECT COUNT(*) FROM SELF_WASH.WASH_MENU
@@ -81,9 +148,15 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	UPDATE self_wash.wash_menu
 	SET 
 	MENU_PRICE				=#{menuPrice}, 
-	EQUIPMENT_MODEL_ID		=#{equipmentModelId}, 
 	MENU_NAME				=#{menuName}, 
-	DETERGENT_USE_AT		=#{detergentUseAt}
+	RINSING_CNT				=#{rinsingCnt}, 
+	WEIGHT				=#{weight}, 
+	DEHYDRATION_CNT				=#{dehydrationCnt}, 
+	CATEGORY_ID				=#{categoryId}, 
+	WATER_TYPE				=#{waterType}, 
+	`TIME`				=#{time}, 
+	MENU_DESC				=#{menuDesc},
+	EQUIPMENT_TYPE				=#{equipmentType}
 	WHERE WASH_MENU_ID		=#{washMenuId}
 	</update>
 	

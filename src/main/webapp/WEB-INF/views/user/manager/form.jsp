@@ -48,45 +48,45 @@
 								value="<c:out value='${manageManagerVO.email }'></c:out>">
 						</div>
 					</div>
-				<div class="form-group row">
-					<label for="sId"
-						class="col-sm-3 text-end control-label col-form-label">지점명</label>
-					<div class="col-sm-9">
-						<select name="sId" id="sId" >
-	 						<option>::: 지점 선택하기 :::</option>
-								<c:forEach items="${getStoreList }" var="item2">
-									<option value="${item2.sId }">${item2.sName }</option>
-								</c:forEach>
+					<div class="form-group row">
+						<label for="sId"
+							class="col-sm-3 text-end control-label col-form-label">지점명</label>
+						<div class="col-sm-9">
+							<select name="sId" id="sId" >
+		 						<option>::: 지점 선택하기 :::</option>
+									<c:forEach items="${getStoreList }" var="item2">
+										<option value="${item2.sId }">${item2.sName }</option>
+									</c:forEach>
+								</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="authorLevel"
+							class="col-sm-3 text-end control-label col-form-label">관리자 등급</label>
+						<div class="col-sm-9">
+							<select name="authorLevel" id="authorLevel">
+								<option value="ADMIN" <c:if test="${manageManagerVO.authorLevel == 'ADMIN'}">selected="selected"</c:if>>관리자</option>
+								<option value="MANAGER" <c:if test="${manageManagerVO.authorLevel == 'MANAGER'}">selected="selected"</c:if>>지점 매니저</option>
 							</select>
+						</div>
 					</div>
-				</div>
-				</div>
-				<div class="form-group row">
-					<label for="authorLevel"
-						class="col-sm-3 text-end control-label col-form-label">관리자 등급</label>
-					<div class="col-sm-9">
-						<select name="authorLevel" id="authorLevel">
-							<option value="ADMIN" <c:if test="${manageManagerVO.authorLevel == 'ADMIN'}">selected="selected"</c:if>>관리자</option>
-							<option value="MANAGER" <c:if test="${manageManagerVO.authorLevel == 'MANAGER'}">selected="selected"</c:if>>지점 매니저</option>
-						</select>
+					<div class="form-group row">
+						<label for="approvalStatus"
+							class="col-sm-3 text-end control-label col-form-label">승인여부</label>
+						<div class="col-sm-9">
+							<select name="approvalStatus" id="approvalStatus">
+								<option value="0" <c:if test="${manageManagerVO.approvalStatus == '0'}">selected="selected"</c:if>>대기</option>
+								<option value="1" <c:if test="${manageManagerVO.approvalStatus == '1'}">selected="selected"</c:if>>승인</option>
+								<option value="2" <c:if test="${manageManagerVO.approvalStatus == '2'}">selected="selected"</c:if>>거절</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<label for="approvalStatus"
-						class="col-sm-3 text-end control-label col-form-label">승인여부</label>
-					<div class="col-sm-9">
-						<select name="approvalStatus" id="approvalStatus">
-							<option value="0" <c:if test="${manageManagerVO.approvalStatus == '0'}">selected="selected"</c:if>>대기</option>
-							<option value="1" <c:if test="${manageManagerVO.approvalStatus == '1'}">selected="selected"</c:if>>승인</option>
-							<option value="2" <c:if test="${manageManagerVO.approvalStatus == '2'}">selected="selected"</c:if>>거절</option>
-						</select>
-					</div>
-				</div>
-				<div class="border-top">
-					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
-						<button type="button" id="cancelBtn" class="btn btn-primary"
-							onclick="goList()">목록</button>
+					<div class="border-top">
+						<div class="card-body">
+							<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
+							<button type="button" id="cancelBtn" class="btn btn-primary"
+								onclick="goList()">목록</button>
+						</div>
 					</div>
 				</div>
 			</form>

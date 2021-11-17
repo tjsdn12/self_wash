@@ -12,6 +12,8 @@ public interface WashMenuService {
 	
 	public List<WashMenuVO>getAllWashMenuList(WashMenuDTO washMenuDTO);
 	
+	public List<WashMenuVO> getEquipmentWashMenuList(WashMenuDTO washMenuDTO);
+	
 	public int getWashMenuCnt(WashMenuDTO washMenuDTO);
 	
 	WashMenuDTO getOneWashMenu(String washMenuId);
@@ -21,6 +23,8 @@ public interface WashMenuService {
 	public int delete(String washMenuId);
 	
 	public List<EquipmentModelVO>getEquipmentModelList();
-	
-	
+
+	public int insertEquipmentWashMenu(WashMenuDTO washMenuDTO);
+
+	public int deleteEquipmentWashMenu(String menuEquipmentMappingId);
 }

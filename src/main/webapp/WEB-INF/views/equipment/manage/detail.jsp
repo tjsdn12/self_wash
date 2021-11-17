@@ -29,7 +29,7 @@
 							<c:out value='${equipmentManageVO.tptb }'></c:out>
 						</div>
 					</div>
-						<div class="form-group row">
+					<div class="form-group row">
 						<label for="equipmentModelId"
 							class="col-sm-3 text-end control-label col-form-label">장비모델</label>
 						<div class="col-sm-9">
@@ -57,38 +57,30 @@
 							<c:out value='${equipmentManageVO.purchaseDatetime }'></c:out>
 						</div>
 					</div>
-						<div class="form-group row">
-					<label for="regularInspection"
-						class="col-sm-3 text-end control-label col-form-label">장비관리유무</label>
-					<div class="col-sm-9">
-						<c:choose>
-						<c:when test="${equipmentManageVO.regularInspection == 'care' }">
-						관리유</c:when>
-						<c:otherwise>관리무</c:otherwise>
-						</c:choose>
+					<div class="form-group row">
+						<label for="equipmentStatus"
+							class="col-sm-3 text-end control-label col-form-label">장비상태</label>
+						<div class="col-sm-9">
+							<c:choose>
+							<c:when test="${equipmentManageVO.equipmentStatus == 'standby' }">대기</c:when>
+							<c:when test="${equipmentManageVO.equipmentStatus == 'useable' }">사용</c:when>
+							<c:otherwise>거절</c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<label for="equipmentStatus"
-						class="col-sm-3 text-end control-label col-form-label">장비상태</label>
-					<div class="col-sm-9">
-						<c:choose>
-						<c:when test="${equipmentManageVO.equipmentStatus == 'standby' }">대기</c:when>
-						<c:when test="${equipmentManageVO.equipmentStatus == 'useable' }">사용</c:when>
-						<c:otherwise>거절</c:otherwise>
-						</c:choose>
+					<div class="form-group row">
+						<label for="sId"
+							class="col-sm-3 text-end control-label col-form-label">지점명</label>
+						<div class="col-sm-9">
+							<c:out value='${equipmentManageVO.sName }'></c:out>
+						</div>
 					</div>
-				</div>
-				
-					
-
-				</div>
-
-				<div class="border-top">
-					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
-						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goList()">목록</button>
+					<div class="border-top">
+						<div class="card-body">
+							<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
+							<button type="button" id="listBtn" class="btn btn-primary"
+								onclick="goList()">목록</button>
+						</div>
 					</div>
 				</div>
 			</form>
@@ -96,11 +88,11 @@
 	</div>
 </div>
 
+<%@include file="/WEB-INF/views/includes/modal.jsp"%>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 
 
 <script type="text/javascript">
-	
 	function goList(){
 		let form = document.querySelector("#actionForm");
 		form.action = "/equipment/manage/list";
@@ -108,6 +100,7 @@
 		form.innerHTML="";
 		form.submit();
 	}
+	
 	
 	
 	document

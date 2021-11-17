@@ -10,27 +10,31 @@
 		</selectKey>
 		INSERT INTO SELF_WASH.EQUIPMENT_MODEL
 		(
+		EQUIPMENT_MODEL_ID,
 		EQUIPMENT_NAME,
 		MANUFACTURING_COMPANY,
 		MANUFACTURER_NUMBER,
 		CATEGORY_ID,
 		REPAIRER,
 		REPAIRER_NUMBER,
-		EXPOSURE_YES_NO,
 		EQUIPMENT_PHOTO,
-		EQUIPMENT_SPEC
+		EQUIPMENT_SPEC,
+		CAPACITY_GB,
+		EQUIPMENT_TYPE
 		)
 		VALUES
 		(
+		#{equipmentModelId},
 		#{equipmentName},
 		#{manufacturingCompany},
 		#{manufacturerNumber},
 		#{categoryId},
 		#{repairer},
 		#{repairerNumber},
-		#{exposureYesNo},
 		#{equipmentPhoto},
-		#{equipmentSpec}
+		#{equipmentSpec},
+		#{capacityGb},
+		#{equipmentType}
 		)
 	</insert>
 
@@ -43,9 +47,10 @@
 		CATEGORY_ID,
 		REPAIRER,
 		REPAIRER_NUMBER,
-		EXPOSURE_YES_NO,
 		EQUIPMENT_PHOTO,
-		EQUIPMENT_SPEC
+		EQUIPMENT_SPEC,
+		CAPACITY_GB,
+		EQUIPMENT_TYPE
 		FROM EQUIPMENT_MODEL
 		<if test='equipmentName != null and equipmentName != "" '>
 			WHERE EQUIPMENT_NAME LIKE CONCAT('%',#{equipmentName},'%')
@@ -69,9 +74,10 @@
 		CATEGORY_ID,
 		REPAIRER,
 		REPAIRER_NUMBER,
-		EXPOSURE_YES_NO,
 		EQUIPMENT_PHOTO,
-		EQUIPMENT_SPEC
+		EQUIPMENT_SPEC,
+		CAPACITY_GB,
+		EQUIPMENT_TYPE
 		FROM EQUIPMENT_MODEL
 		WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId}
 	</select>
@@ -85,15 +91,17 @@
 		CATEGORY_ID = #{categoryId},
 		REPAIRER = #{repairer},
 		REPAIRER_NUMBER = #{repairerNumber},
-		EXPOSURE_YES_NO = #{exposureYesNo},
 		EQUIPMENT_PHOTO = #{equipmentPhoto},
-		EQUIPMENT_SPEC = #{equipmentSpec}
+		EQUIPMENT_SPEC = #{equipmentSpec},
+		CAPACITY_GB = #{capacityGb},
+		EQUIPMENT_TYPE = #{equipmentType}
 		WHERE EQUIPMENT_MODEL_ID = #{equipmentModelId}
 	</update>
 
 	<delete id="delete">
 		DELETE FROM EQUIPMENT_MODEL WHERE EQUIPMENT_MODEL_ID=#{equipmentModelId};
 	</delete>
+	
 </mapper>
 
 		

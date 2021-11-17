@@ -25,5 +25,13 @@ public interface WashMenuMapper {
 	
 	public List<EquipmentModelVO>getEquipmentModelList();
 	
+	public List<WashMenuVO> getEquipmentWashMenuList(WashMenuDTO washMenuDTO);
+	
+	public int insertEquipmentWashMenu(@Param("equipmentModelId") String equipmentModelId, @Param("washMenuId")String washMenuId);
+	
+	public int deleteAllEquipmentWashMenu(String equipmentModelId);
+
+	public int deleteEquipmentWashMenu(String menuEquipmentMappingId);
+	
 
 }

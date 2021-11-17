@@ -31,8 +31,7 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int getInquiryCnt(InquiryDTO inquiryDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inquiryMapper.getInquiryCnt(inquiryDTO);
 	}
 
 	@Override

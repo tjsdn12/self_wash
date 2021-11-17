@@ -28,8 +28,7 @@ public class OrderMenuServiceImpl implements OrderMenuService {
 
 	@Override
 	public int getOrderMenuCnt(OrderMenuDTO orderMenuDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return orderMenuMapper.getOrderMenuCnt(orderMenuDTO);
 	}
 
 	@Override

@@ -13,15 +13,14 @@
 						data-bs-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">Sheet</button>
 					<div class="dropdown-menu" style="margin: 0px;">
-						<a class="dropdown-item" href="10">10</a> <a class="dropdown-item"
-							href="20">20</a> <a class="dropdown-item" href="50">50</a> <a
-							class="dropdown-item" href="100">100</a>
+						<a class="dropdown-item" href="?perSheet=10">10</a> <a class="dropdown-item"
+							href="?perSheet=20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
+							class="dropdown-item" href="?perSheet=100">100</a>
 					</div>
-					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentManage List</h3>
+					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentModel List</h3>
 				</div>
 			</div>
-			
-				<div class="form-group row">
+			<div class="form-group row">
 					<label for="equipmentModelId"
 						class="col-sm-3 text-end control-label col-form-label">장비찾기</label>
 					<div class="col-sm-9">
@@ -29,7 +28,7 @@
 							value="<c:out value='${equipmentManageVO.equipmentModelId }'></c:out>">
 							<button class="search" type="button" id="search" onclick="search();" value="N">검색</button>
 					</div>
-				</div>
+			</div>
 			<div class="list-responsive">
 				<table class="table">
 					<thead class="thead-light">
@@ -82,7 +81,7 @@
 <div class="row">
 	<div class="col-sm-12 col-md-5">
 		<div class="dataTables_info" id="zero_config_info">
-		<input type="button" class="btn btn-danger btn-sm text-white" value="Unabled toggle" onclick="" >
+		
 		</div>
 	</div>
 	<div class="col-sm-12 col-md-7">
@@ -105,7 +104,6 @@
 					href="${pageMaker.end +1}" aria-controls="zero_config"  tabindex="0"
 					class="page-link">Next</a></li>
 				</c:if>
-				
 			</ul>
 			<h6>Showing ${pageMaker.start } to ${pageMaker.end } of ${pageMaker.realEnd } entries</h6>
 		</div>

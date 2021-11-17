@@ -11,7 +11,7 @@
 		<div class="card">
 			<form class="form-horizontal" id="actionForm" 
 			action="/info/storeinfo/list" method="get">
-			<input type="hidden" name="sId" value='<c:out value="${storeInfoVO.sId }"></c:out>' />
+			<input type="hidden" id="sId" name="sId" value='<c:out value="${storeInfoVO.sId }"></c:out>' />
 				<div class="card-body">
 					<h4 class="card-title">StoreInfoDetailPage</h4>
 					<div class="form-group row">
@@ -80,15 +80,33 @@
 							<c:out value='${storeInfoVO.postCode }'></c:out>
 						</div>
 					</div>
-
-				</div>
-
-				<div class="border-top">
-					<div class="card-body">
-					<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
-						<button type="button" id="modifyBtn" class="btn btn-primary">수정</button></c:if>
-						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="goTable()">목록</button>
+					<div class="form-group row">
+						<label for="postCode"
+							class="col-sm-3 text-end control-label col-form-label">매장 가로 크기</label>
+						<div class="col-sm-9">
+							<c:out value='${storeInfoVO.storeWidth }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="postCode"
+							class="col-sm-3 text-end control-label col-form-label">매장 세로 크기</label>
+						<div class="col-sm-9">
+							<c:out value='${storeInfoVO.storeHeight }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="equipmentModelId" class="col-sm-3 text-end control-label col-form-label">매장 장비 배치</label>
+						<div class="col-sm-9">
+						<input type="button" value="장비 배치 수정" class="btn-info" onclick="modalShow()">
+						</div>
+					</div>
+					<div class="border-top">
+						<div class="card-body">
+						<c:if test="${loginInfo.authorLevel == 'ADMIN' }">
+							<button type="button" id="modifyBtn" class="btn btn-primary">수정</button></c:if>
+							<button type="button" id="listBtn" class="btn btn-primary"
+								onclick="goTable()">목록</button>
+						</div>
 					</div>
 				</div>
 			</form>
@@ -96,10 +114,35 @@
 	</div>
 </div>
 
+<%@include file="/WEB-INF/views/includes/modal.jsp"%>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 
 
 	<script type="text/javascript">
+	function init() {
+		$('#modalSubmitBtn').hide();
+		$('#modalAddBtn').hide();
+		$('#modalAddBtn2').hide();
+		$('.modal-body').css('overflow-y','scroll');
+		//$('.modal-body').css('overflow-y','hidden');
+		$('.modal-body').css('height','700px');
+		$('.modal-dialog').css('max-width','1500px');
+		$('.modal-dialog').css('width','1500px');
+	}
+	
+	$(document).ready( () => {
+		init();
+	});
+	
+	function modalShow() {
+		$('#modalSubmitBtn').hide();
+		$('.modal .modal-body').load('/info/storeinfo/popup/detail?sId=5');
+		$('.modal').show();
+	}
+	
+	function modalHide() {
+		$('.modal').hide();
+	}
 	
 	function goTable(){
 		let form = document.querySelector("#actionForm");

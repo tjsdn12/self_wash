@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" name="equipmentCode" id="equipmentCode" 
-								value="<c:out value='${equipmentManageVO.equipmentCode }'></c:out>" readonly="readonly">
+								value="<c:out value='${equipmentManageVO.equipmentCode }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -77,12 +77,25 @@
 						</select>
 					</div>
 				</div>
+				<div class="form-group row">
+					<label for="sId"
+						class="col-sm-3 text-end control-label col-form-label">지점명</label>
+					<div class="col-sm-9">
+						<select name="sId" id="sId" >
+	 						<option>::: 지점 선택하기 :::</option>
+								<c:forEach items="${getStoreList }" var="item2">
+									<option value="${item2.sId }">${item2.sName }</option>
+								</c:forEach>
+							</select>
+					</div>
+				</div>
 				<div class="border-top">
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
 							onclick="goList()">목록</button>
 					</div>
+				</div>
 				</div>
 			</form>
 		</div>
@@ -123,6 +136,26 @@
 		form.method = "get";
 		form.innerHTML = "";
 		form.submit();
+	}
+	
+
+	
+	function modalShow() {
+		$('#modalSubmitBtn').hide();
+		$('.modal .modal-body').load('/equipment/manage/popup/search?perSheet=5');
+		$('.modal').show();
+	}
+	function modalHide() {
+		$('.modal').hide();
+	}
+	function search() {
+		const searchTxt = $('#equipmentName').val();
+		$('.modal .modal-body').load('/equipment/manage/popup/search?perSheet=5&equipmentName='+searchTxt);
+	}
+	function goSelect(obj) {
+		const equipmentModelId = $(obj).html().trim();
+		$('#equipmentModelId').val(equipmentModelId);
+		$('.modal').hide();
 	}
 
 	

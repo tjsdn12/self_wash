@@ -13,6 +13,7 @@ public class PageMaker {
 	private int end;
 	private PageDTO pageDTO;
 	private int total;
+	private int realEnd;
 	
 	
 	public PageMaker(PageDTO pageDTO, int total) {
@@ -35,7 +36,7 @@ public class PageMaker {
 		this.start = tempEnd - 9;
 		
 		// 진짜 마지막 페이지 131
-		int realEnd = (int)(Math.ceil(total / (double)perSheet));
+		this.realEnd = (int)(Math.ceil(total / (double)perSheet));
 		
 		// 더 작은 값이 end 가 된다.
 		this.end = realEnd < tempEnd ? realEnd : tempEnd;

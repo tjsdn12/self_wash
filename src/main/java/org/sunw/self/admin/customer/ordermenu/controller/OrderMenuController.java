@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.customer.ordermenu.domain.OrderMenuDTO;
 import org.sunw.self.admin.customer.ordermenu.service.OrderMenuService;
@@ -34,6 +35,8 @@ public class OrderMenuController {
 	public void list(OrderMenuDTO orderMenuDTO,Model model) {
 		
 		model.addAttribute("getAllOrderMenuList",orderMenuService.getAllOrderMenuList(orderMenuDTO));
+		PageMaker pageMaker = new PageMaker(orderMenuDTO, orderMenuService.getOrderMenuCnt(orderMenuDTO));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	@GetMapping("/form")

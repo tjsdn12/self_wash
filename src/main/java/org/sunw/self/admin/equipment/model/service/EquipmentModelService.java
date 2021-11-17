@@ -2,8 +2,6 @@ package org.sunw.self.admin.equipment.model.service;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
-import org.sunw.self.admin.common.domain.PageDTO;
 import org.sunw.self.admin.equipment.model.domain.EquipmentModelDTO;
 import org.sunw.self.admin.equipment.model.domain.EquipmentModelVO;
 

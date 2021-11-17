@@ -13,7 +13,7 @@
 							class="col-sm-3 text-end control-label col-form-label">장비관리번호</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="equipmentModelId" name="equipmentModelId"
-								value="<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>" readonly="readonly">
+								value="<c:out value='${equipmentModelVO.equipmentModelId }'></c:out>">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -64,24 +64,15 @@
 							value="<c:out value='${equipmentModelVO.repairerNumber }'></c:out>">
 					</div>
 				</div>
-				<div class="form-group row">
-					<label for="exposureYesNo"
-						class="col-sm-3 text-end control-label col-form-label">소비자 노출여부</label>
-					<div class="col-sm-9">
-						<select name="exposureYesNo" id="exposureYesNo">
-							<option value="expose" <c:if test="${equipmentModelVO.exposureYesNo == 'expose'}">selected="selected"</c:if>>노출</option>
-							<option value="nonexpose" <c:if test="${equipmentModelVO.exposureYesNo == 'nonexpose'}">selected="selected"</c:if>>비노출</option>
-						</select>
+					<div class="form-group row">
+						<label for="equipmentPhoto"
+							class="col-sm-3 text-end control-label col-form-label">장비사진</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="equipmentPhoto" name="equipmentPhoto" readonly="readonly"
+								value="<c:out value='${equipmentModelVO.equipmentPhoto }'></c:out>">
+							<input type="file" id="equipmentPhotoFile" name="equipmentPhotoFile"  accept=".gif, .jpg, .png">
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<label for="equipmentPhoto"
-						class="col-sm-3 text-end control-label col-form-label">장비사진</label>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" id="equipmentPhoto" name="equipmentPhoto"
-							value="<c:out value='${EquipmentModelDTO.equipmentPhoto }'></c:out>">
-					</div>
-				</div>
 					<div class="form-group row">
 					<label for="equipmentSpec"
 						class="col-sm-3 text-end control-label col-form-label">장비스펙</label>
@@ -90,9 +81,31 @@
 							value="<c:out value='${EquipmentModelDTO.equipmentSpec }'></c:out>">
 					</div>
 				</div>
+				<div class="form-group row">
+					<label for="capacityGb"
+						class="col-sm-3 text-end control-label col-form-label">용량</label>
+					<div class="col-sm-9">
+						<select name="capacityGb" id="capacityGb">
+							<option value="1" <c:if test="${equipmentModelVO.capacityGb == '1'}">selected="selected"</c:if>>기본(13kg)</option>
+							<option value="2" <c:if test="${equipmentModelVO.capacityGb == '2'}">selected="selected"</c:if>>대량(18kg)</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="equipmentType"
+						class="col-sm-3 text-end control-label col-form-label">장비 유형</label>
+					<div class="col-sm-9">
+						<select name="equipmentType" id="equipmentType">
+							<option value="1" <c:if test="${equipmentModelVO.equipmentType == '1'}">selected="selected"</c:if>>세탁기</option>
+							<option value="2" <c:if test="${equipmentModelVO.equipmentType == '2'}">selected="selected"</c:if>>건조기</option>
+							<option value="3" <c:if test="${equipmentModelVO.equipmentType == '3'}">selected="selected"</c:if>>신발세탁기</option>
+							<option value="4" <c:if test="${equipmentModelVO.equipmentType == '4'}">selected="selected"</c:if>>세탁건조기</option>
+						</select>
+					</div>
+				</div>
 				<div class="border-top">
 					<div class="card-body">
-						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>
+							<button type="button" id="modifyBtn" class="btn btn-primary" onclick="check()">저장</button>
 						<button type="button" id="cancelBtn" class="btn btn-primary"
 							onclick="goList()">목록</button>
 					</div>
@@ -105,6 +118,32 @@
 <%@include file="/WEB-INF/views/includes/modal.jsp"%>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 <script>
+	function check() {
+		if(equipmentPhotoFile.files[0] != null) {
+			fileUpload();
+		}else {
+			save();
+		}
+	}
+	function fileUpload() {
+		const formData = new FormData();
+		//Object.keys(data).forEach((key) => {formData.append(key,data[key])});
+		formData.append('file', equipmentPhotoFile.files[0]);
+		$.ajax({
+			url : '/equipment/model/form/fileUpload',
+			type : 'PUT',
+			processData: false,
+			contentType: false, // 데이터 타입 (html, xml, json, text 등등)
+			data : formData,
+			success : function onData(data) {
+				$('#equipmentPhoto').val(data.data);
+				save();
+			},
+			error : function onError(error) {
+				console.error(error);
+			}
+		});
+	}
 	function save() {
 		const data = $('#actionForm').serializeObject();
 		$.ajax({
@@ -125,7 +164,6 @@
 				}
 			},
 			error : function onError(error) {
-				console.log("AA");
 				console.error(error);
 			}
 		});

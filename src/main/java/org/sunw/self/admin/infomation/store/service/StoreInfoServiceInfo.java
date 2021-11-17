@@ -29,8 +29,7 @@ public class StoreInfoServiceInfo implements StoreInfoService {
 
 	@Override
 	public int getStoreInfoCnt(StoreInfoDTO storeInfoDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return storeInfoMapper.getStoreInfoCnt(storeInfoDTO);
 	}
 
 	@Override

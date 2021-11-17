@@ -16,7 +16,9 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	REGULAR_INSPECTION, 
 	REGULAR_INSPECTION_DATE, 
 	PURCHASE_PRICE, 
-	PURCHASE_DATETIME
+	PURCHASE_DATETIME,
+	EQUIPMENT_CODE,
+	S_ID
 	)
 	VALUES
 	(
@@ -26,7 +28,9 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	#{regularInspection}, 
 	#{regularInspectionDate}, 
 	#{purchasePrice}, 
-	#{purchaseDatetime}
+	#{purchaseDatetime},
+	#{equipmentCode},
+	#{sId}
 	)
 	</insert>
 	
@@ -36,11 +40,15 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 		TPTB, 
 		EQUIPMENT_STATUS, 
 		EQUIPMENT_MODEL_ID, 
+		(SELECT EQUIPMENT_NAME FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_NAME,
 		REGULAR_INSPECTION, 
 		REGULAR_INSPECTION_DATE, 
 		PURCHASE_PRICE, 
-		PURCHASE_DATETIME
-	FROM EQUIPMENT
+		(SELECT EQUIPMENT_TYPE FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_TYPE,
+		PURCHASE_DATETIME,
+		S_ID,
+		(SELECT S_NAME FROM STORE B WHERE A.S_ID = B.S_ID) S_NAME
+	FROM EQUIPMENT A
 		<if test='equipmentModelId != null and equipmentModelId != "" '>
 		WHERE EQUIPMENT_MODEL_ID LIKE CONCAT('%',#{equipmentModelId},'%')
 		</if>
@@ -60,11 +68,15 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 		TPTB, 
 		EQUIPMENT_STATUS, 
 		EQUIPMENT_MODEL_ID, 
+		(SELECT EQUIPMENT_NAME FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_NAME,
+		(SELECT EQUIPMENT_TYPE FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_TYPE,
 		REGULAR_INSPECTION, 
 		REGULAR_INSPECTION_DATE, 
 		PURCHASE_PRICE, 
-		PURCHASE_DATETIME
-	FROM EQUIPMENT
+		PURCHASE_DATETIME,
+		S_ID,
+		(SELECT S_NAME FROM STORE B WHERE A.S_ID = B.S_ID) S_NAME
+	FROM EQUIPMENT A
 	WHERE EQUIPMENT_CODE=#{equipmentCode}
 	</select>
 	
@@ -75,20 +87,82 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	<update id="update">
 	UPDATE self_wash.equipment
 	SET 
-	TPTB					= #{tptb},					
-	EQUIPMENT_STATUS		= #{equipmentStatus},		
+	TPTB					= #{tptb},						
 	EQUIPMENT_MODEL_ID		= #{equipmentModelId},		
 	REGULAR_INSPECTION		= #{regularInspection},		
 	REGULAR_INSPECTION_DATE	= #{regularInspectionDate},	
 	PURCHASE_PRICE			= #{purchasePrice},			
-	PURCHASE_DATETIME		= #{purchaseDatetime}			
+	PURCHASE_DATETIME		= #{purchaseDatetime},
+	S_ID					= #{sId}			
 	WHERE EQUIPMENT_CODE	= #{equipmentCode}
 	</update>
 	
 	<delete id="delete">
 	DELETE FROM SELF_WASH.EQUIPMENT WHERE EQUIPMENT_CODE = #{equipmentCode}
-
 	</delete>
 	
+	<select id="getStoreEquipmentList"
+		resultType="org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO">
+	SELECT EQUIPMENT_CODE, 
+		TPTB, 
+		EQUIPMENT_STATUS, 
+		EQUIPMENT_MODEL_ID, 
+		(SELECT EQUIPMENT_NAME FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_NAME,
+		REGULAR_INSPECTION, 
+		REGULAR_INSPECTION_DATE, 
+		PURCHASE_PRICE, 
+		(SELECT EQUIPMENT_TYPE FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_TYPE,
+		PURCHASE_DATETIME,
+		S_ID,
+		(SELECT S_NAME FROM STORE B WHERE A.S_ID = B.S_ID) S_NAME
+	FROM EQUIPMENT A
+		WHERE S_ID = #{sId}
+		AND NOT EXISTS( SELECT 'X' FROM STORE_EQUIPMENT_PLACEMENT B WHERE A.EQUIPMENT_CODE = B.EQUIPMENT_CODE)
+		ORDER BY EQUIPMENT_CODE DESC
+	</select>
+	<select id="getStoreEquipmentPlacementList"
+		resultType="org.sunw.self.admin.equipment.equipment.domain.EquipmentManageVO">
+	SELECT A.EQUIPMENT_CODE, 
+		A.TPTB, 
+		A.EQUIPMENT_STATUS, 
+		A.EQUIPMENT_MODEL_ID, 
+		(SELECT EQUIPMENT_NAME FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_NAME,
+		A.REGULAR_INSPECTION, 
+		A.REGULAR_INSPECTION_DATE, 
+		A.PURCHASE_PRICE, 
+		(SELECT EQUIPMENT_TYPE FROM EQUIPMENT_MODEL B  WHERE A.EQUIPMENT_MODEL_ID = B.EQUIPMENT_MODEL_ID) EQUIPMENT_TYPE,
+		A.PURCHASE_DATETIME,
+		A.S_ID,
+		(SELECT S_NAME FROM STORE B WHERE A.S_ID = B.S_ID) S_NAME,
+		C.STORE_EQUIPMENT_ID, 
+		C.S_ID, 
+		C.EQUIPMENT_CODE, 
+		C.X_COORD, 
+		C.Y_COORD
+	FROM EQUIPMENT A, STORE_EQUIPMENT_PLACEMENT C
+		WHERE A.S_ID = #{sId}
+		AND A.EQUIPMENT_CODE = C.EQUIPMENT_CODE
+		ORDER BY A.EQUIPMENT_CODE DESC
+	</select>
+	
+	<insert id="insertEquipmentPlacement">
+		INSERT INTO STORE_EQUIPMENT_PLACEMENT
+		(
+			S_ID
+			, EQUIPMENT_CODE
+			, X_COORD
+			, Y_COORD
+		)
+		VALUES(
+			#{sId}
+			, #{equipmentCode}
+			, #{xCoord}
+			, #{yCoord}
+		)
+	</insert>
+	<delete id="deleteEquipmentPlacement">
+		DELETE FROM STORE_EQUIPMENT_PLACEMENT 
+		WHERE EQUIPMENT_CODE = #{equipmentCode} AND X_COORD = #{xCoord} AND Y_COORD = #{yCoord}
+	</delete>
 </mapper>  
 

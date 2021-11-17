@@ -28,7 +28,7 @@ public class OrderManageServiceImpl implements OrderManageService{
 
 	@Override
 	public int getOrederManageCnt(OrderManageDTO orderManageDTO) {
-		return 0;
+		return orderManageMapper.getOrederManageCnt(orderManageDTO);
 	}
 
 	@Override

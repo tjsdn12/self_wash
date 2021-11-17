@@ -13,11 +13,11 @@
 						data-bs-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">Sheet</button>
 					<div class="dropdown-menu" style="margin: 0px;">
-						<a class="dropdown-item" href="10">10</a> <a class="dropdown-item"
-							href="20">20</a> <a class="dropdown-item" href="50">50</a> <a
-							class="dropdown-item" href="100">100</a>
+						<a class="dropdown-item" href="?perSheet=10">10</a> <a class="dropdown-item"
+							href="?perSheet=20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
+							class="dropdown-item" href="?perSheet=100">100</a>
 					</div>
-					<h3 class="card-title mb-0" style="margin-left: 50px">WashMenuList</h3>
+					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentModel List</h3>
 				</div>
 			</div>
 			<div class="list-responsive">
@@ -29,9 +29,10 @@
 							</label></th>
 							<th scope="col">주문메뉴 번호</th>
 							<th scope="col">상품가격</th>
-							<th scope="col">장비번호</th>
 							<th scope="col">메뉴명</th>
-							<th scope="col">세제 사용 여부</th>
+							<th scope="col">헹굼횟수</th>
+							<th scope="col">장비용량</th>
+							<th scope="col">장비유형</th>
 							<th scope="col"><input type="button" value="등록"
 								class="btn-info" onclick="location.href='/customer/washmenu/register'">
 							</th>
@@ -47,9 +48,10 @@
 								</label></td>
 								<td><a href="#" onclick="goSelect(this)">${item2.washMenuId }</a></td>
 								<td>${item2.menuPrice }</td>
-								<td>${item2.equipmentModelId }</td>
 								<td>${item2.menuName }</td>
-								<td>${item2.detergentUseAt }</td>
+								<td>${item2.dehydrationCnt }</td>
+								<td>${item2.weight }</td>
+								<td>${item2.equipmentTypeName }</td>
 								<td>
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteWashMenu(<c:out value='${item2.washMenuId }'/>)">삭제</button>
@@ -66,7 +68,6 @@
 <div class="row">
 	<div class="col-sm-12 col-md-5">
 		<div class="dataTables_info" id="zero_config_info">
-		<input type="button" class="btn btn-danger btn-sm text-white" value="Unabled toggle" onclick="" >
 		</div>
 	</div>
 	<div class="col-sm-12 col-md-7">

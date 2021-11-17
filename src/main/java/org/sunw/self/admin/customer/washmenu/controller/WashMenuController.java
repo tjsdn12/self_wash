@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.sunw.self.admin.common.domain.PageMaker;
 import org.sunw.self.admin.common.domain.ResultDTO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
 import org.sunw.self.admin.customer.washmenu.service.WashMenuService;
@@ -28,10 +29,12 @@ public class WashMenuController {
 	public void list(WashMenuDTO washMenuDTO,Model model) {
 		
 		model.addAttribute("getAllWashMenuList",washMenuService.getAllWashMenuList(washMenuDTO));
+		PageMaker pageMaker = new PageMaker(washMenuDTO, washMenuService.getWashMenuCnt(washMenuDTO));
+		model.addAttribute("pageMaker", pageMaker);
 		
 	}
 	@GetMapping("/form")
-	public void form(WashMenuDTO washMenuDTO,Model model) {
+	public void form(WashMenuDTO washMenuDTO, Model model) {
 		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
 		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
 		log.info(model);

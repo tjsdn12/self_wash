@@ -80,6 +80,22 @@
 							value="<c:out value='${storeInfoVO.postCode }'></c:out>">
 					</div>
 				</div>
+				<div class="form-group row">
+						<label for="storeWidth"
+							class="col-sm-3 text-end control-label col-form-label">매장 가로 크기</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="storeWidth" name="storeWidth"
+							value="<c:out value='${storeInfoVO.storeWidth }'></c:out>">
+					</div>
+				</div>
+				<div class="form-group row">
+						<label for="storeHeight"
+							class="col-sm-3 text-end control-label col-form-label">매장 세로 크기</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="storeHeight" name="storeHeight"
+							value="<c:out value='${storeInfoVO.storeHeight }'></c:out>">
+					</div>
+				</div>
 				<div class="border-top">
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>

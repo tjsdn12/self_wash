@@ -1,6 +1,5 @@
 package org.sunw.self.admin.common.interceptor;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -13,9 +13,9 @@
 						data-bs-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">Sheet</button>
 					<div class="dropdown-menu" style="margin: 0px;">
-						<a class="dropdown-item" href="10">10</a> <a class="dropdown-item"
-							href="20">20</a> <a class="dropdown-item" href="50">50</a> <a
-							class="dropdown-item" href="100">100</a>
+						<a class="dropdown-item" href="?perSheet=10">10</a> <a class="dropdown-item"
+							href="20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
+							class="dropdown-item" href="?perSheet=100">100</a>
 					</div>
 					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentModel List</h3>
 				</div>
@@ -39,14 +39,13 @@
 							</label></th>
 							<th scope="col">장비관리번호</th>
 							<th scope="col">장비명</th>
+							<th scope="col">용량</th>
+							<th scope="col">장비 유형</th>
 							<th scope="col">제조회사 이름</th>
 							<th scope="col">제조회사 번호</th>
 							<th scope="col">카테고리 번호</th>
 							<th scope="col">수리처</th>
 							<th scope="col">수리처 전화번호</th>
-							<th scope="col">소비자 노출여부</th>
-							<th scope="col">장비사진</th>
-							<th scope="col">장비스펙</th>
 							<th scope="col"><input type="button" value="장비등록"
 								class="btn-info" onclick="location.href='/equipment/model/register'">
 							</th>
@@ -62,14 +61,13 @@
 								</label></td>
 								<td><a href="#" onclick="goSelect(this)">${item2.equipmentModelId }</a></td>
 								<td>${item2.equipmentName }</td>
+								<td>${item2.capacityGbName }</td>
+								<td>${item2.equipmentTypeName }</td>
 								<td>${item2.manufacturingCompany }</td>
 								<td>${item2.manufacturerNumber }</td>
 								<td>${item2.categoryId }</td>
 								<td>${item2.repairer }</td>
 								<td>${item2.repairerNumber }</td>
-								<td>${item2.exposureYesNo }</td>
-								<td>${item2.equipmentPhoto }</td>
-								<td>${item2.equipmentSpec }</td>
 								<td>
 					<div class="card-body">
 						<button type="button" id="modifyBtn" class="btn btn-primary" onclick="deleteEquipmentModel(<c:out value='${item2.equipmentModelId }'/>)">삭제</button>
@@ -86,7 +84,6 @@
 <div class="row">
 	<div class="col-sm-12 col-md-5">
 		<div class="dataTables_info" id="zero_config_info">
-		<input type="button" class="btn btn-danger btn-sm text-white" value="Unabled toggle" onclick="" >
 		</div>
 	</div>
 	<div class="col-sm-12 col-md-7">
@@ -109,7 +106,6 @@
 					href="${pageMaker.end +1}" aria-controls="zero_config"  tabindex="0"
 					class="page-link">Next</a></li>
 				</c:if>
-				
 			</ul>
 			<h6>Showing ${pageMaker.start } to ${pageMaker.end } of ${pageMaker.realEnd } entries</h6>
 		</div>
@@ -133,7 +129,8 @@ document.querySelectorAll(".page-link").forEach(a=>{
 	       e.preventDefault();
 	       e.stopPropagation();
 	       document.querySelector(".current_page").value = a.getAttribute('href');
-	       document.querySelector("#actionu").submit();
+	       document.querySelector("#actionForm").action ="/equipment/model/list";
+	       document.querySelector("#actionForm").submit();
 	   },false)
 });
 

@@ -1,5 +1,6 @@
 package org.sunw.self.admin.equipment.model.domain;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.sunw.self.admin.common.domain.DefaultDTO;
 
 import lombok.Data;
@@ -12,4 +13,6 @@ public class EquipmentModelDTO extends DefaultDTO {
 	String equipmentModelId;
 	
 	String equipmentName;
+	
+	MultipartFile equipmentPhotoFile;
 }
