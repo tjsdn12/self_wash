@@ -164,4 +164,18 @@ namespace="org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper">
 	DELETE FROM SELF_WASH.WASH_MENU WHERE WASH_MENU_ID = #{washMenuId}
 	</delete>
 	
+	<select id="getCategoryList" resultType="org.sunw.self.admin.customer.washmenu.domain.CategoryVO">
+	SELECT CATEGORY_ID
+		, LARGE_CATEGORY
+		, LARGE_CATEGORY_NAME
+		, MIDDLE_CATEGORY
+		, MIDDLE_CATEGORY_NAME
+		, SMALL_CATEGORY
+		, SMALL_CATEGORY_NAME
+		, USAGE_STATUS
+		, CATEGORY_DESC
+	FROM CATEGORY
+	ORDER BY CATEGORY_ID
+	</select>
+	
 </mapper>

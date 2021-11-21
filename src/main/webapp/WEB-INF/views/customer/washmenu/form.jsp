@@ -92,6 +92,24 @@
 							</select>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="sId"
+							class="col-sm-3 text-end control-label col-form-label">카테고리</label>
+						<div class="col-sm-9">
+							<select name="categoryId" id="categoryId" >
+		 						<option>::: 카테고리 선택하기 :::</option>
+									<c:forEach items="${getCategoryList }" var="item2">
+										<option value="${item2.categoryId }" <c:if test="${item2.categoryId==washMenuVO.categoryId}">selected="selected"</c:if>>
+										${item2.largeCategoryName } > ${item2.middleCategoryName }
+										<c:if test="${item2.smallCategoryName != null and item2.smallCategoryName != '' }"> 
+										>
+										${item2.smallCategoryName }
+										</c:if>
+										</option>
+									</c:forEach>
+								</select>
+						</div>
+					</div>
 					<div class="border-top">
 						<div class="card-body">
 							<button type="button" id="modifyBtn" class="btn btn-primary" onclick="save()">저장</button>

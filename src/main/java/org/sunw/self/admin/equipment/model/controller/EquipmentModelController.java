@@ -67,6 +67,7 @@ public class EquipmentModelController {
 
 	@GetMapping("/popup/register")
 	public void register(WashMenuDTO washMenuDTO, Model model) {
+		washMenuDTO.setPerSheet(100);
 		model.addAttribute("getAllWashMenuList",washMenuService.getAllWashMenuList(washMenuDTO));
 	}
 
@@ -99,14 +100,20 @@ public class EquipmentModelController {
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO fileUpload(MultipartFile file) {
 		ResultDTO result = new ResultDTO();
+			//file.getOriginalFilename : 파일 명 불러옴
 	        String fileName = file.getOriginalFilename();
+	        //경로랑 파일명으로 파일을 새로 생성할 경로를 지정
 	        File target = new File(FILE_UPLOAD_PATH, fileName);
 	        
 	        File uploadPath = new File(FILE_UPLOAD_PATH);
+	        //upload_path 경로가 존재하지 않으면
 	        if(!uploadPath.exists()) {
+	        	//그 폴더를 새로 생성
 	        	uploadPath.mkdirs();
 	        }
 	        try {
+	        	//file.getBytes() : 파일의 바이트 코드를 가져옴
+	        	//FileCopyUtils.copy : 바이트코드로부터 target 경로에 새로운 파일을 생성해서 복사함.
 				FileCopyUtils.copy(file.getBytes(), target);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -122,18 +129,24 @@ public class EquipmentModelController {
 	public  void download(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		FileInputStream fileInputStream = null;
         try {
+        	//파라미터로 이미지파일 경로 불러옴
         	String path = FILE_UPLOAD_PATH+request.getParameter("image"); // 경로에 접근할 때 역슬래시('\') 사용
         	fileInputStream = new FileInputStream(path); // 파일 읽어오기 
         	
+        	//파일을 보내는데 이게 무슨파일인지 알아야하잖아, 이 응답이 image/jpeg파일임을 알려줌
         	response.setHeader("Content-Type", "image/jpeg");
         	
+        	//파일을 bytecode형태로 응답시킬 유틸리티
         	OutputStream out = response.getOutputStream();
         	
         	int read = 0;
-                byte[] buffer = new byte[1024];
-                while ((read = fileInputStream.read(buffer)) != -1) { // 1024바이트씩 계속 읽으면서 outputStream에 저장, -1이 나오면 더이상 읽을 파일이 없음
-                    out.write(buffer, 0, read);
-                }
+            byte[] buffer = new byte[1024];
+            //파일의 byte코드를 한줄씩 읽어서 read 변수에 담음
+            while ((read = fileInputStream.read(buffer)) != -1) { 
+            	// 1024바이트씩 계속 읽으면서 outputStream에 저장, -1이 나오면 더이상 읽을 파일이 없음
+            	//유틸리티로 읽어들인 read(byte코드가 담긴 변수)를 한줄씩 작성함
+                out.write(buffer, 0, read);
+            }
                 
         } catch (Exception e) {
             throw new Exception("download error");

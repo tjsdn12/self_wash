@@ -3,6 +3,7 @@ package org.sunw.self.admin.customer.washmenu.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.sunw.self.admin.customer.washmenu.domain.CategoryVO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuDTO;
 import org.sunw.self.admin.customer.washmenu.domain.WashMenuVO;
 import org.sunw.self.admin.customer.washmenu.mapper.WashMenuMapper;
@@ -80,6 +81,9 @@ public class WashMenuServiceImpl implements WashMenuService {
 		return washMenuMapper.deleteEquipmentWashMenu(menuEquipmentMappingId);
 	}
 	
-	
+	@Override
+	public List<CategoryVO> getCategoryList() {
+		return washMenuMapper.getCategoryList();
+	}
 
 }

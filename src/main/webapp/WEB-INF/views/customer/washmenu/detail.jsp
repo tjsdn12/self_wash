@@ -83,7 +83,21 @@
 						<label for="equipmentType"
 							class="col-sm-3 text-end control-label col-form-label">장비 유형</label>
 						<div class="col-sm-9">
-								<c:out value='${washMenuVO.equipmentTypeName }'></c:out>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="categoryId"
+							class="col-sm-3 text-end control-label col-form-label">카테고리</label>
+						<div class="col-sm-9">
+							<c:forEach items="${getCategoryList }" var="item2">
+								<c:if test="${item2.categoryId==washMenuVO.categoryId}">
+									${item2.largeCategoryName } > ${item2.middleCategoryName }
+									<c:if test="${item2.smallCategoryName != null and item2.smallCategoryName != '' }"> 
+										>
+										${item2.smallCategoryName }
+									</c:if>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

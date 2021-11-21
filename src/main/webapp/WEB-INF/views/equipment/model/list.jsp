@@ -14,7 +14,7 @@
 						aria-expanded="false">Sheet</button>
 					<div class="dropdown-menu" style="margin: 0px;">
 						<a class="dropdown-item" href="?perSheet=10">10</a> <a class="dropdown-item"
-							href="20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
+							href="?perSheet=20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
 							class="dropdown-item" href="?perSheet=100">100</a>
 					</div>
 					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentModel List</h3>
@@ -192,9 +192,6 @@ document.querySelectorAll(".page-link").forEach(a=>{
 		form.innerHTML = "<input type ='hidden' name ='equipmentName' value='"+equipmentName+"' />";
 		
 		form.submit();
-		
-		
-	
 	}
 	
 

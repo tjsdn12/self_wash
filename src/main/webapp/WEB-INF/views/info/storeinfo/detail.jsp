@@ -119,6 +119,7 @@
 
 
 	<script type="text/javascript">
+	
 	function init() {
 		$('#modalSubmitBtn').hide();
 		$('#modalAddBtn').hide();
@@ -135,8 +136,9 @@
 	});
 	
 	function modalShow() {
+		const sId = $('#sId').val();
 		$('#modalSubmitBtn').hide();
-		$('.modal .modal-body').load('/info/storeinfo/popup/detail?sId=5');
+		$('.modal .modal-body').load('/info/storeinfo/popup/detail?sId='+sId);
 		$('.modal').show();
 	}
 	

@@ -40,6 +40,7 @@ public class WashMenuController {
 		log.info(model);
 		
 		model.addAttribute("getEquipmentModelList", washMenuService.getEquipmentModelList());
+		model.addAttribute("getCategoryList", washMenuService.getCategoryList());
 		
 	}
 	@PutMapping("/form")
@@ -70,6 +71,7 @@ public class WashMenuController {
 	public void selectWashMenu(WashMenuDTO washMenuDTO,Model model) {
 		WashMenuDTO getOne = washMenuService.getOneWashMenu(washMenuDTO.getWashMenuId());
 		model.addAttribute("washMenuVO",getOne.getWashMenuVO());
+		model.addAttribute("getCategoryList", washMenuService.getCategoryList());
 		log.info(model);
 	}
 
@@ -81,6 +83,7 @@ public class WashMenuController {
 		log.info(model);
 		
 		model.addAttribute("getEquipmentModelList", washMenuService.getEquipmentModelList());
+		model.addAttribute("getCategoryList", washMenuService.getCategoryList());
 		
 	}
 	

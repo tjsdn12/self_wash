@@ -44,7 +44,8 @@
 			<!-- 모든 Logger에 적용되야 하기에 /** -->
 			<mapping path="/**" />
 			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/common/login/login" />
+			<exclude-mapping path="/common/login/**" />
+			<exclude-mapping path="/equipment/model/image" />
 			<beans:bean id="commonInterceptor"
 				class="org.sunw.self.admin.common.interceptor.CommonInterceptor" />
 		</interceptor>
@@ -54,6 +55,7 @@
 		<interceptor>
 			<mapping path="/user/manager/**" />
 			<exclude-mapping path="/common/login/login" />
+			<exclude-mapping path="/equipment/model/image" />
 			<beans:bean id="adminInterceptor"
 				class="org.sunw.self.admin.common.interceptor.AdminInterceptor"/>
 		</interceptor>

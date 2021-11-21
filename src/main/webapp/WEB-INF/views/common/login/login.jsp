@@ -30,6 +30,8 @@
 						<div class="card-body">
 							<button type="button" id="loginBtn" class="btn btn-primary"
 								onclick="login()">로그인</button>
+							<button type="button" id="registerBtn" class="btn btn-secondary"
+								onclick="register()">회원가입 신청</button>
 						</div>
 					</div>
 				</form>
@@ -39,7 +41,9 @@
 </div>
 
 <script>
-
+function register() {
+	location.href='/common/login/register';
+}
 function login() {
 	const data = $('#actionForm').serializeObject();
 	$.ajax({

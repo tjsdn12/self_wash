@@ -17,7 +17,7 @@
 							href="?perSheet=20">20</a> <a class="dropdown-item" href="?perSheet=50">50</a> <a
 							class="dropdown-item" href="?perSheet=100">100</a>
 					</div>
-					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentModel List</h3>
+					<h3 class="card-title mb-0" style="margin-left: 50px">EquipmentManage List</h3>
 				</div>
 			</div>
 			<div class="form-group row">
