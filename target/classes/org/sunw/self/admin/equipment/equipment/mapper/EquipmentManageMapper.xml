@@ -85,7 +85,7 @@ namespace= "org.sunw.self.admin.equipment.equipment.mapper.EquipmentManageMapper
 	</select>
 	
 	<update id="update">
-	UPDATE self_wash.equipment
+	UPDATE SELF_WASH.EQUIPMENT
 	SET 
 	TPTB					= #{tptb},						
 	EQUIPMENT_MODEL_ID		= #{equipmentModelId},		

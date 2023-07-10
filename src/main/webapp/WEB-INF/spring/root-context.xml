@@ -20,8 +20,8 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:mysql://115.139.85.244:3306/self_wash?serverTimezone=UTC"></property>
-		<property name="username" value="root"></property>
+			value="jdbc:mysql://13.239.96.179:3306/self_wash?characterEncoding=utf8"></property>
+		<property name="username" value="self_wash"></property>
 		<property name="password" value="1q1q2w"></property>
 	</bean>
 

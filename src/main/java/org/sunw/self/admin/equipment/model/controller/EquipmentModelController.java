@@ -35,7 +35,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/equipment/model")
 public class EquipmentModelController {
 	
-	private static final String FILE_UPLOAD_PATH = "C:/self_wash/uploads/";
+	private static final String FILE_UPLOAD_PATH = "/self_wash/uploads/";
 	private static final String FILE_DOWNLOLAD_PATH = "/equipment/model/image?image=";
 	
 	@Autowired

@@ -60,7 +60,7 @@ public class InquiryController {
 		return result;
 	}
 	
-	@DeleteMapping("list")
+	@DeleteMapping("/list")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public ResultDTO delete(@RequestBody InquiryDTO inquiryDTO) {
